@@ -43,12 +43,14 @@ class StaticFilter extends Command
     {
         $makes = Make::defaultOrder()->withDepth()->where('live', true)->get();
         foreach($makes as $make) {
+            echo now().'-'.$make->name.PHP_EOL;
             $treeMake = Make::ancestorsAndSelf($make->id);
             $fullMake = $staticService->getFullMake($treeMake);
             $folder = $staticService->getFolder($treeMake);
             $makeAndDescendants = Make::descendantsAndSelf($make->id);
 
             $cars = $ebayItemService->getPublicEbayItems(0, 12, null, $makeAndDescendants);
+            echo now().'-'.count($cars).PHP_EOL;
             $lastPage = json_decode($cars->toJson())->last_page;
 
             //  GET THE COMPILED HTML
