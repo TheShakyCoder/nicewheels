@@ -41,7 +41,7 @@ class StaticFilter extends Command
      */
     public function handle(StaticService $staticService, EbayItemService $ebayItemService)
     {
-        $makes = Make::defaultOrder()->get();
+        $makes = Make::defaultOrder()->where('live', true)->get();
         foreach($makes as $make) {
             $treeMake = Make::ancestorsAndSelf($make->id);
             $folder = $staticService->getFolder($treeMake);
@@ -52,7 +52,7 @@ class StaticFilter extends Command
             $lastPage = json_decode($cars->toJson())->last_page;
 
             //  GET THE COMPILED HTML
-            $html = $staticService->getCompiledHtml('templates.filter', $fullMake, $cars, $lastPage, $makeAndDescendants);
+            $html = $staticService->getCompiledHtml('templates.filter', $fullMake, $cars, $lastPage, $makeAndDescendants->pluck('id'));
 
             try {
                 mkdir(public_path('used-prices/'.$folder), 0775, true);
@@ -69,6 +69,12 @@ class StaticFilter extends Command
             echo $folder.PHP_EOL;
             echo PHP_EOL;
         }
+
+        //  used price index
+        $html = $staticService->getCompiledHtml('templates.filter', $fullMake, $cars, $lastPage, []);
+        file_put_contents(public_path('used-prices/index.html'), $html);
+        echo 'used-prices/index.html'.PHP_EOL;
+
         return 0;
     }
 }

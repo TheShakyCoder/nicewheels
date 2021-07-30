@@ -27,7 +27,7 @@ class StaticService
             'fullMake' => $fullMake,
             'cars' => $cars,
             'lastPage' => $lastPage,
-            'makesAndDescendants' => $makeAndDescendants->pluck('id')
+            'makesAndDescendants' => $makeAndDescendants
         ])->render();
     }
 }

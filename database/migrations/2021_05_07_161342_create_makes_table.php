@@ -17,6 +17,7 @@ class CreateMakesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->boolean('live')->default(true);
             $table->nestedSet();
             $table->timestamps();
         });
