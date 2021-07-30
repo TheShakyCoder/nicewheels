@@ -55,6 +55,7 @@ class StaticFilter extends Command
 
             //  GET THE COMPILED HTML
             $html = $staticService->getCompiledHtml('templates.filter', $fullMake, $cars, $lastPage, $makeAndDescendants->pluck('id'), $makes, $folder);
+            echo now().'-html'.PHP_EOL;
 
             try {
                 mkdir(public_path('used-prices/'.$folder), 0775, true);
