@@ -6,9 +6,11 @@ import Vuex from 'vuex'
 import ButtonBookmark from "./Static/Buttons/Bookmark"
 import ButtonLoadMore from "./Static/Buttons/LoadMore"
 import ButtonRedeem from "./Static/Buttons/Redeem"
+import ButtonShowSideFilter from "./Static/Buttons/ShowSideFilter"
 import ModalGuest from "./Static/Modals/Guest"
 import ModalLogin from "./Static/Modals/Login"
 import ModalRedeem from "./Static/Modals/Redeem"
+import ModalSideFilter from "./Static/Modals/SideFilter"
 import ModalStripe from "./Static/Modals/Stripe"
 import StaticCars from "./Static/Components/Cars"
 import StaticHeader from "./Static/Header"
@@ -28,9 +30,11 @@ const app = createApp({
         ButtonBookmark,
         ButtonLoadMore,
         ButtonRedeem,
+        ButtonShowSideFilter,
         ModalGuest,
         ModalLogin,
         ModalRedeem,
+        ModalSideFilter,
         ModalStripe,
         StaticCars,
         StaticHeader,

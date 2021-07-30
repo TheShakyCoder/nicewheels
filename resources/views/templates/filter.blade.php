@@ -34,8 +34,13 @@
                             <!-- Left column -->
                             <div class="grid grid-cols-1 gap-4 lg:col-span-2">
 
+                                <modal-side-filter :makes="{{ $makes }}" :folder="'{{ $folder }}'"></modal-side-filter>
+
                                 <div class="p-4 bg-white rounded-lg shadow mb-4">
-                                    <h2 class="text-2xl font-bold mb-1 text-yellow-800 pt-3">{{ $fullMake }}</h2>
+                                    <div class="flex justify-between">
+                                        <h2 class="text-2xl font-bold mb-1 text-yellow-800 pt-3">{{ $fullMake }}</h2>
+                                        <button-show-side-filter></button-show-side-filter>
+                                    </div>
                                     <ul role="list" class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 truncate">
                                         @foreach($cars as $car)
                                             @include('templates.partials.car')

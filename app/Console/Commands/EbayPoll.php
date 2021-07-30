@@ -53,7 +53,7 @@ class EbayPoll extends Command
             'qty_received' => $count
         ]);
         $ebayCategory->save();
-
+        echo $ebayCategory->name.PHP_EOL;
         return 0;
     }
 }

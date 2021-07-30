@@ -7,7 +7,8 @@ const staticStore = {
             login: false,
             guest: false,
             redeem: false,
-            stripe: false
+            stripe: false,
+            sideFilter: true
         },
         collections: {
             bookmarks: [],

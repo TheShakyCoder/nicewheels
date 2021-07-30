@@ -20,7 +20,7 @@
     </template>
 
     <li class="flex items-center">
-        <button @click="loadMore" class="w-full h-full bg-cyan-600 text-white" v-if="show">
+        <button @click="loadMore" class="w-full h-full bg-cyan-600 text-white hover:bg-cyan-400" v-if="show">
             <i class="fas fa-ellipsis-h fa-4x"></i>
         </button>
     </li>

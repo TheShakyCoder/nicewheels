@@ -21,13 +21,22 @@ class StaticService
         });
     }
 
-    public function getCompiledHtml($template, $fullMake, $cars, $lastPage, $makeAndDescendants)
+    public function getFullFolder(Collection $fullMake)
+    {
+        return $fullMake->reduce(function ($carry, $item) {
+            return $carry .'/'. $item->slug;
+        });
+    }
+
+    public function getCompiledHtml($template, $fullMake, $cars, $lastPage, $makeAndDescendants, $makes, $folder)
     {
         return view($template, [
             'fullMake' => $fullMake,
             'cars' => $cars,
             'lastPage' => $lastPage,
-            'makesAndDescendants' => $makeAndDescendants
+            'makesAndDescendants' => $makeAndDescendants,
+            'makes' => $makes,
+            'folder' => $folder
         ])->render();
     }
 }

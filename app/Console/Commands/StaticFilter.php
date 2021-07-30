@@ -41,18 +41,18 @@ class StaticFilter extends Command
      */
     public function handle(StaticService $staticService, EbayItemService $ebayItemService)
     {
-        $makes = Make::defaultOrder()->where('live', true)->get();
+        $makes = Make::defaultOrder()->withDepth()->where('live', true)->get();
         foreach($makes as $make) {
             $treeMake = Make::ancestorsAndSelf($make->id);
-            $folder = $staticService->getFolder($treeMake);
             $fullMake = $staticService->getFullMake($treeMake);
+            $folder = $staticService->getFolder($treeMake);
             $makeAndDescendants = Make::descendantsAndSelf($make->id);
+
             $cars = $ebayItemService->getPublicEbayItems(0, 12, null, $makeAndDescendants);
-            \Log::info($cars);
             $lastPage = json_decode($cars->toJson())->last_page;
 
             //  GET THE COMPILED HTML
-            $html = $staticService->getCompiledHtml('templates.filter', $fullMake, $cars, $lastPage, $makeAndDescendants->pluck('id'));
+            $html = $staticService->getCompiledHtml('templates.filter', $fullMake, $cars, $lastPage, $makeAndDescendants->pluck('id'), $makes, $folder);
 
             try {
                 mkdir(public_path('used-prices/'.$folder), 0775, true);
@@ -71,7 +71,10 @@ class StaticFilter extends Command
         }
 
         //  used price index
-        $html = $staticService->getCompiledHtml('templates.filter', $fullMake, $cars, $lastPage, []);
+        $cars = $ebayItemService->getPublicEbayItems(0, 12, null);
+        $lastPage = json_decode($cars->toJson())->last_page;
+        $folder = '';
+        $html = $staticService->getCompiledHtml('templates.filter', 'All Makes', $cars, $lastPage, [], $makes, $folder);
         file_put_contents(public_path('used-prices/index.html'), $html);
         echo 'used-prices/index.html'.PHP_EOL;
 
