@@ -48,9 +48,11 @@ class StaticFilter extends Command
             $fullMake = $staticService->getFullMake($treeMake);
             $makeAndDescendants = Make::descendantsAndSelf($make->id);
             $cars = $ebayItemService->getPublicEbayItems(0, 12, null, $makeAndDescendants);
+            \Log::info($cars);
+            $lastPage = json_decode($cars->toJson())->last_page;
 
             //  GET THE COMPILED HTML
-            $html = $staticService->getCompiledHtml('templates.filter', $fullMake, $cars);
+            $html = $staticService->getCompiledHtml('templates.filter', $fullMake, $cars, $lastPage, $makeAndDescendants);
 
             try {
                 mkdir(public_path('used-prices/'.$folder), 0775, true);
@@ -63,7 +65,9 @@ class StaticFilter extends Command
             }
             file_put_contents(public_path('used-prices/'.$folder.'/index.html'), $html);
 
+            echo $fullMake.PHP_EOL;
             echo $folder.PHP_EOL;
+            echo PHP_EOL;
         }
         return 0;
     }

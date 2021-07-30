@@ -42,6 +42,21 @@ class EbayItemsController extends Controller
         ], 200);
     }
 
+    /**
+     * @param EbayItemService $ebayItemService
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function loadMore(EbayItemService $ebayItemService, Request $request)
+    {
+        $cars = $ebayItemService->getPublicEbayItems(0, 12, null, $request->get('makes'), null, $request->get('ids'));
+
+        return response()->json([
+            'cars' => $cars,
+            'ids' => $request->all()
+        ]);
+    }
+
     public function redeem(EbayItem $ebayItem, Request $request)
     {
         $auth = $request->user();

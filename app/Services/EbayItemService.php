@@ -104,7 +104,7 @@ class EbayItemService
         if($this->get_http_response_code($image) != "200") {
             exit;
         }
-        echo 'PROCESSING IMAGE'.PHP_EOL;
+//        echo 'PROCESSING IMAGE'.PHP_EOL;
         try {
             $ch = curl_init();
             $timeout = 10;
@@ -203,7 +203,7 @@ class EbayItemService
             ->pluck('ebay_item_id')
             ;
 
-        $query = $this->rootQuery($redemptions, true, $paginate, null, null, $userId);
+        $query = $this->rootQuery($redemptions, $paginate, null, null, $userId);
 
         return $query;
     }
@@ -216,7 +216,7 @@ class EbayItemService
             ->pluck('ebay_item_id')
             ;
 
-        $query = $this->rootQuery($bookmarks, true, $paginate, null, null, $userId);
+        $query = $this->rootQuery($bookmarks, $paginate, null, null, $userId);
 
         return $query;
     }
@@ -245,9 +245,9 @@ class EbayItemService
      * @param int $limit
      * @return false|string
      */
-    public function getPublicEbayItems($userId = 0, $paginate = 12, $search = null, $filterMakes = null, $make = null)
+    public function getPublicEbayItems($userId = 0, $paginate = 12, $search = null, $filterMakes = null, $make = null, $exclude = null)
     {
-        $query = $this->rootQuery([], false, $paginate, $search, $filterMakes, $userId);
+        $query = $this->rootQuery(null, $exclude, $paginate, $search, $filterMakes, $userId);
         $query->appends([
             'search' => $search,
             'make' => $make,
@@ -256,13 +256,28 @@ class EbayItemService
         return $query;
     }
 
-    private function rootQuery($ids = [], $include = true, $paginate = 12, $search = null, $filterMakes = null, $userId = 0)
+    /**
+     * @param null $include
+     * @param null $exclude
+     * @param int $paginate
+     * @param null $search
+     * @param null $filterMakes
+     * @param int $userId
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    private function rootQuery($include = null, $exclude = null, $paginate = 12, $search = null, $filterMakes = null, $userId = 0)
     {
         return EbayItem::query()
             ->with(['make', 'images' => function($q) {
                 $q->orderBy('sort', 'ASC');
             }])
-            ->when($userId !== 0, function($q) use($userId) {
+            ->when($include, function($q) use($include) {
+                $q->whereIn('id', $include);
+            })
+            ->when($exclude, function($q) use($exclude) {
+                $q->whereNotIn('id', $exclude);
+            })
+            ->when($userId, function($q) use($userId) {
                 $q->with(['bookmarks' => function($q2) use($userId) {
                     $q2->where('user_id', $userId);
                 }, 'redemptions' => function($q2) use($userId) {
@@ -272,11 +287,6 @@ class EbayItemService
             ->where('used_price', 1)
             ->whereNotNull('processed_at')
             ->whereBetween('ended_at', [now()->subMonths(6), now()])
-            ->when($include, function($q) use($ids) {
-                $q->whereIn('id', $ids);
-            }, function($q) use($ids) {
-                $q->whereNotIn('id', $ids);
-            })
             ->when($search, function($q) use($search) {
                 $q->where('title', 'LIKE', '%'.$search.'%')->orWhere('subtitle', 'LIKE', '%'.$search.'%');
             })

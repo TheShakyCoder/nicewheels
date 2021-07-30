@@ -11,30 +11,27 @@ const staticStore = {
         },
         collections: {
             bookmarks: [],
-            redemptions: []
+            redemptions: [],
+            filterStatic: [],
+            filterMore: [],
+            filterCars: [],
         },
         user: null,
         redemptionId: 0,
         redemptionTitle: null
     },
+
+    getters: {
+        filterCombined (state) {
+            return state.collections.filterStatic.concat(state.collections.filterMore)
+        }
+    },
+
     actions: {
         removeFromCollection ({ commit, state }, data) {
             const itemIndex = state.collections[data.collection].map(function(e) { return e.id; }).indexOf(data.item.id)
             commit('removeFromCollection', { itemIndex, collection: data.collection })
         }
-        // deleteUser(context, data) {
-        //     const roomIndex = state.rooms.map(function(e) { return e.roomId; }).indexOf(data.chatId)
-        //     const userIndex = state.rooms[roomIndex].users.map(function(u) { return u._id }).indexOf(data.userId)
-        //     context.commit('deleteUser', { roomindex, userIndex })
-        // },
-        // deleteRoom(context, data) {
-        //     const roomIndex = state.rooms.map(function(e) { return e.roomId; }).indexOf(data.chatId)
-        //     context.commit('deleteRoom', { roomIndex })
-        // },
-        // resetIncrementUnread(state, data) {
-        //     const roomIndex = state.rooms.map(function(e) { return e.roomId; }).indexOf(data.chatId)
-        //     context.commit('resetIncrementUnread', { roomIndex })
-        // }
     },
     mutations: {
         toggleModal (state, data) {
@@ -50,18 +47,16 @@ const staticStore = {
             state.redemptionId = data.id
             state.redemptionTitle = data.title
         },
-        // setRedemptionId (state, data) {
-        //     state.redemptionId = data.redemptionId
-        // },
         addToCollection (state, data) {
-            state.collections[data.collection].push(data.item)
+            if(Array.isArray(data.item)) {
+                data.item.forEach(i => state.collections[data.collection].push(i))
+            } else {
+                state.collections[data.collection].push(data.item)
+            }
         },
         removeFromCollection (state, data) {
             state.collections[data.collection].splice(data.itemIndex, 1)
         }
-    },
-    getters: {
-
     }
 }
 

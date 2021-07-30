@@ -21,11 +21,13 @@ class StaticService
         });
     }
 
-    public function getCompiledHtml($template, $fullMake, $cars)
+    public function getCompiledHtml($template, $fullMake, $cars, $lastPage, $makeAndDescendants)
     {
         return view($template, [
             'fullMake' => $fullMake,
-            'cars' => $cars
+            'cars' => $cars,
+            'lastPage' => $lastPage,
+            'makesAndDescendants' => $makeAndDescendants->pluck('id')
         ])->render();
     }
 }

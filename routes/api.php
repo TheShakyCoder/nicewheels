@@ -30,6 +30,7 @@ Route::middleware('api_token')->post('/my-cars', [EbayItemsController::class, 'm
 Route::middleware('api_token')->post('/cars/{ebay_item}/bookmark', [EbayItemsController::class, 'bookmark'])->name('bookmark');
 Route::middleware('api_token')->post('/cars/{ebay_item}/redeem', [EbayItemsController::class, 'redeem'])->name('redeem');
 Route::get('car-images/{ebayItemImage}', [CarImagesController::class, 'show']);
+Route::post('cars', [EbayItemsController::class, 'loadMore']);
 
 Route::get('/get-stripe-publishable', [StripeController::class, 'getPublishable']);
 Route::middleware('api_token')->post('/stripe-purchase', [StripeController::class, 'stripePurchase'])->name('stripePurchase');

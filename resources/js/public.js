@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import Vuex from 'vuex'
 
 import ButtonBookmark from "./Static/Buttons/Bookmark"
+import ButtonLoadMore from "./Static/Buttons/LoadMore"
 import ButtonRedeem from "./Static/Buttons/Redeem"
 import ModalGuest from "./Static/Modals/Guest"
 import ModalLogin from "./Static/Modals/Login"
@@ -25,6 +26,7 @@ const store = new Vuex.Store({
 const app = createApp({
     components: {
         ButtonBookmark,
+        ButtonLoadMore,
         ButtonRedeem,
         ModalGuest,
         ModalLogin,
