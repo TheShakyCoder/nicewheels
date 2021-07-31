@@ -85,7 +85,7 @@
                                             >{{ "-".repeat(make.depth) }}{{ make.full_title }}</a>
                                         </li>
                                     </ul>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,10 @@
 export default {
     name: "StaticSideFilter",
     props: {
-        makes: [],
+        makes: {
+            type: Array,
+            default: [],
+        },
         folder: ''
     },
     computed: {

@@ -45,6 +45,7 @@
                                         @foreach($cars as $car)
                                             @include('templates.partials.car')
                                         @endforeach
+                                        <component-load-more></component-load-more>
                                         @if($lastPage != 1)
                                             <button-load-more :ids="{{ json_encode($cars->pluck('id')) }}" :makes="{{ json_encode($makesAndDescendants) }}" :complete="true"></button-load-more>
                                         @endif

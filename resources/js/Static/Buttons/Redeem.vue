@@ -26,10 +26,10 @@ export default {
     },
     methods: {
         redeemer () {
-            console.log('TITLE', this.title)
-            if(!this.$store.state.static.collections.redemptions.filter(r => r.id === this.id).length && this.user) {
-                this.$store.commit('static/setRedemption', { id: this.id, title: this.title })
-                // this.$store.commit('static/setRedemptionId', { redemptionId: this.id })
+            this.$store.commit('static/setRedemption', { id: this.id, title: this.title })
+            if(!this.user) {
+                this.$store.commit('static/toggleModal', { modal: 'guest', state: true })
+            } else {
                 this.$store.commit('static/toggleModal', { modal: 'redeem', state: true })
             }
         }

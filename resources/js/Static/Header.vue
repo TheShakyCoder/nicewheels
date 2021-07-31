@@ -36,18 +36,18 @@
             </div>
         </div>
 
-        <static-mobile-menu></static-mobile-menu>
+        <static-mobile-modal></static-mobile-modal>
 
     </header>
 </template>
 
 <script>
-import StaticMobileMenu from "./Components/MobileMenu"
+import StaticMobileModal from "./Modals/Mobile"
 
 export default {
     name: "StaticHeader",
     components: {
-        StaticMobileMenu
+        StaticMobileModal
     },
     computed: {
         mobileModal () {

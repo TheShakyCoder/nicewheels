@@ -39,25 +39,18 @@
                             </div>
                         </div>
                         <div class="mt-3 px-2 space-y-1">
-                            <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Home</a>
-
-                            <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Profile</a>
-
-                            <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Resources</a>
-
-                            <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Company Directory</a>
-
-                            <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">OpeningsMobile</a>
+                            <a href="/" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Home</a>
+                            <a href="/dashboard" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Dashboard</a>
                         </div>
                     </div>
-                    <div class="pt-4 pb-2">
+                    <div v-if="user" class="pt-4 pb-2">
                         <div class="flex items-center px-5">
                             <div class="flex-shrink-0">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                <img class="h-10 w-10 rounded-full" :src="user.profile_photo_url" alt="">
                             </div>
                             <div class="ml-3 min-w-0 flex-1">
-                                <div class="text-base font-medium text-gray-800 truncate">Chelsea Hagon</div>
-                                <div class="text-sm font-medium text-gray-500 truncate">chelseahagon@example.com</div>
+                                <div class="text-base font-medium text-gray-800 truncate">{{ user.name }}</div>
+                                <div class="text-sm font-medium text-gray-500 truncate">{{ user.email }}</div>
                             </div>
                             <button class="ml-auto flex-shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
                                 <span class="sr-only">View notifications</span>
@@ -68,11 +61,8 @@
                             </button>
                         </div>
                         <div class="mt-3 px-2 space-y-1">
-                            <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Your Profile</a>
-
-                            <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Settings</a>
-
-                            <a href="#" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Sign out</a>
+                            <a href="/user/profile" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Profile</a>
+                            <button @click="logout" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Sign out</button>
                         </div>
                     </div>
                 </div>
@@ -87,6 +77,21 @@ export default {
     computed: {
         open () {
             return this.$store.state.static.modals.mobile
+        },
+        user () {
+            return this.$store.state.static.user
+        }
+    },
+    methods: {
+        logout () {
+            axios.post('/api/logout', { api_token: this.user.api_token })
+                .then(resp => {
+                    if(resp.status === 200) {
+                        localStorage.removeItem('user')
+                        this.$store.commit('static/setUser', { user: null })
+                        this.$store.commit('static/toggleModal', { modal: 'mobile', state: false })
+                    }
+                })
         }
     }
 }

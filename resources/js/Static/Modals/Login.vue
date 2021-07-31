@@ -52,7 +52,6 @@
 
                         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                             <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                                <form class="space-y-6" action="#" method="POST">
                                     <div>
                                         <label for="email" class="block text-sm font-medium text-gray-700">
                                             Email address
@@ -91,7 +90,6 @@
                                             Sign in
                                         </button>
                                     </div>
-                                </form>
 
                             </div>
                         </div>
@@ -124,9 +122,16 @@ export default {
             this.$store.commit('static/toggleModal', { modal: 'login', state: false })
         },
         login () {
+            console.log('login')
             axios.post('/api/login', this.form)
                 .then(resp => {
                     console.log(resp)
+                    localStorage.setItem('user', JSON.stringify(resp.data.user))
+                    this.$store.commit('static/setUser', { user: resp.data.user })
+                    this.$store.commit('static/toggleModal', { modal: 'login', state: false })
+                    if(this.$store.state.static.redemptionId) {
+                        this.$store.commit('static/toggleModal', { modal: 'redeem', state: true})
+                    }
                 })
         }
     }

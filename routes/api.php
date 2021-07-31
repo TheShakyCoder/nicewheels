@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CarImagesController;
 use App\Http\Controllers\Api\EbayItemsController;
+use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\StripeController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -31,6 +32,9 @@ Route::middleware('api_token')->post('/cars/{ebay_item}/bookmark', [EbayItemsCon
 Route::middleware('api_token')->post('/cars/{ebay_item}/redeem', [EbayItemsController::class, 'redeem'])->name('redeem');
 Route::get('car-images/{ebayItemImage}', [CarImagesController::class, 'show']);
 Route::post('cars', [EbayItemsController::class, 'loadMore']);
+
+Route::post('/login', [LoginController::class, 'login']);
+Route::middleware('api_token')->post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/get-stripe-publishable', [StripeController::class, 'getPublishable']);
 Route::middleware('api_token')->post('/stripe-purchase', [StripeController::class, 'stripePurchase'])->name('stripePurchase');

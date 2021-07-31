@@ -83,6 +83,7 @@ export default {
         login () {
             this.$store.commit('static/toggleModal', { modal: 'login', state: true })
             this.$store.commit('static/toggleModal', { modal: 'guest', state: false })
+            // window.location.href = '/login'
         },
         close () {
             this.$store.commit('static/toggleModal', { modal: 'guest', state: false })
