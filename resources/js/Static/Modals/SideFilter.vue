@@ -81,8 +81,8 @@
                                             <a
                                                 :class="{ 'text-sm': make.depth > 0 }"
                                                 :href="'/used-prices/' + make.full_folder"
-                                                :title="make.full_title + ' used prices'"
-                                            >{{ "-".repeat(make.depth) }}{{ make.full_title }}</a>
+                                                :title="make.full_name + ' used prices'"
+                                            >{{ "-".repeat(make.depth) }}{{ make.full_name }}</a>
                                         </li>
                                     </ul>
 

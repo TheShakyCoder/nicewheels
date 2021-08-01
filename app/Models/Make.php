@@ -15,9 +15,9 @@ class Make extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['full_title', 'full_folder'];
+    protected $appends = ['full_name', 'full_folder'];
 
-    public function getFullTitleAttribute()
+    public function getFullNameAttribute()
     {
         $fullMake = self::ancestorsAndSelf($this->id);
         return $fullMake->reduce(function ($carry, $item) {

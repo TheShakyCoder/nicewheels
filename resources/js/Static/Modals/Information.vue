@@ -49,6 +49,14 @@
                                 <div class="mt-2 text-sm">
 
                                     <ul class="mt-1">
+                                        <li class="flex flex-col sm:flex-row sm:justify-between">
+                                            <div class="font-bold">ID</div>
+                                            <div>{{ car.id }}</div>
+                                        </li>
+                                        <li class="flex flex-col sm:flex-row sm:justify-between pb-4">
+                                            <div class="font-bold">Make</div>
+                                            <div>{{ car.make.full_name }}</div>
+                                        </li>
                                         <li v-for="aspect in car.aspects" class="text-left py-1 sm:py-0 text-sm flex flex-col sm:flex-row sm:justify-between sm:border-b sm:border-gray-200">
                                             <div class="font-bold">{{ aspect.name }}</div>
                                             <div>{{ aspect.value }}</div>

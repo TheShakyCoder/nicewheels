@@ -51,7 +51,7 @@ class StaticFilter extends Command
             $lastPage = json_decode($cars->toJson())->last_page;
 
             //  GET THE COMPILED HTML
-            $html = $staticService->getFilterCompiledHtml('templates.filter', $make->full_title, $cars, $lastPage, $makeAndDescendants->pluck('id'), $makes, $folder);
+            $html = $staticService->getFilterCompiledHtml('templates.filter', $make->full_name, $cars, $lastPage, $makeAndDescendants->pluck('id'), $makes, $folder);
 
             try {
                 mkdir(public_path('used-prices/'.$folder), 0775, true);
@@ -64,9 +64,7 @@ class StaticFilter extends Command
             }
             file_put_contents(public_path('used-prices/'.$folder.'/index.html'), $html);
 
-            echo $make->full_title.PHP_EOL;
             echo $folder.PHP_EOL;
-            echo PHP_EOL;
         }
 
         //  used price index

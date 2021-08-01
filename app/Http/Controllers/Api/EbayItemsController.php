@@ -30,7 +30,7 @@ class EbayItemsController extends Controller
 
     public function information(Request $request, EbayItem $ebayItem)
     {
-        $ebayItem->load('aspects');
+        $ebayItem->load('aspects', 'make');
 
         return response()->json([
             'car' => $ebayItem
