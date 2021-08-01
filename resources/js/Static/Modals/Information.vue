@@ -24,7 +24,7 @@
                     leave-from-class="opacity-100 translate-y-0 sm:scale-100"
                     leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 >
-                    <div v-show="open" class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+                    <div v-show="open" class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full sm:p-6">
                         <div class="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
                             <button @click="close" type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 <span class="sr-only">Close</span>
@@ -36,13 +36,13 @@
                         </div>
 
                         <div v-if="car" class="sm:flex sm:items-start">
-                            <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
-                                <!-- Heroicon name: outline/exclamation -->
-                                <svg class="h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                            </div>
-                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+<!--                            <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">-->
+<!--                                &lt;!&ndash; Heroicon name: outline/exclamation &ndash;&gt;-->
+<!--                                <svg class="h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">-->
+<!--                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />-->
+<!--                                </svg>-->
+<!--                            </div>-->
+                            <div class="mt-3 sm:mt-0 text-left w-full">
                                 <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
                                     Car Information
                                 </h3>
@@ -57,7 +57,7 @@
                                             <div class="font-bold">Make</div>
                                             <div>{{ car.make.full_name }}</div>
                                         </li>
-                                        <li v-for="aspect in car.aspects" class="text-left py-1 sm:py-0 text-sm flex flex-col sm:flex-row sm:justify-between sm:border-b sm:border-gray-200">
+                                        <li v-for="aspect in car.aspects" class="py-1 sm:py-0 text-sm flex flex-col sm:flex-row sm:justify-between sm:border-b sm:border-gray-200">
                                             <div class="font-bold">{{ aspect.name }}</div>
                                             <div>{{ aspect.value }}</div>
                                         </li>
