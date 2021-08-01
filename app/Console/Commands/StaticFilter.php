@@ -44,15 +44,14 @@ class StaticFilter extends Command
         $makes = Make::select('id')->defaultOrder()->withDepth()->where('live', true)->get();
         foreach($makes as $make) {
             $treeMake = Make::ancestorsAndSelf($make->id);
-            $fullMake = $staticService->getFullMake($treeMake);
             $folder = $staticService->getFolder($treeMake);
             $makeAndDescendants = Make::descendantsAndSelf($make->id);
 
-            $cars = $ebayItemService->getPublicEbayItems(0, 12, null, $makeAndDescendants);
+            $cars = $ebayItemService->getPublicEbayItems(0, 12, null, $makeAndDescendants, $make);
             $lastPage = json_decode($cars->toJson())->last_page;
 
             //  GET THE COMPILED HTML
-            $html = $staticService->getCompiledHtml('templates.filter', $fullMake, $cars, $lastPage, $makeAndDescendants->pluck('id'), $makes, $folder);
+            $html = $staticService->getFilterCompiledHtml('templates.filter', $make->full_title, $cars, $lastPage, $makeAndDescendants->pluck('id'), $makes, $folder);
 
             try {
                 mkdir(public_path('used-prices/'.$folder), 0775, true);
@@ -65,7 +64,7 @@ class StaticFilter extends Command
             }
             file_put_contents(public_path('used-prices/'.$folder.'/index.html'), $html);
 
-            echo $fullMake.PHP_EOL;
+            echo $make->full_title.PHP_EOL;
             echo $folder.PHP_EOL;
             echo PHP_EOL;
         }
@@ -74,7 +73,7 @@ class StaticFilter extends Command
         $cars = $ebayItemService->getPublicEbayItems(0, 12, null);
         $lastPage = json_decode($cars->toJson())->last_page;
         $folder = '';
-        $html = $staticService->getCompiledHtml('templates.filter', 'All Makes', $cars, $lastPage, [], $makes, $folder);
+        $html = $staticService->getFilterCompiledHtml('templates.filter', 'All Makes', $cars, $lastPage, [], $makes, $folder);
         file_put_contents(public_path('used-prices/index.html'), $html);
         echo 'used-prices/index.html'.PHP_EOL;
 

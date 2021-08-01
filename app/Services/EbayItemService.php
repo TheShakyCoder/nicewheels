@@ -270,7 +270,7 @@ class EbayItemService
         return EbayItem::query()
             ->with(['make', 'images' => function($q) {
                 $q->orderBy('sort', 'ASC');
-            }])
+            }, 'aspects'])
             ->when($include, function($q) use($include) {
                 $q->whereIn('id', $include);
             })

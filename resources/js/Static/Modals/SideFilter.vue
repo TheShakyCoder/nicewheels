@@ -103,8 +103,7 @@ export default {
         makes: {
             type: Array,
             default: [],
-        },
-        folder: ''
+        }
     },
     computed: {
         show () {

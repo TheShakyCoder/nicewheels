@@ -2,13 +2,14 @@ const staticStore = {
     namespaced: true,
     state: {
         modals: {
+            guest: false,
+            information: false,
+            login: false,
             mobile: false,
             profile: false,
-            login: false,
-            guest: false,
             redeem: false,
+            sideFilter: false,
             stripe: false,
-            sideFilter: false
         },
         collections: {
             bookmarks: [],
@@ -19,7 +20,8 @@ const staticStore = {
         },
         user: null,
         redemptionId: 0,
-        redemptionTitle: null
+        redemptionTitle: null,
+        informationCar: null
     },
 
     getters: {
@@ -57,6 +59,9 @@ const staticStore = {
         },
         removeFromCollection (state, data) {
             state.collections[data.collection].splice(data.itemIndex, 1)
+        },
+        setStaticProperty (state, data) {
+            state[data.key] = data.value
         }
     }
 }

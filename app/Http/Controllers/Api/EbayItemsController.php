@@ -28,6 +28,15 @@ class EbayItemsController extends Controller
         ], 200);
     }
 
+    public function information(Request $request, EbayItem $ebayItem)
+    {
+        $ebayItem->load('aspects');
+
+        return response()->json([
+            'car' => $ebayItem
+        ], 200);
+    }
+
     public function myCars(EbayItemService $ebayItemService, Request $request)
     {
         $ids = $request->get('ids');

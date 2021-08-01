@@ -4,11 +4,13 @@ import { createApp } from 'vue'
 import Vuex from 'vuex'
 
 import ButtonBookmark from "./Static/Buttons/Bookmark"
+import ButtonInformation from "./Static/Buttons/Information"
 import ButtonLoadMore from "./Static/Buttons/LoadMore"
 import ButtonRedeem from "./Static/Buttons/Redeem"
 import ButtonShowSideFilter from "./Static/Buttons/ShowSideFilter"
 import ComponentLoadMore from "./Static/Components/LoadMore"
 import ModalGuest from "./Static/Modals/Guest"
+import ModalInformation from "./Static/Modals/Information"
 import ModalLogin from "./Static/Modals/Login"
 import ModalRedeem from "./Static/Modals/Redeem"
 import ModalSideFilter from "./Static/Modals/SideFilter"
@@ -29,11 +31,13 @@ const store = new Vuex.Store({
 const app = createApp({
     components: {
         ButtonBookmark,
+        ButtonInformation,
         ButtonLoadMore,
         ButtonRedeem,
         ButtonShowSideFilter,
         ComponentLoadMore,
         ModalGuest,
+        ModalInformation,
         ModalLogin,
         ModalRedeem,
         ModalSideFilter,

@@ -30,11 +30,13 @@ Route::middleware('api_token')->post('/user', function (Request $request) {
 Route::middleware('api_token')->post('/my-cars', [EbayItemsController::class, 'myCars'])->name('myCars');
 Route::middleware('api_token')->post('/cars/{ebay_item}/bookmark', [EbayItemsController::class, 'bookmark'])->name('bookmark');
 Route::middleware('api_token')->post('/cars/{ebay_item}/redeem', [EbayItemsController::class, 'redeem'])->name('redeem');
+Route::middleware('api_token')->get('/cars/{ebay_item}/information', [EbayItemsController::class, 'information'])->name('information');
 Route::get('car-images/{ebayItemImage}', [CarImagesController::class, 'show']);
 Route::post('cars', [EbayItemsController::class, 'loadMore']);
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::middleware('api_token')->post('/logout', [LoginController::class, 'logout']);
 
+Route::middleware(['api'])->post('/stripe/events', [StripeController::class, 'stripeEvent']);
 Route::get('/get-stripe-publishable', [StripeController::class, 'getPublishable']);
 Route::middleware('api_token')->post('/stripe-purchase', [StripeController::class, 'stripePurchase'])->name('stripePurchase');

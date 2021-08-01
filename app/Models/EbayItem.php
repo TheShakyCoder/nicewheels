@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class EbayItem extends Model
 {
@@ -19,7 +20,8 @@ class EbayItem extends Model
     ];
 
     protected $appends = [
-        'image'
+        'image',
+        'slug'
     ];
 
     public function make()
@@ -65,6 +67,11 @@ class EbayItem extends Model
         if($this->has('images')) {
             return $this->images->first();
         }
+    }
+
+    public function getSlugAttribute()
+    {
+        return $this->id.'-'.Str::slug($this->title, '-');
     }
 
     public function scopePublic($query)
