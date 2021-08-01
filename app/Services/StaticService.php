@@ -14,20 +14,6 @@ class StaticService
         });
     }
 
-    public function getFullMake(Collection $fullMake)
-    {
-        return $fullMake->reduce(function ($carry, $item) {
-            return $carry .' '. $item->name;
-        });
-    }
-
-    public function getFullFolder(Collection $fullMake)
-    {
-        return $fullMake->reduce(function ($carry, $item) {
-            return $carry .'/'. $item->slug;
-        });
-    }
-
     public function getFilterCompiledHtml($template, $fullMake, $cars, $lastPage, $makeAndDescendants, $makes, $folder)
     {
         return view($template, [

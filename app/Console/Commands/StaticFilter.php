@@ -43,8 +43,7 @@ class StaticFilter extends Command
     {
         $makes = Make::select('id')->defaultOrder()->withDepth()->where('live', true)->get();
         foreach($makes as $make) {
-            $treeMake = Make::ancestorsAndSelf($make->id);
-            $folder = $staticService->getFolder($treeMake);
+            $folder = $make->full_folder;
             $makeAndDescendants = Make::descendantsAndSelf($make->id)->pluck('id');
             \Log::info($makeAndDescendants);
 

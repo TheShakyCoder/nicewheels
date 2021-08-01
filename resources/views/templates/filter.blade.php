@@ -21,7 +21,6 @@
     </head>
     <body>
         <div id="public">
-
             <div class="min-h-screen bg-gray-100">
 
                 <static-header></static-header>
@@ -34,7 +33,7 @@
                             <!-- Left column -->
                             <div class="grid grid-cols-1 gap-4 lg:col-span-2">
 
-                                <modal-side-filter :makes="{{ $makes }}"></modal-side-filter>
+                                <modal-side-filter :makes="{{ $makes }}" folder="{{ $folder }}"></modal-side-filter>
 
                                 <div class="p-4 bg-white rounded-lg shadow mb-4">
                                     <div class="flex justify-between">

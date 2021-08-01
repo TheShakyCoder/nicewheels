@@ -2,16 +2,7 @@
     <transition duration="700">
         <div v-show="show" class="fixed inset-0 overflow-hidden z-20" role="dialog" aria-modal="true">
             <div class="absolute inset-0 overflow-hidden">
-                <!--
-                  Background overlay, show/hide based on slide-over state.
 
-                  Entering: "ease-in-out duration-500"
-                    From: "opacity-0"
-                    To: "opacity-100"
-                  Leaving: "ease-in-out duration-500"
-                    From: "opacity-100"
-                    To: "opacity-0"
-                -->
                 <transition
                     enter-active-class="ease-in-out duration-500"
                     enter-from-class="opacity-0"
@@ -24,16 +15,7 @@
                 </transition>
 
                 <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
-                    <!--
-                      Slide-over panel, show/hide based on slide-over state.
 
-                      Entering: "transform transition ease-in-out duration-500 sm:duration-700"
-                        From: "translate-x-full"
-                        To: "translate-x-0"
-                      Leaving: "transform transition ease-in-out duration-500 sm:duration-700"
-                        From: "translate-x-0"
-                        To: "translate-x-full"
-                    -->
                     <transition
                         enter-active-class="transform transition ease-in-out duration-500 sm:duration-700"
                         enter-from-class="translate-x-full"
@@ -43,16 +25,7 @@
                         leave-to-class="translate-x-full"
                     >
                         <div v-show="show" class="relative w-96">
-                            <!--
-                              Close button, show/hide based on slide-over state.
 
-                              Entering: "ease-in-out duration-500"
-                                From: "opacity-0"
-                                To: "opacity-100"
-                              Leaving: "ease-in-out duration-500"
-                                From: "opacity-100"
-                                To: "opacity-0"
-                            -->
                             <transition
                                 enter-active-class="ease-in-out duration-500"
                                 enter-from-class="opacity-0"
@@ -77,9 +50,10 @@
                                 <div class="pb-16 space-y-6">
 
                                     <ul class="text-gray-500">
-                                        <li v-for="make in makes" :class="'mt-'+(2-(make.depth * 2))">
+                                        <li v-for="make in makes" class="flex" :class="'mt-'+(2-(make.depth * 2))">
                                             <a
-                                                :class="{ 'text-sm': make.depth > 0 }"
+                                                class="w-full hover:bg-gray-100 px-1"
+                                                :class="{ 'text-sm': make.depth > 0, 'bg-cyan-600 text-white': make.full_folder === folder }"
                                                 :href="'/used-prices/' + make.full_folder"
                                                 :title="make.full_name + ' used prices'"
                                             >{{ "-".repeat(make.depth) }}{{ make.full_name }}</a>
@@ -103,6 +77,10 @@ export default {
         makes: {
             type: Array,
             default: [],
+        },
+        folder: {
+            type: String,
+            default: null
         }
     },
     computed: {
