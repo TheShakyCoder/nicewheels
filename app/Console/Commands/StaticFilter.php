@@ -45,7 +45,8 @@ class StaticFilter extends Command
         foreach($makes as $make) {
             $treeMake = Make::ancestorsAndSelf($make->id);
             $folder = $staticService->getFolder($treeMake);
-            $makeAndDescendants = Make::descendantsAndSelf($make->id);
+            $makeAndDescendants = Make::descendantsAndSelf($make->id)->pluck('id');
+            \Log::info($makeAndDescendants);
 
             $cars = $ebayItemService->getPublicEbayItems(0, 12, null, $makeAndDescendants, $make);
             $lastPage = json_decode($cars->toJson())->last_page;
