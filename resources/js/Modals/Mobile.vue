@@ -38,9 +38,9 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="mt-3 px-2 space-y-1">
-                            <a href="/" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Home</a>
-                            <a href="/dashboard" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Dashboard</a>
+                        <div v-if="!user" class="mt-3 px-2 space-y-1">
+                            <a href="/login" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Login</a>
+                            <a href="/register" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Register</a>
                         </div>
                     </div>
                     <div v-if="user" class="pt-4 pb-2">

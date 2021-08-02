@@ -39,8 +39,8 @@
                             </div>
                         </div>
                         <div class="mt-3 px-2 space-y-1">
-                            <a href="/" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Home</a>
-                            <a href="/dashboard" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Dashboard</a>
+                            <a href="/register" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Register</a>
+                            <a href="/login" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Login</a>
                         </div>
                     </div>
                     <div v-if="user" class="pt-4 pb-2">
@@ -61,6 +61,7 @@
                             </button>
                         </div>
                         <div class="mt-3 px-2 space-y-1">
+                            <a href="/dashboard" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Dashboard</a>
                             <a href="/user/profile" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Profile</a>
                             <button @click="logout" class="block rounded-md px-3 py-2 text-base text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800">Sign out</button>
                         </div>
