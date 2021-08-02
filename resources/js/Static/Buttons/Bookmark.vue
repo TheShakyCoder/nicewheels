@@ -2,7 +2,7 @@
     <button
         :id="'bookmark-' + id"
         @click="bookmarker"
-        class="mr-3 p-1 rounded-full w-10 h-10 text-white border border-gray-300"
+        class="m-0 p-0 rounded-full w-10 h-10 text-white border border-gray-300"
         :class="{ 'bg-green-600': bookmark, 'bg-gray-400 text-white': !bookmark }"
     >
         <i class="fas fa-bookmark fa-lg mt-1"></i>

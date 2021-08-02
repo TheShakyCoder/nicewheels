@@ -2,7 +2,7 @@
     <button
         :id="'redeem-' + id"
         @click="redeemer"
-        class="mr-3 p-1 rounded-full w-10 h-10 border border-gray-200 text-white"
+        class="p-0 m-0 rounded-full w-10 h-10 border border-gray-200 text-white"
         :class="{ 'bg-yellow-500': redemption, 'bg-gray-400 text-white': !redemption }"
     >
         <i class="fas fa-coin fa-lg mt-1"></i>

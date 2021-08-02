@@ -7,6 +7,7 @@ import ButtonBookmark from "./Static/Buttons/Bookmark"
 import ButtonInformation from "./Static/Buttons/Information"
 import ButtonLoadMore from "./Static/Buttons/LoadMore"
 import ButtonRedeem from "./Static/Buttons/Redeem"
+import ButtonReport from "./Static/Buttons/Report"
 import ButtonShowSideFilter from "./Static/Buttons/ShowSideFilter"
 import ComponentLoadMore from "./Static/Components/LoadMore"
 import ModalGuest from "./Static/Modals/Guest"
@@ -34,6 +35,7 @@ const app = createApp({
         ButtonInformation,
         ButtonLoadMore,
         ButtonRedeem,
+        ButtonReport,
         ButtonShowSideFilter,
         ComponentLoadMore,
         ModalGuest,

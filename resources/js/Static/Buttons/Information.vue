@@ -1,7 +1,7 @@
 <template>
     <button
         @click="show"
-        class="mr-3 p-1 rounded-full w-10 h-10 text-white border border-gray-300 bg-gray-400"
+        class="m-0 p-0 rounded-full w-10 h-10 text-white border border-gray-300 bg-gray-400"
     >
         <i class="far fa-window-restore fa-lg mt-1"></i>
     </button>
