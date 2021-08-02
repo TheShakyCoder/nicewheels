@@ -14,7 +14,7 @@ export default {
             type: Array,
             default: []
         },
-        makes: {
+        makesAndDescendants: {
             type: Object,
             default: []
         }
@@ -39,7 +39,7 @@ export default {
     methods: {
         loadMore () {
             console.log(this.collection)
-            axios.post('/api/cars/', { ids: this.collection, makes: this.makes })
+            axios.post('/api/cars/', { ids: this.collection, makes: this.makesAndDescendants })
                 .then(resp => {
                     console.log(resp)
                     this.$store.commit('static/addToCollection', { collection: 'filterMore', item: resp.data.cars.data.map(d => d.id) })
