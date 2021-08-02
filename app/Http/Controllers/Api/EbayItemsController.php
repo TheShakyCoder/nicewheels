@@ -58,7 +58,7 @@ class EbayItemsController extends Controller
      */
     public function loadMore(EbayItemService $ebayItemService, Request $request)
     {
-        $cars = $ebayItemService->getPublicEbayItems(0, 12, null, $request->get('makes'), null, $request->get('ids'));
+        $cars = $ebayItemService->getPublicEbayItems(0, config('common.static.page'), null, $request->get('makes'), null, $request->get('ids'));
 
         return response()->json([
             'cars' => $cars,

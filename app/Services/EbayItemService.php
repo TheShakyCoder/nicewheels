@@ -291,7 +291,7 @@ class EbayItemService
                 $q->where('title', 'LIKE', '%'.$search.'%')->orWhere('subtitle', 'LIKE', '%'.$search.'%');
             })
             ->when($filterMakes, function($q) use($filterMakes) {
-                $q->whereIn('make_id', $filterMakes->pluck§('id'));
+                $q->whereIn('make_id', $filterMakes);
             })
             ->orderBy('ended_at', 'DESC')
             ->paginate($paginate)

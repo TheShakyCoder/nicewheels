@@ -46,7 +46,7 @@
                                         @endforeach
                                         <component-load-more></component-load-more>
                                         @if($lastPage != 1)
-                                            <button-load-more :ids="{{ json_encode($cars->pluck('id')) }}" :makesAndDescendants="{{ json_encode($makesAndDescendants) }}" :complete="true"></button-load-more>
+                                            <button-load-more :ids="{{ json_encode($cars->pluck('id')) }}" :makes-and-descendants="{{ json_encode($makesAndDescendants) }}" :complete="true"></button-load-more>
                                         @endif
                                     </ul>
                                 </div>

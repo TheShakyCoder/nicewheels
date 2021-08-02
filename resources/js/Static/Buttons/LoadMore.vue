@@ -14,10 +14,7 @@ export default {
             type: Array,
             default: []
         },
-        makesAndDescendants: {
-            type: Object,
-            default: []
-        }
+        makesAndDescendants: null
     },
 
     data () {
@@ -38,10 +35,8 @@ export default {
 
     methods: {
         loadMore () {
-            console.log(this.collection)
             axios.post('/api/cars/', { ids: this.collection, makes: this.makesAndDescendants })
                 .then(resp => {
-                    console.log(resp)
                     this.$store.commit('static/addToCollection', { collection: 'filterMore', item: resp.data.cars.data.map(d => d.id) })
                     this.$store.commit('static/addToCollection', { collection: 'filterCars', item: resp.data.cars.data })
                     if(resp.data.cars.last_page === 1) {
