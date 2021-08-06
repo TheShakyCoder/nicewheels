@@ -31,12 +31,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/purchases', function () {
-        return Inertia::render('Purchases');
-    })->name('purchases');
-    Route::get('/redemptions', function () {
-        return Inertia::render('Redemptions');
-    })->name('redemptions');
+    Route::get('/purchases', [DashboardController::class, 'purchases'])->name('purchases');
+    Route::get('/redemptions', [DashboardController::class, 'redemptions'])->name('redemptions');
     Route::get('/bookmarks', function () {
         return Inertia::render('Bookmarks');
     })->name('bookmarks');

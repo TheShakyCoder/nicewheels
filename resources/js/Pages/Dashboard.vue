@@ -9,8 +9,8 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <top3 title="Recently Bookmarked" :cars="bookmarks"></top3>
-                    <top3 title="Recently Redeemed" :cars="redemptions"></top3>
+                    <top3 title="Recently Bookmarked" :cars="bookmarks.data"></top3>
+                    <top3 title="Recently Redeemed" :cars="redemptions.data"></top3>
                 </div>
             </div>
         </div>

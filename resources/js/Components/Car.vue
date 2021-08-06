@@ -87,15 +87,17 @@ export default {
 
     methods: {
         getImage() {
-            const url = '/api/car-images/' + this.car.image.id
-            console.log('url', url)
-            axios.get(url)
-                .then(resp => {
-                    this.image = resp.data
-                })
-                .catch(err => {
-                    console.error(err)
-                })
+            if(this.car.image) {
+                const url = '/api/car-images/' + this.car.image.id
+                console.log('url', url)
+                axios.get(url)
+                    .then(resp => {
+                        this.image = resp.data
+                    })
+                    .catch(err => {
+                        console.error(err)
+                    })
+            }
         },
         bookmarker () {
             console.log('bookmarker')

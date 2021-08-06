@@ -26,14 +26,21 @@ class DashboardController extends Controller
         return Inertia::render('Purchase');
     }
 
-    public function redemptions (EbayItemService $ebayItemService, NewsService $newsService)
+    public function redemptions (Request $request)
     {
-        $cars = $ebayItemService->getRecentlyRedeemed(\Auth::id(), 12);
-        $news = $newsService->feed(6);
+        $user = $request->user();
+
+        $redemptions = EbayItem::query()
+            ->with(['redemptions'])
+            ->whereHas('redemptions', function($q2) use($user) {
+                $q2->where('user_id', $user->id);
+            })
+            ->with(['bookmarks', 'redemptions'])
+            ->without(['images'])
+            ->paginate(12);
 
         return Inertia::render('Redemptions', [
-            'cars' => $cars,
-            'news' => $news
+            'redemptions' => $redemptions,
         ]);
     }
 
