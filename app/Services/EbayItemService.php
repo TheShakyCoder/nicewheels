@@ -221,23 +221,35 @@ class EbayItemService
         return $query;
     }
 
-    public function getMyBookmarks(User $user, Array $ids)
+    public function getMyBookmarks(User $user, Array $ids = null, $limit = 12)
     {
         return EbayItem::query()
-            ->whereIn('id', $ids)
+            ->when($ids, function($q) use($ids) {
+                $q->whereIn('id', $ids);
+            })
             ->whereHas('bookmarks', function($q2) use($user) {
                 $q2->where('user_id', $user->id);
-            })->get();
+            })
+            ->with(['bookmarks', 'redemptions'])
+            ->without(['images'])
+            ->limit($limit)
+            ->get();
     }
 
-    public function getMyRedemptions(User $user, Array $ids)
+    public function getMyRedemptions(User $user, Array $ids = null, $limit = 12)
     {
         return EbayItem::query()
-            ->whereIn('id', $ids)
+            ->when($ids, function($q) use($ids) {
+                $q->whereIn('id', $ids);
+            })
             ->with(['redemptions'])
             ->whereHas('redemptions', function($q2) use($user) {
                 $q2->where('user_id', $user->id);
-            })->get();
+            })
+            ->with(['bookmarks', 'redemptions'])
+            ->without(['images'])
+            ->limit($limit)
+            ->get();
     }
 
     /**

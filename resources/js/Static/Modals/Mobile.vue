@@ -90,6 +90,8 @@ export default {
                     if(resp.status === 200) {
                         localStorage.removeItem('user')
                         this.$store.commit('static/setUser', { user: null })
+                        this.$store.commit('static/setCollection', { collection: 'bookmarks', data: [] })
+                        this.$store.commit('static/setCollection', { collection: 'redemptions', data: [] })
                         this.$store.commit('static/toggleModal', { modal: 'mobile', state: false })
                     }
                 })

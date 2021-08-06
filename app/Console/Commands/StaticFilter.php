@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Make;
 use App\Services\EbayItemService;
+use App\Services\NewsService;
 use App\Services\StaticService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
@@ -39,7 +40,7 @@ class StaticFilter extends Command
      *
      * @return int
      */
-    public function handle(StaticService $staticService, EbayItemService $ebayItemService)
+    public function handle(StaticService $staticService, EbayItemService $ebayItemService, NewsService $newsService)
     {
         $makes = Make::select('id')->defaultOrder()->withDepth()->where('live', true)->get();
         foreach($makes as $make) {
@@ -49,8 +50,10 @@ class StaticFilter extends Command
             $cars = $ebayItemService->getPublicEbayItems(0, config('common.static.page'), null, $makeAndDescendants, $make);
             $lastPage = json_decode($cars->toJson())->last_page;
 
+            $news = $newsService->feed(8);
+
             //  GET THE COMPILED HTML
-            $html = $staticService->getFilterCompiledHtml('templates.filter', $make->full_name, $cars, $lastPage, $makeAndDescendants, $makes, $folder);
+            $html = $staticService->getFilterCompiledHtml('templates.filter', $make->full_name, $cars, $lastPage, $makeAndDescendants, $makes, $folder, $news);
 
             try {
                 mkdir(public_path('used-prices/'.$folder), 0775, true);
@@ -70,7 +73,7 @@ class StaticFilter extends Command
         $cars = $ebayItemService->getPublicEbayItems(0, 12, null);
         $lastPage = json_decode($cars->toJson())->last_page;
         $folder = '';
-        $html = $staticService->getFilterCompiledHtml('templates.filter', 'All Makes', $cars, $lastPage, [], $makes, $folder);
+        $html = $staticService->getFilterCompiledHtml('templates.filter', 'All Makes', $cars, $lastPage, [], $makes, $folder, $news);
         file_put_contents(public_path('used-prices/index.html'), $html);
         echo 'used-prices/index.html'.PHP_EOL;
 

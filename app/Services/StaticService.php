@@ -14,7 +14,7 @@ class StaticService
         });
     }
 
-    public function getFilterCompiledHtml($template, $fullMake, $cars, $lastPage, $makeAndDescendants, $makes, $folder)
+    public function getFilterCompiledHtml($template, $fullMake, $cars, $lastPage, $makeAndDescendants, $makes, $folder, $news)
     {
         return view($template, [
             'fullMake' => $fullMake,
@@ -22,7 +22,8 @@ class StaticService
             'lastPage' => $lastPage,
             'makesAndDescendants' => $makeAndDescendants,
             'makes' => $makes,
-            'folder' => $folder
+            'folder' => $folder,
+            'news' => $news
         ])->render();
     }
 

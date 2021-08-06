@@ -10,9 +10,15 @@ use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    public function dashboard ()
+    public function dashboard (EbayItemService $ebayItemService)
     {
-        return Inertia::render('Dashboard');
+        $bookmarks = $ebayItemService->getMyBookmarks(\Auth::user(), null, 3);
+        $redemptions = $ebayItemService->getMyRedemptions(\Auth::user(), null, 3);
+
+        return Inertia::render('Dashboard', [
+            'bookmarks' => $bookmarks,
+            'redemptions' => $redemptions
+        ]);
     }
 
     public function purchase ()

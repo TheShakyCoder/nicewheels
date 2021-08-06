@@ -36,8 +36,11 @@
                                 <modal-side-filter :makes="{{ $makes }}" folder="{{ $folder }}"></modal-side-filter>
 
                                 <div class="p-4 bg-white rounded-lg shadow mb-4">
-                                    <div class="flex justify-between">
-                                        <h2 class="text-2xl font-bold mb-1 text-yellow-800 pt-3">{{ $fullMake }}</h2>
+                                    <div class="flex justify-between mb-1">
+                                        <div>
+                                            <h2 class="text-2xl font-bold text-yellow-800 pt-3">{{ $fullMake }}</h2>
+                                            <h3 class="mt-0 pt-0"><i class="text-cyan-700 font-bold">Used Prices</i></h3>
+                                        </div>
                                         <button-show-side-filter></button-show-side-filter>
                                     </div>
                                     <ul role="list" class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 truncate">
@@ -55,7 +58,7 @@
 
                             <!-- Right column -->
                             <div class="grid grid-cols-1 gap-4">
-                                RIGHT
+                                @include('templates.partials.news')
                             </div>
                         </div>
                     </div>

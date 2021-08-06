@@ -75,32 +75,31 @@ export default {
         }
     },
 
+    watch: {
+        'this.car.image': function(n, o) {
+            console.log('watch', n, o)
+        }
+    },
+
     mounted () {
         this.getImage()
     },
 
     methods: {
-        getImage () {
-            console.log('IMAGE', this.car.image)
-            if(this.car.image === null) {
-                return
-            }
+        getImage() {
             const url = '/api/car-images/' + this.car.image.id
-            axios.get(url, { withCredentials: true })
+            console.log('url', url)
+            axios.get(url)
                 .then(resp => {
                     this.image = resp.data
+                })
+                .catch(err => {
+                    console.error(err)
                 })
         },
         bookmarker () {
             console.log('bookmarker')
             if(this.user) {
-
-                //  TODO: convert to axios
-                // axios.post('/api/cars/' + this.car.id + '/bookmark', {})
-                //     .then(resp => {
-                //         //
-                //     })
-
                 this.$inertia.post('/cars/' + this.car.id + '/bookmark', {}, {
                     preserveScroll: true,
                     preserveState: this.preserveState

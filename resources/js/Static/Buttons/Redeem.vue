@@ -29,7 +29,7 @@ export default {
             this.$store.commit('static/setRedemption', { id: this.id, title: this.title })
             if(!this.user) {
                 this.$store.commit('static/toggleModal', { modal: 'guest', state: true })
-            } else {
+            } else if(!this.redemption) {
                 this.$store.commit('static/toggleModal', { modal: 'redeem', state: true })
             }
         }
