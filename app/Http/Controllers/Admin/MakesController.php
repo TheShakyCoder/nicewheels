@@ -16,7 +16,7 @@ class MakesController extends Controller
      */
     public function index()
     {
-        $makes = Make::withDepth()->defaultOrder()->get();
+        $makes = Make::withDepth()->defaultOrder()->where('live', 1)->get();
 
         return Inertia::render('Admin/Makes/Index', [
             'makes' => $makes
