@@ -4,8 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Makes</h2>
             <admin-nav></admin-nav>
         </template>
-
-        <div class="max-w-xl mx-auto">
+        <div class="max-w-2xl mx-auto">
             <ul>
                 <li
                     v-for="(make, index) in makes"
@@ -16,7 +15,6 @@
                 </li>
             </ul>
         </div>
-
     </app-layout>
 </template>
 
