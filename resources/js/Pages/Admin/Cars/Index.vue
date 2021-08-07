@@ -21,7 +21,7 @@ import Pagination from "../../../Components/Pagination"
 import AdminNav from '@/Components/Admin/AdminNav'
 
 export default {
-    name: 'EbayItemsIndex',
+    name: 'AdminCarsIndex',
     components: {
         ChevronLeftIcon,
         ChevronRightIcon,

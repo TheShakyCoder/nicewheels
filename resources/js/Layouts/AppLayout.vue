@@ -32,6 +32,10 @@
                                 <jet-nav-link :href="route('bookmarks')" :active="route().current('bookmarks')">
                                     Bookmarks
                                 </jet-nav-link>
+
+                                <jet-nav-link v-if="user.admin" :href="route('admin.index')" :active="route().current('admin')">
+                                    Admin
+                                </jet-nav-link>
                             </div>
                         </div>
 

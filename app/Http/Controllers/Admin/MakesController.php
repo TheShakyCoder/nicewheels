@@ -100,4 +100,16 @@ class MakesController extends Controller
     {
         //
     }
+
+    public function up(Make $make)
+    {
+        $make->up();
+        return redirect()->back();
+    }
+
+    public function down(Make $make)
+    {
+        $make->down();
+        return redirect()->back();
+    }
 }
