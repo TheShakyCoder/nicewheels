@@ -8,7 +8,10 @@
 export default {
     name: "StaticRedeemedAmount",
     props: {
-        id: 0
+        id: {
+            type: Number,
+            default: 0
+        }
     },
     computed: {
         redemption () {

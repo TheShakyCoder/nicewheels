@@ -12,9 +12,7 @@
                     class="flex justify-between items-center space-y-1 p-3"
                     :class="{ 'bg-gray-200': index % 2, 'py-0': make.depth > 0, 'py-0 pl-6': make.depth === 1, 'pl-12': make.depth === 2 }"
                 >
-                    <div class="flex-grow">{{ "-".repeat(make.depth) }}{{ make.name }}</div>
-                    <inertia-link :preserve-scroll="true" method="post" as="button" :href="route('admin.makes.up', make.id)" class="p-1 px-2 rounded border border-gray-200 mr-2">Up</inertia-link>
-                    <inertia-link :preserve-scroll="true" method="post" as="button" :href="route('admin.makes.down', make.id)" class="p-1 px-2 rounded border border-gray-200">Down</inertia-link>
+                    <make :make="make" :makes="makes"></make>
                 </li>
             </ul>
         </div>
@@ -25,12 +23,14 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout"
 import AdminNav from '@/Components/Admin/AdminNav'
+import Make from "@/Components/Admin/Make"
 
 export default {
     name: "AdminMakesIndex",
     components: {
         AdminNav,
-        AppLayout
+        AppLayout,
+        Make
     },
     props: {
         makes: {

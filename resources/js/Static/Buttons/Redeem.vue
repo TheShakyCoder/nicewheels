@@ -13,7 +13,10 @@
 export default {
     name: "StaticButtonRedeem",
     props: {
-        id: 0,
+        id: {
+            type: Number,
+            default: 0
+        },
         title: null
     },
     computed: {

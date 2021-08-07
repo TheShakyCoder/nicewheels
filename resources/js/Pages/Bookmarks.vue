@@ -9,7 +9,9 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-
+                    <cars :cars="bookmarks.data"></cars>
+                    <!-- LINKS -->
+                    <pagination :info="bookmarks"></pagination>
                 </div>
             </div>
         </div>
@@ -18,12 +20,20 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
+    import Cars from '@/Components/Cars'
+    import Pagination from '@/Components/Pagination'
 
     export default {
         components: {
             AppLayout,
-            Welcome,
+            Cars,
+            Pagination
         },
+        props: {
+            bookmarks: {
+                type: Object,
+                default: null
+            }
+        }
     }
 </script>

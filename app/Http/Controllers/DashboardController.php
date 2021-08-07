@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bookmark;
 use App\Models\EbayItem;
 use App\Services\EbayItemService;
 use App\Services\NewsService;
@@ -10,10 +11,33 @@ use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    public function dashboard (EbayItemService $ebayItemService)
+    public function dashboard (Request $request)
     {
-        $bookmarks = $ebayItemService->getMyBookmarks(\Auth::user(), null, 3);
-        $redemptions = $ebayItemService->getMyRedemptions(\Auth::user(), null, 3);
+        $user = $request->user();
+
+        $latestBookmarks = Bookmark::query()
+            ->where('user_id', $user->id)
+            ->limit(3)
+            ->orderBy('created_at', 'DESC')
+            ->pluck('ebay_item_id')
+            ;
+
+        $bookmarks = EbayItem::query()
+            ->whereHas('bookmarks', function($q2) use($user) {
+                $q2->where('user_id', $user->id);
+            })
+            ->whereIn('id', $latestBookmarks)
+            ->with(['bookmarks', 'redemptions'])
+            ->without(['images'])
+            ->paginate(3);
+
+        $redemptions = EbayItem::query()
+            ->whereHas('redemptions', function($q2) use($user) {
+                $q2->where('user_id', $user->id);
+            })
+            ->with(['bookmarks', 'redemptions'])
+            ->without(['images'])
+            ->paginate(3);
 
         return Inertia::render('Dashboard', [
             'bookmarks' => $bookmarks,
@@ -31,7 +55,6 @@ class DashboardController extends Controller
         $user = $request->user();
 
         $redemptions = EbayItem::query()
-            ->with(['redemptions'])
             ->whereHas('redemptions', function($q2) use($user) {
                 $q2->where('user_id', $user->id);
             })
@@ -44,14 +67,20 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function bookmarks (EbayItemService $ebayItemService, NewsService $newsService)
+    public function bookmarks (Request $request)
     {
-        $cars = $ebayItemService->getRecentlyBookmarked(\Auth::id(), 12);
-        $news = $newsService->feed(6);
+        $user = $request->user();
+
+        $bookmarks = EbayItem::query()
+            ->whereHas('bookmarks', function($q2) use($user) {
+                $q2->where('user_id', $user->id);
+            })
+            ->with(['bookmarks', 'redemptions'])
+            ->without(['images'])
+            ->paginate(12);
 
         return Inertia::render('Bookmarks', [
-            'cars' => $cars,
-            'news' => $news
+            'bookmarks' => $bookmarks,
         ]);
     }
 }

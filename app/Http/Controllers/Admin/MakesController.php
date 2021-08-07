@@ -83,11 +83,14 @@ class MakesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Make  $make
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Make $make)
     {
-        //
+        $make->fill($request->all());
+        $make->save();
+
+        return redirect()->back();
     }
 
     /**

@@ -13,7 +13,10 @@
 export default {
     name: "StaticButtonBookmark",
     props: {
-        id: 0
+        id: {
+            type: Number,
+            default: 0
+        }
     },
     computed: {
         user () {

@@ -33,9 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/purchases', [DashboardController::class, 'purchases'])->name('purchases');
     Route::get('/redemptions', [DashboardController::class, 'redemptions'])->name('redemptions');
-    Route::get('/bookmarks', function () {
-        return Inertia::render('Bookmarks');
-    })->name('bookmarks');
+    Route::get('/bookmarks', [DashboardController::class, 'bookmarks'])->name('bookmarks');
 });
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

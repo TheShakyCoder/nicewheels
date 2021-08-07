@@ -13,8 +13,6 @@
                     <!-- LINKS -->
                     <pagination :info="redemptions"></pagination>
                 </div>
-
-
             </div>
         </div>
     </app-layout>

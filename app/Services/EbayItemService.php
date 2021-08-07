@@ -233,7 +233,8 @@ class EbayItemService
             ->with(['bookmarks', 'redemptions'])
             ->without(['images'])
             ->limit($limit)
-            ->get();
+            ->paginate(12)
+            ->toJson();
     }
 
     public function getMyRedemptions(User $user, Array $ids = null, $limit = 12)
@@ -249,7 +250,8 @@ class EbayItemService
             ->with(['bookmarks', 'redemptions'])
             ->without(['images'])
             ->limit($limit)
-            ->get();
+            ->paginate(12)
+            ->toJson();
     }
 
     /**

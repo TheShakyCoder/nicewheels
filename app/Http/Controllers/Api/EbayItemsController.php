@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\EbayItem;
 use App\Models\Make;
 use App\Services\EbayItemService;
+use App\Services\StaticService;
 use Illuminate\Http\Request;
 
 class EbayItemsController extends Controller
@@ -37,12 +38,12 @@ class EbayItemsController extends Controller
         ], 200);
     }
 
-    public function myCars(EbayItemService $ebayItemService, Request $request)
+    public function myCars(StaticService $staticService, Request $request)
     {
         $ids = $request->get('ids');
 
-        $myBookmarks = $ebayItemService->getMyBookmarks($request->user(), $ids);
-        $myRedemptions = $ebayItemService->getMyRedemptions($request->user(), $ids);
+        $myBookmarks = $staticService->getMyBookmarks($request->user(), $ids);
+        $myRedemptions = $staticService->getMyRedemptions($request->user(), $ids);
 
         return response()->json([
             'request' => $request->all(),
