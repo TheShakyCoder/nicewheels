@@ -58,9 +58,9 @@
                             <button @click="login" type="button" class="mt-3 sm:mt-0 w-full inline-flex justify-center rounded-md border-2 border-red-600 shadow-sm px-4 py-2 text-base font-medium text-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
                                 Login
                             </button>
-                            <a href="/register" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                            <button @click="register" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
                                 Register
-                            </a>
+                            </button>
                             <button @click="close" type="button" class="mt-3 sm:mt-0 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm">
                                 Close
                             </button>
@@ -84,6 +84,9 @@ export default {
             this.$store.commit('static/toggleModal', { modal: 'login', state: true })
             this.$store.commit('static/toggleModal', { modal: 'guest', state: false })
             // window.location.href = '/login'
+        },
+        register () {
+            window.location.href = '/register'
         },
         close () {
             this.$store.commit('static/toggleModal', { modal: 'guest', state: false })
