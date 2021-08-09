@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('ebay:poll')->hourly();
         $schedule->command('ebay:get')->everyThirtyMinutes();
         $schedule->command('ebay:finish')->everyFifteenMinutes();
+        $schedule->command('static:filter')->daily();
     }
 
     /**
