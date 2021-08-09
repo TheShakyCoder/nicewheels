@@ -26,4 +26,5 @@ return [
             'no reserve', 'part exchange', 'no mot', 'low miles'
         ]
     ],
+    'earliest_year' => env('EBAY_EARLIEST_YEAR', 2000)
 ];
