@@ -52,6 +52,10 @@
                                     <div>{{ car.title }}</div>
                                     <div class="text-sm">{{ car.subtitle }}</div>
                                 </div>
+                                <div class="mr-2 p-1 flex flex-col items-center">
+                                    <div>{{ car.year }}</div>
+                                    <div class="text-sm">{{ car.mileage }}</div>
+                                </div>
                                 <div>{{ car.ended_at }}</div>
                                 <button @click="editCar(car)" class="p-2 px-3">edit</button>
                             </div>
