@@ -64,7 +64,7 @@ class CarsController extends Controller
         $car->checked_by = \Auth::id();
         $car->save();
 
-        return redirect()->route('admin.cars.index');
+        return redirect()->back();
     }
 
     /**

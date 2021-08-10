@@ -14,12 +14,19 @@ class MakesController extends Controller
      *
      * @return \Inertia\Response
      */
-    public function index()
+    public function index(Make $make = null)
     {
-        $makes = Make::withDepth()->defaultOrder()->where('live', 1)->get();
+        $makes = Make::query()
+            ->when($make, function($q) use($make) {
+                $q->where('parent_id', $make->id);
+            }, function($q) {
+                $q->where('parent_id', null);
+            })
+            ->defaultOrder()->get();
 
         return Inertia::render('Admin/Makes/Index', [
-            'makes' => $makes
+            'makes' => $makes,
+            'make' => $make
         ]);
     }
 
@@ -63,7 +70,11 @@ class MakesController extends Controller
     public function show(Make $make)
     {
         return Inertia::render('Admin/Makes/Show', [
-            'make' => $make
+            'make' => $make,
+            'children' => Make::query()->where('parent_id', $make->id)->defaultOrder()->get(),
+            'ancestors' => Make::whereAncestorOf($make)->get(),
+            'makes' => Make::query()->defaultOrder()->withDepth()->get(),
+            'cars' => $make->ebayItems
         ]);
     }
 

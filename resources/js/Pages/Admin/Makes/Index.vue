@@ -8,7 +8,7 @@
             <ul>
                 <li
                     v-for="(make, index) in makes"
-                    class="flex justify-between items-center space-y-1 p-3"
+                    class="space-y-1"
                     :class="{ 'bg-gray-200': index % 2, 'py-0': make.depth > 0, 'py-0 pl-6': make.depth === 1, 'pl-12': make.depth === 2 }"
                 >
                     <make :make="make" :makes="makes"></make>
@@ -31,6 +31,10 @@ export default {
         Make
     },
     props: {
+        make: {
+            type: Object,
+            default: null
+        },
         makes: {
             type: Object,
             default: null

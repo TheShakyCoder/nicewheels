@@ -72,6 +72,8 @@
 
         <mobile-modal :open="showingNavigationDropdown" @close="showingNavigationDropdown = false"></mobile-modal>
 
+        <car-edit-modal></car-edit-modal>
+
     </div>
 </template>
 
@@ -83,6 +85,7 @@
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
     import MobileModal from "../Modals/Mobile"
+    import CarEditModal from "../Modals/CarEdit"
 
     export default {
         components: {
@@ -93,7 +96,8 @@
             JetNavLink,
             JetResponsiveNavLink,
 
-            MobileModal
+            MobileModal,
+            CarEditModal
         },
 
         data() {
