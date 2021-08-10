@@ -141,7 +141,9 @@ export default {
             this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: false })
         },
         save () {
-            this.$inertia.patch('/admin/cars/' + this.car.id, this.form)
+            this.$inertia.patch('/admin/cars/' + this.car.id, this.form, {
+                preserveScroll: true
+            })
             this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: false })
         }
     }
