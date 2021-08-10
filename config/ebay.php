@@ -20,7 +20,7 @@ return [
     ],
     'keywords' => [
         'item_not_used' => [
-            'damaged', 'spares', 'repair', 'lhd', 'import', 'project', 'non runner', 'mot failure'
+            'damaged', 'spares', 'repair', 'lhd', 'import', 'project', 'non runner', 'mot failure', 'fault'
         ],
         'to_remove' => [
             'no reserve', 'part exchange', 'no mot', 'low miles'

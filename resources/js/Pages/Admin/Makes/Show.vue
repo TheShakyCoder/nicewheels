@@ -47,9 +47,13 @@
                     <h3 class="text-xl font-bold">Cars</h3>
                     <ul>
                         <li v-for="car in cars" class="space-y-1 p-1 my-1" :class="{ 'bg-red-600 text-white': !car.used_price }">
-                            <div class="flex justify-between">
-                                <div>{{ car.title }}</div>
-                                <button @click="editCar(car)">edit</button>
+                            <div class="flex justify-between items-center">
+                                <div class="flex-grow">
+                                    <div>{{ car.title }}</div>
+                                    <div class="text-sm">{{ car.subtitle }}</div>
+                                </div>
+                                <div>{{ car.ended_at }}</div>
+                                <button @click="editCar(car)" class="p-2 px-3">edit</button>
                             </div>
                         </li>
                     </ul>
