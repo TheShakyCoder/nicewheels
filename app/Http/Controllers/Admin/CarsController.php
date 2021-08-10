@@ -22,6 +22,7 @@ class CarsController extends Controller
             ->with(['make', 'ebayCategory'])
             ->whereNotNull('aspected_at')
             ->whereNull('checked_at')
+            ->where('ended_at', '>', now()->subMonths(6))
             ->orderBy(\DB::raw('checked_at IS NULL'), 'ASC')
             ->orderBy('ended_at', 'DESC')
             ->paginate(12);
