@@ -74,7 +74,7 @@ class MakesController extends Controller
             'children' => Make::query()->where('parent_id', $make->id)->defaultOrder()->get(),
             'ancestors' => Make::whereAncestorOf($make)->get(),
             'makes' => Make::query()->defaultOrder()->withDepth()->get(),
-            'cars' => $make->ebayItems
+            'cars' => $make->ebayItems()->limit(100)->get()
         ]);
     }
 
