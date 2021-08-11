@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Bookmark;
 use App\Models\EbayAspect;
+use App\Models\EbayAspectMake;
 use App\Models\EbayCategory;
 use App\Models\EbayItem;
 use App\Models\User;
@@ -150,6 +151,9 @@ class EbayItemService
     {
         $year = null;
         $mileage = null;
+        $make = null;
+        $model = null;
+
         foreach($json as $nameValue) {
             if($nameValue->Name == 'Mileage') {
                 $mileage = $nameValue->Value[0];
@@ -157,8 +161,29 @@ class EbayItemService
             if($nameValue->Name == 'Year') {
                 $year = $nameValue->Value[0];
             }
+            if($nameValue->Name == 'Manufacturer') {
+                $make = $nameValue->Value[0];
+            }
+            if($nameValue->Name == 'Model') {
+                $model = $nameValue->Value[0];
+            }
             $ebayItem->aspects()->firstOrCreate(['ebay_item_id' => $ebayItem->id, 'name' => $nameValue->Name], ['value' => $nameValue->Value[0], 'processed_at' => now()]);
         }
+
+        if($make !== null && $model !== null) {
+
+            //  store for future use
+            $ebayAspectMake = EbayAspectMake::query()->updateOrCreate([
+                'aspect_make' => $make,
+                'aspect_model' => $model
+            ]);
+
+            //  see if we have a match already
+            if($ebayAspectMake->make_id) {
+                $ebayItem->make_id = $ebayAspectMake->make_id;
+            }
+        }
+
         $ebayItem->mileage = $mileage;
         $ebayItem->year = $year;
         $ebayItem->processed_at = now();
