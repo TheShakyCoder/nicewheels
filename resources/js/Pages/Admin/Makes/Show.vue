@@ -77,8 +77,8 @@
                     <ul>
                         <li v-for="child in children" class="flex justify-between">
                             <inertia-link class="flex-grow" :href="route('admin.makes.show', child.id)">{{ child.name }} [{{ child.ebay_items_count }}]</inertia-link>
-                            <inertia-link :preserve-scroll="true" method="post" as="button" :href="route('admin.makes.up', child.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">Up</inertia-link>
-                            <inertia-link :preserve-scroll="true" method="post" as="button" :href="route('admin.makes.down', child.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">Down</inertia-link>
+                            <inertia-link :preserve-scroll="true" :preserve-state="true" method="post" as="button" :href="route('admin.makes.up', child.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">Up</inertia-link>
+                            <inertia-link :preserve-scroll="true" :preserve-state="true" method="post" as="button" :href="route('admin.makes.down', child.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">Down</inertia-link>
                         </li>
                     </ul>
                 </div>

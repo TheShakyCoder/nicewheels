@@ -25,7 +25,7 @@ Route::get('/', function () {
 //        'laravelVersion' => Application::VERSION,
 //        'phpVersion' => PHP_VERSION,
 //    ]);
-    return redirect()->route('usedPrices');
+    return redirect(null, 302)->route('usedPrices');
 })->name('index');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
