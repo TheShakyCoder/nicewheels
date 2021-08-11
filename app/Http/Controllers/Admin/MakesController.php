@@ -71,7 +71,7 @@ class MakesController extends Controller
     {
         return Inertia::render('Admin/Makes/Show', [
             'make' => $make,
-            'children' => Make::query()->where('parent_id', $make->id)->defaultOrder()->get(),
+            'children' => Make::query()->where('parent_id', $make->id)->defaultOrder()->withCount('ebayItems')->get(),
             'ancestors' => Make::whereAncestorOf($make)->get(),
             'makes' => Make::query()->defaultOrder()->withDepth()->get(),
             'cars' => $make->ebayItems()->limit(100)->get()
