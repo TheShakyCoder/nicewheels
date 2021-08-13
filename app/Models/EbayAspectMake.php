@@ -12,4 +12,9 @@ class EbayAspectMake extends Model
     protected $guarded = [];
 
     protected $table = 'ebay_aspects_makes';
+
+    public function make()
+    {
+        return $this->belongsTo(Make::class);
+    }
 }

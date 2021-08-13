@@ -3,9 +3,11 @@ const adminStore = {
     state: {
         modals: {
             carEdit: false,
+            aspectMake: false,
         },
         carId: null,
         car: null,
+        aspectMake: null,
         makes: []
     },
 

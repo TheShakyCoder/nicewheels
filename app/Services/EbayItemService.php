@@ -23,14 +23,17 @@ class EbayItemService
         foreach($json->findItemsByCategoryResponse[0]->searchResult[0]->item as $item) {
             //  items to remove
             $isUsed = 1;
+            $delete = false;
             $keywords = collect(config('ebay.keywords.item_not_used'));
             foreach($keywords as $e) {
                 if(strpos(strtolower($item->title[0]), strtolower($e)) !== false) {
                     $isUsed = 0;
+                    $delete = true;
                     break;
                 }
                 if(isset($item->subtitle) && strpos(strtolower($item->subtitle[0]), strtolower($e)) !== false) {
                     $isUsed = 0;
+                    $delete = true;
                     break;
                 }
             }
@@ -45,7 +48,7 @@ class EbayItemService
             $title    = trim($title);
             $subtitle = trim($subtitle);
 
-            EbayItem::query()->updateOrCreate([
+            $ebayItem = EbayItem::query()->updateOrCreate([
                 'ebay_item_id' => $item->itemId[0]
             ], [
                 'ebay_category_id' => $ebayCategory->id,
@@ -60,7 +63,11 @@ class EbayItemService
                 'final_amount' => $item->sellingStatus[0]->convertedCurrentPrice[0]->__value__,
                 'ended_at' => (new \DateTime($item->listingInfo[0]->endTime[0]))->format('Y-m-d H:i:s')
             ]);
-            $count++;
+            if($delete) {
+                $ebayItem->delete();
+            } else {
+                $count++;
+            }
         }
         return $count;
     }
@@ -187,9 +194,9 @@ class EbayItemService
         $ebayItem->mileage = $mileage;
         $ebayItem->year = $year;
         $ebayItem->processed_at = now();
-        if($mileage == null || $year == null || $year < config('ebay.earliest_year')) {
-            $ebayItem->used_price = 0;
-        }
+//        if($mileage == null || $year == null || $year < config('ebay.earliest_year')) {
+//            $ebayItem->used_price = 0;
+//        }
         $ebayItem->save();
     }
 
