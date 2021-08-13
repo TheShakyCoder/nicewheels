@@ -16,7 +16,7 @@
                                 <XIcon class="h-6 w-6" aria-hidden="true" />
                             </button>
                         </div>
-                        <div class="flex flex-col items-start">
+                        <div v-if="aspectMake" class="flex flex-col items-start">
 
                             <div class="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                 <DialogTitle as="h3" class="text-lg leading-6 font-medium text-gray-900">
@@ -88,6 +88,11 @@ export default {
             this.$inertia.patch('/admin/aspect-makes/' + this.aspectMake.id, this.aspectMake, {
                 preserveScroll: true
             })
+            this.$store.commit('admin/toggleModal', { modal: 'aspectMake', state: false })
+        },
+        close () {
+            setTimeout(() => this.$store.commit('admin/setSingleProperty', { key: 'aspectMake', value: null }), 500)
+            this.$store.commit('admin/setSingleProperty', { key: 'makes', value: [] })
             this.$store.commit('admin/toggleModal', { modal: 'aspectMake', state: false })
         }
     }
