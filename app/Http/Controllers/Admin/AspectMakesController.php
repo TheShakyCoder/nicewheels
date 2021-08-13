@@ -12,7 +12,12 @@ class AspectMakesController extends Controller
 {
     public function index()
     {
-        $aspectMakes = EbayAspectMake::query()->with('make')->paginate(12);
+        $aspectMakes = EbayAspectMake::query()
+            ->with('make')
+            ->orderBy('make_id', 'ASC')
+            ->orderBy('aspect_make', 'ASC')
+            ->orderBy('aspect_model', 'ASC')
+            ->paginate(12);
         $makes = Make::query()->withDepth()->defaultOrder()->get();
 
         return Inertia::render('Admin/AspectMakes/Index', [
