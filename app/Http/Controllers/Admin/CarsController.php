@@ -72,10 +72,12 @@ class CarsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\EbayItem  $ebayItem
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(EbayItem $ebayItem)
+    public function destroy(EbayItem $car)
     {
-        //
+        $car->delete();
+
+        return redirect()->back();
     }
 }

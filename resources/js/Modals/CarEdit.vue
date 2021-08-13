@@ -22,7 +22,7 @@
                                 <DialogTitle as="h3" class="text-lg leading-6 font-medium text-gray-900">
                                     Edit Car
                                 </DialogTitle>
-                                <div class="mt-2">
+                                <div class="flex mt-2">
                                     <div>
 
                                         <div>
@@ -74,16 +74,26 @@
 
 
                                     </div>
+                                    <div>
+                                        <img src="" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                            <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" @click="save">
-                                Save
-                            </button>
-                            <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm" @click="close">
-                                Cancel
-                            </button>
+                        <div class="mt-5 sm:mt-4 flex flex-row">
+                            <div class="flex-grow">
+                                <button type="button" class="w-full inline-flex flex flex-grow justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" @click="delete">
+                                    Delete
+                                </button>
+                            </div>
+                            <div>
+                                <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm" @click="close">
+                                    Cancel
+                                </button>
+                                <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" @click="save">
+                                    Save
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </TransitionChild>
@@ -143,6 +153,12 @@ export default {
         save () {
             this.$inertia.patch('/admin/cars/' + this.car.id, this.form, {
                 preserveScroll: true
+            })
+            this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: false })
+        },
+        delete () {
+            this.$inertia.delete('/admin/cars/' + this.car.id, {
+                onBefore: () => confirm('Are you sure you want to delete this car?'),
             })
             this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: false })
         }
