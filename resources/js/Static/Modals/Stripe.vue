@@ -168,10 +168,11 @@ export default {
             } else {
                 // The card has been verified successfully...
                 console.log('success', paymentMethod)
+                const user = JSON.parse(localStorage.getItem('user', null))
                 this.customer = Object.assign(this.customer, paymentMethod)
                 this.customer.metadata = this.metadata
                 console.log('data', this.customer)
-                axios.post('/api/stripe-purchase', this.customer)
+                axios.post('/api/stripe-purchase', { ...this.customer, api_token: user.api_token } )
                     .then(resp => {
                         //  increment local tokens
                         let user = JSON.parse(localStorage.getItem('user'))

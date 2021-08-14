@@ -46,7 +46,7 @@
                     link-label="Learn about cookies"
                 ></cookie-consent>
             </VueIfBot>
-            
+
             <div class="min-h-screen bg-gray-100">
 
                 <static-header></static-header>
