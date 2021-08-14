@@ -10,10 +10,8 @@
         <p class="mt-2 block text-sm font-medium text-gray-800 truncate pointer-events-none">{{ car.title }}</p>
         <p class="block text-sm font-medium text-gray-500 truncate pointer-events-none">{{ car.subtitle }}</p>
         <div class="flex mt-3">
-
             <button-bookmark :id="car.id"></button-bookmark>
             <button-redeem :id="car.id" title="car.title"></button-redeem>
-
         </div>
     </li>
 </template>

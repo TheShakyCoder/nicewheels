@@ -17,7 +17,7 @@ Route::middleware('api_token')->post('/cars/{ebay_item}/bookmark', [EbayItemsCon
 Route::middleware('api_token')->post('/cars/{ebay_item}/redeem', [EbayItemsController::class, 'redeem'])->name('redeem');
 Route::middleware('api_token')->get('/cars/{ebay_item}/information', [EbayItemsController::class, 'information'])->name('information');
 Route::get('car-images/{ebayItemImage}', [CarImagesController::class, 'show']);
-Route::post('cars', [EbayItemsController::class, 'loadMore']);
+Route::middleware('api_token')->post('cars', [EbayItemsController::class, 'loadMore']);
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::middleware('api_token')->post('/logout', [LoginController::class, 'logout']);

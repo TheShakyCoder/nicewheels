@@ -70,10 +70,8 @@ const app = createApp({
 
             axios.post('/api/my-cars', { api_token, ids })
                 .then(resp => {
-                    console.log('getMyCars', resp)
                     this.$store.commit('static/setCollection', { collection: 'bookmarks', data: resp.data.myBookmarks })
                     this.$store.commit('static/setCollection', { collection: 'redemptions', data: resp.data.myRedemptions })
-
                 })
         },
     }

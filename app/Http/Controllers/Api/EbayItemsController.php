@@ -57,13 +57,16 @@ class EbayItemsController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function loadMore(EbayItemService $ebayItemService, Request $request)
+    public function loadMore(StaticService $staticService, EbayItemService $ebayItemService, Request $request)
     {
+        $auth = $request->user();
         $cars = $ebayItemService->getPublicEbayItems(0, config('common.static.page'), null, $request->get('makes'), null, $request->get('ids'));
 
         return response()->json([
             'cars' => $cars,
-            'ids' => $request->all()
+            'ids' => $request->get('ids'),
+            'bookmarks' => $staticService->getMyBookmarks($auth, array_map(function($car) { return $car->id; }, $cars->items())),
+            'redemptions' => $staticService->getMyRedemptions($auth, array_map(function($car) { return $car->id; }, $cars->items()))
         ]);
     }
 
