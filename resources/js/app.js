@@ -6,6 +6,7 @@ import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-v
 import { InertiaProgress } from '@inertiajs/progress';
 import Vuex from 'vuex'
 import adminStore from './store/admin'
+
 const store = new Vuex.Store({
     modules: {
         admin: adminStore,

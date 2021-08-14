@@ -21,7 +21,7 @@
                         </thead>
                         <tbody>
                             <tr v-for="transaction in transactions">
-                                <td>{{ transaction.created_at }}</td>
+                                <td>{{ formatDate(transaction.created_at) }}</td>
                                 <td>{{ transaction.reference }}</td>
                                 <td class="text-center">{{ transaction.tokens }}</td>
                                 <td class="text-center">{{ transaction.remaining }}</td>
@@ -51,6 +51,11 @@
             }
         },
         methods: {
+            formatDate(dateString) {
+                const date = new Date(dateString);
+                // Then specify how you want your dates to be formatted
+                return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date);
+            },
             amount (val) {
                 var formatter = new Intl.NumberFormat('en-GB', {
                     style: 'currency',
