@@ -55,6 +55,7 @@
                                 id="card-button"
                                 type="button"
                                 class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-cyan-600 text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:col-start-2 sm:text-sm"
+                                :class="{ 'bg-gray-400': !clickable }"
                                 :disabled="!clickable"
                             >
                                 Process Payment
@@ -171,7 +172,7 @@ export default {
                 const user = JSON.parse(localStorage.getItem('user', null))
                 this.customer = Object.assign(this.customer, paymentMethod)
                 this.customer.metadata = this.metadata
-                console.log('data', this.customer)
+                // console.log('data', this.customer)
                 axios.post('/api/stripe-purchase', { ...this.customer, api_token: user.api_token } )
                     .then(resp => {
                         //  increment local tokens

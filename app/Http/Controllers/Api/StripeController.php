@@ -88,9 +88,6 @@ class StripeController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
-//
-//        \Log::info('paymentIntent');
-//        \Log::info($paymentIntent);
 
         //  TODO: save JSON to Spaces
 

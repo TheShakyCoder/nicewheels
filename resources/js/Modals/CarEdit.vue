@@ -9,7 +9,7 @@
                 <!-- This element is to trick the browser into centering the modal contents. -->
                 <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
                 <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-                    <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+                    <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full sm:p-6">
                         <div class="absolute top-0 right-0 pt-4 pr-4">
                             <button type="button" class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="close">
                                 <span class="sr-only">Close</span>
@@ -18,12 +18,12 @@
                         </div>
                         <div class="flex flex-col items-start">
 
-                            <div class="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <div class="w-full mt-3 text-center sm:mt-0 sm:text-left">
                                 <DialogTitle as="h3" class="text-lg leading-6 font-medium text-gray-900">
                                     Edit Car
                                 </DialogTitle>
                                 <div class="flex mt-2">
-                                    <div>
+                                    <div class="w-1/2">
 
                                         <div>
                                             <label for="make_id" class="block text-sm font-medium text-gray-700">Make</label>
@@ -74,8 +74,8 @@
 
 
                                     </div>
-                                    <div>
-                                        <img src="" alt="">
+                                    <div class="w-1/2">
+                                        <img :src="image" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +125,8 @@ export default {
         return {
             form: {
                 make_id: null
-            }
+            },
+            image: null
         }
     },
     computed: {
@@ -143,8 +144,10 @@ export default {
         car (n, o) {
             this.form = n
             this.form.used_price = n.used_price === 1
+            this.getImage()
         }
     },
+
     methods: {
         close () {
             this.$store.commit('admin/setSingleProperty', { key: 'carId', value: null })
@@ -162,7 +165,20 @@ export default {
                 preserveScroll: true
             })
             this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: false })
-        }
+        },
+        getImage() {
+            if(this.form.image) {
+                const url = '/api/car-images/' + this.car.image.id
+                console.log(url)
+                axios.get(url)
+                    .then(resp => {
+                        this.image = resp.data
+                    })
+                    .catch(err => {
+                        console.error(err)
+                    })
+            }
+        },
     }
 }
 </script>

@@ -57,7 +57,7 @@ export default {
     },
     watch: {
         selected (n, o) {
-            console.log(n)
+            // console.log(n)
             this.$emit('price', n)
         }
     }
