@@ -14,7 +14,24 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+        <style>
+            .cookie-consent {
+                display: flex;
+                padding: 10px;
+                align-items: center;
+                align-self: center;
+                justify-content: center;
+                border-bottom: 1px solid white;
+                color: white;
+                background-color: #2d3748;
+            }
+            .cookie-consent button {
+                border: 1px solid white;
+                padding: 10px;
+                margin-left: 20px;
+                min-width: 140px;
+            }
+        </style>
 
         <!-- Scripts -->
         <script src="{{ mix('js/public.js') }}" defer></script>
@@ -22,6 +39,14 @@
     </head>
     <body>
         <div id="public">
+
+            <VueIfBot>
+                <cookie-consent
+                    message="We use Cookies for user security and on-page improvements!"
+                    link-label="Learn about cookies"
+                ></cookie-consent>
+            </VueIfBot>
+            
             <div class="min-h-screen bg-gray-100">
 
                 <static-header></static-header>
@@ -77,6 +102,5 @@
             @include('templates.partials.footer')
 
         </div>
-
     </body>
 </html>

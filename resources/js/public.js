@@ -22,6 +22,9 @@ import StaticImage from "./Static/Components/Image"
 import StaticProfile from "./Static/Components/Profile"
 import StaticRedeemedAmount from "./Static/Components/RedeemedAmount"
 
+import VueIfBot from 'vue-if-bot/dist/vue-if-bot.es'
+import CookieConsent from 'vue-cookieconsent-component/src/components/CookieConsent.vue'
+
 import staticStore from './store/static'
 const store = new Vuex.Store({
     modules: {
@@ -48,7 +51,10 @@ const app = createApp({
         StaticHeader,
         StaticImage,
         StaticProfile,
-        StaticRedeemedAmount
+        StaticRedeemedAmount,
+
+        VueIfBot,
+        CookieConsent
     },
     mounted () {
         const user = JSON.parse(localStorage.getItem('user', null))
