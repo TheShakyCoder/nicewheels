@@ -73,7 +73,10 @@
                     </ul>
                 </div>
                 <div class="p-2 m-2 bg-white rounded-xl border border-gray-300 shadow">
-                    <h3 class="text-xl font-bold">Children</h3>
+                    <div class="flex justify-between">
+                        <h3 class="text-xl font-bold">Children</h3>
+                        <button @click="addMake">Add</button>
+                    </div>
                     <ul>
                         <li v-for="child in children" class="flex justify-between">
                             <inertia-link class="flex-grow" :href="route('admin.makes.show', child.id)">{{ child.name }} [{{ child.ebay_items_count }}]</inertia-link>
@@ -150,6 +153,11 @@ export default {
             this.$store.commit('admin/setSingleProperty', { key: 'car', value: car })
             this.$store.commit('admin/setSingleProperty', { key: 'makes', value: this.makes })
             this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: true })
+        },
+        addMake () {
+            this.$store.commit('admin/setSingleProperty', { key: 'make', value: { name: null, slug: null, parent_id: this.make.id } })
+            this.$store.commit('admin/setSingleProperty', { key: 'makes', value: this.makes })
+            this.$store.commit('admin/toggleModal', { modal: 'makeAdd', state: true })
         }
     }
 }

@@ -4,10 +4,12 @@ const adminStore = {
         modals: {
             carEdit: false,
             aspectMake: false,
+            makeAdd: false,
         },
         carId: null,
         car: null,
         aspectMake: null,
+        make: null,
         makes: []
     },
 

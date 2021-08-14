@@ -150,6 +150,7 @@ export default {
 
     methods: {
         close () {
+            this.image = null
             this.$store.commit('admin/setSingleProperty', { key: 'carId', value: null })
             this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: false })
         },
@@ -157,6 +158,7 @@ export default {
             this.$inertia.patch('/admin/cars/' + this.car.id, this.form, {
                 preserveScroll: true
             })
+            this.image = null
             this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: false })
         },
         delete () {
@@ -164,6 +166,7 @@ export default {
                 onBefore: () => confirm('Are you sure you want to delete this car?'),
                 preserveScroll: true
             })
+            this.image = null
             this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: false })
         },
         getImage() {

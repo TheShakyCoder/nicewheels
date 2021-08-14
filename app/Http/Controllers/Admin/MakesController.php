@@ -49,15 +49,7 @@ class MakesController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $alternatives = explode(',', $input['alternatives']);
-        unset($input['alternatives']);
-        $make = Make::query()->create($input);
-        foreach($alternatives as $alternative) {
-            $make->alternatives()->create([
-                'name' => $alternative
-            ]);
-        }
-
+        Make::query()->create($input);
         return redirect()->back();
     }
 

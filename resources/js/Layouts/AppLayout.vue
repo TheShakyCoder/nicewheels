@@ -74,6 +74,7 @@
 
         <car-edit-modal></car-edit-modal>
         <aspect-make-modal></aspect-make-modal>
+        <make-add-modal></make-add-modal>
 
     </div>
 </template>
@@ -88,6 +89,7 @@
     import MobileModal from "../Modals/Mobile"
     import CarEditModal from "../Modals/CarEdit"
     import AspectMakeModal from "../Modals/AspectMake"
+    import MakeAddModal from "../Modals/Makes/Add"
 
     export default {
         components: {
@@ -100,7 +102,8 @@
 
             MobileModal,
             CarEditModal,
-            AspectMakeModal
+            AspectMakeModal,
+            MakeAddModal
         },
 
         data() {
