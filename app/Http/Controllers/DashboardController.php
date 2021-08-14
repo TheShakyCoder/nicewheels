@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bookmark;
 use App\Models\EbayItem;
+use App\Models\Transaction;
 use App\Services\EbayItemService;
 use App\Services\NewsService;
 use Illuminate\Http\Request;
@@ -45,9 +46,15 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function purchase ()
+    public function purchases (Request $request)
     {
-        return Inertia::render('Purchase');
+        $transactions = Transaction::query()
+            ->where('user_id', $request->user()->id)
+            ->get();
+
+        return Inertia::render('Purchases', [
+            'transactions' => $transactions
+        ]);
     }
 
     public function redemptions (Request $request)

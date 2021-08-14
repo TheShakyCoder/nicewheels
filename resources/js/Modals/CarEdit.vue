@@ -159,6 +159,7 @@ export default {
         delete () {
             this.$inertia.delete('/admin/cars/' + this.car.id, {
                 onBefore: () => confirm('Are you sure you want to delete this car?'),
+                preserveScroll: true
             })
             this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: false })
         }

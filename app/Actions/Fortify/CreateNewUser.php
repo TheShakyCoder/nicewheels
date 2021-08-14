@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Ramsey\Uuid\Uuid;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -35,6 +36,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'api_token' => (string)\Uuid::generate(4)
         ]);
 
         //  create complimentary transaction
