@@ -1,15 +1,12 @@
 <template>
-    <img :src="image" alt="" class="object-cover pointer-events-none" />
+    <img :src="image" alt="">
 </template>
 
 <script>
 export default {
-    name: "StaticImage",
+    name: "StaticCarouselImage",
     props: {
-        id: {
-            type: Number,
-            default: null
-        }
+        id: null
     },
     data () {
         return {
@@ -21,9 +18,6 @@ export default {
     },
     methods: {
         getImage() {
-            if(!this.id) {
-                return
-            }
             const url = '/api/car-images/' + this.id
             axios.get(url)
                 .then(resp => {
@@ -32,7 +26,7 @@ export default {
                 .catch(err => {
                     console.error(err)
                 })
-        },
+        }
     }
 }
 </script>

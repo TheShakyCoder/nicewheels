@@ -5,7 +5,7 @@
                 {{ redeemedAmount }}
             </div>
             <img :src="image" alt="" class="object-cover pointer-events-none group-hover:opacity-75" />
-            <button type="button" class="absolute inset-0 focus:outline-none">
+            <button @click="carousel" type="button" class="absolute inset-0 focus:outline-none">
                 <span class="sr-only">View details for {{ car.title }}</span>
             </button>
         </div>
@@ -126,6 +126,10 @@ export default {
         info () {
             console.log('info', this.car.id)
             this.$store.commit('showModal', { modal: 'info', show: true, id: this.car.id })
+        },
+        carousel () {
+            console.log('carousel', this.car.id)
+            this.$store.commit('showModal', { modal: 'carousel', show: true, id: this.car.id })
         }
     }
 }

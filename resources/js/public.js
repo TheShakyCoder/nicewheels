@@ -10,6 +10,7 @@ import ButtonRedeem from "./Static/Buttons/Redeem"
 import ButtonReport from "./Static/Buttons/Report"
 import ButtonShowSideFilter from "./Static/Buttons/ShowSideFilter"
 import ComponentLoadMore from "./Static/Components/LoadMore"
+import ModalCarousel from "./Static/Modals/Carousel"
 import ModalGuest from "./Static/Modals/Guest"
 import ModalInformation from "./Static/Modals/Information"
 import ModalLogin from "./Static/Modals/Login"
@@ -20,7 +21,7 @@ import StaticCars from "./Static/Components/Cars"
 import StaticHeader from "./Static/Header"
 import StaticImage from "./Static/Components/Image"
 import StaticProfile from "./Static/Components/Profile"
-import StaticRedeemedAmount from "./Static/Components/RedeemedAmount"
+import StaticImageWrapper from "./Static/Components/ImageWrapper"
 
 import VueIfBot from 'vue-if-bot/dist/vue-if-bot.es'
 import CookieConsent from 'vue-cookieconsent-component/src/components/CookieConsent.vue'
@@ -41,6 +42,7 @@ const app = createApp({
         ButtonReport,
         ButtonShowSideFilter,
         ComponentLoadMore,
+        ModalCarousel,
         ModalGuest,
         ModalInformation,
         ModalLogin,
@@ -51,7 +53,7 @@ const app = createApp({
         StaticHeader,
         StaticImage,
         StaticProfile,
-        StaticRedeemedAmount,
+        StaticImageWrapper,
 
         VueIfBot,
         CookieConsent

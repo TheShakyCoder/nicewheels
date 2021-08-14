@@ -3,6 +3,7 @@ const staticStore = {
     state: {
         modals: {
             guest: false,
+            carousel: false,
             information: false,
             login: false,
             mobile: false,
@@ -21,7 +22,7 @@ const staticStore = {
         user: null,
         redemptionId: 0,
         redemptionTitle: null,
-        informationCar: null
+        car: null
     },
 
     getters: {

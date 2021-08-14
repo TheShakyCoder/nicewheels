@@ -98,6 +98,7 @@
             <modal-stripe></modal-stripe>
             <modal-redeem></modal-redeem>
             <modal-information></modal-information>
+            <modal-carousel></modal-carousel>
 
             @include('templates.partials.footer')
 
