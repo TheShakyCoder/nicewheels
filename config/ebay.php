@@ -19,6 +19,9 @@ return [
         'usedMonths' => env('EBAY_USED_MONTHS')
     ],
     'keywords' => [
+        'item_to_delete' => [
+            'damaged', 'spares', 'repair', 'lhd', 'import', 'project', 'non runner', 'mot failure', 'fault', 'breaking'
+        ],
         'item_not_used' => [
             'damaged', 'spares', 'repair', 'lhd', 'import', 'project', 'non runner', 'mot failure', 'fault', 'breaking'
         ],

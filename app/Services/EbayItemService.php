@@ -35,8 +35,22 @@ class EbayItemService
                 }
             }
 
+            //  items to delete
+            $delete = false;
+            $itemToDelete = collect(config('ebay.keywords.item_to_delete'));
+            foreach($itemToDelete as $e) {
+                if(strpos(strtolower($item->title[0]), strtolower($e)) !== false) {
+                    $delete = true;
+                    break;
+                }
+                if(isset($item->subtitle) && strpos(strtolower($item->subtitle[0]), strtolower($e)) !== false) {
+                    $delete = true;
+                    break;
+                }
+            }
+
             //  words to remove
-//            $title    = addcslashes($item->title[0], '()');
+            $title    = $item->title[0];
             $subtitle = isset($item->subtitle) ? $item->subtitle[0] : null;
             foreach(config('ebay.keywords.to_remove') as $phrase) {
                 $title    = str_ireplace($phrase, '', $title);
@@ -61,7 +75,11 @@ class EbayItemService
                 'ended_at' => (new \DateTime($item->listingInfo[0]->endTime[0]))->format('Y-m-d H:i:s')
             ]);
 
-            $count++;
+            if($delete) {
+                $ebayItem->delete();
+            } else {
+                $count++;
+            }
 
         }
         return $count;
