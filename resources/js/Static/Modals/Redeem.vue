@@ -34,7 +34,7 @@
                                 <div class="mt-2">
                                     <p>You currently have {{ tokens }} token{{ tokens !== 1 ? 's' : '' }}</p>
                                     <p class="text-sm text-gray-500">
-                                        {{ tokens ? 'Do you wish to redeem a token on this car?' : 'Do you wish to buy some tokens?' }}
+                                        {{ tokens ? 'Do you want to redeem a token to see what this car sold for?' : 'Do you wish to buy some tokens? Redeem tokens to see what cars sold for.' }}
                                     </p>
                                     <small>{{ title }}</small>
                                 </div>
