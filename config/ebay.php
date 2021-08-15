@@ -20,10 +20,10 @@ return [
     ],
     'keywords' => [
         'item_to_delete' => [
-            'damaged', 'spares', 'repair', 'lhd', 'import', 'project', 'non runner', 'mot failure', 'fault', 'breaking'
+            'damaged', 'spares', 'repair', 'lhd', 'import', 'project', 'non runner', 'mot failure', 'fault', 'breaking', 'limousine', 'hearse'
         ],
         'item_not_used' => [
-            'damaged', 'spares', 'repair', 'lhd', 'import', 'project', 'non runner', 'mot failure', 'fault', 'breaking'
+            'damaged', 'spares', 'repair', 'lhd', 'import', 'project', 'non runner', 'mot failure', 'fault', 'breaking', 'limousine', 'hearse'
         ],
         'to_remove' => [
             'no reserve', 'part exchange', 'no mot', 'low miles'
