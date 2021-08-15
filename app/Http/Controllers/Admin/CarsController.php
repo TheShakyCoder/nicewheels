@@ -23,8 +23,8 @@ class CarsController extends Controller
             ->whereNotNull('aspected_at')
             ->whereNull('checked_at')
             ->where('ended_at', '>', now()->subMonths(6))
+            ->orderBy(\DB::raw('make_id IS NULL'), 'DESC')
             ->orderBy(\DB::raw('checked_at IS NULL'), 'ASC')
-            ->orderBy('ended_at', 'DESC')
             ->paginate(12);
 
         return Inertia::render('Admin/Cars/Index', [

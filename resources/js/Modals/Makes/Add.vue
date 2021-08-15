@@ -91,7 +91,7 @@ export default {
     methods: {
         add () {
             this.$inertia.post('/admin/makes', this.make)
-            this.$store.commit('admin/toggleModal', { modal: 'makeAdd', state: true })
+            this.$store.commit('admin/toggleModal', { modal: 'makeAdd', state: false })
         },
         close () {
             setTimeout(() => this.$store.commit('admin/setSingleProperty', { key: 'make', value: null }), 500)

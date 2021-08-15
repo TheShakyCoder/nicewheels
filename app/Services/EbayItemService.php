@@ -23,23 +23,20 @@ class EbayItemService
         foreach($json->findItemsByCategoryResponse[0]->searchResult[0]->item as $item) {
             //  items to remove
             $isUsed = 1;
-            $delete = false;
-            $keywords = collect(config('ebay.keywords.item_not_used'));
-            foreach($keywords as $e) {
+            $itemNotUsed = collect(config('ebay.keywords.item_not_used'));
+            foreach($itemNotUsed as $e) {
                 if(strpos(strtolower($item->title[0]), strtolower($e)) !== false) {
                     $isUsed = 0;
-                    $delete = true;
                     break;
                 }
                 if(isset($item->subtitle) && strpos(strtolower($item->subtitle[0]), strtolower($e)) !== false) {
                     $isUsed = 0;
-                    $delete = true;
                     break;
                 }
             }
 
             //  words to remove
-            $title    = addcslashes($item->title[0], '()');
+//            $title    = addcslashes($item->title[0], '()');
             $subtitle = isset($item->subtitle) ? $item->subtitle[0] : null;
             foreach(config('ebay.keywords.to_remove') as $phrase) {
                 $title    = str_ireplace($phrase, '', $title);
@@ -63,11 +60,9 @@ class EbayItemService
                 'final_amount' => $item->sellingStatus[0]->convertedCurrentPrice[0]->__value__,
                 'ended_at' => (new \DateTime($item->listingInfo[0]->endTime[0]))->format('Y-m-d H:i:s')
             ]);
-            if($delete) {
-                $ebayItem->delete();
-            } else {
-                $count++;
-            }
+
+            $count++;
+
         }
         return $count;
     }

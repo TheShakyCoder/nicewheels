@@ -3,6 +3,7 @@
         <div class="flex flex-col">
             <h2 class="text-lg sm:text-2xl">{{ car.title }}</h2>
             <h3 class="text-sm sm:text-lg">{{ car.subtitle }}</h3>
+            <h3 class="text-sm sm:text-lg">{{ make }}</h3>
             <hr>
             <div>{{ car.full_make }}</div>
             <div class="flex justify-start items-end flex-1 mt-2">
@@ -28,6 +29,11 @@ export default {
     data () {
         return {
             image: null
+        }
+    },
+    computed: {
+        make () {
+            return this.car.make ? this.car.make.name : '----'
         }
     },
     mounted () {
