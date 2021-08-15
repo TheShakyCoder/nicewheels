@@ -59,7 +59,7 @@ class EbayItemService
             $title    = trim($title);
             $subtitle = trim($subtitle);
 
-            $ebayItem = EbayItem::query()->updateOrCreate([
+            $ebayItem = EbayItem::query()->withTrashed()->updateOrCreate([
                 'ebay_item_id' => $item->itemId[0]
             ], [
                 'ebay_category_id' => $ebayCategory->id,
