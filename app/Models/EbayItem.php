@@ -80,7 +80,7 @@ class EbayItem extends Model
             ->where('used_price', true)
             ->whereHas('images')
             ->whereNotNull('processed_at')
-            ->whereBetween('ended_at', [now()->subMonths(6), now()])
+            ->whereBetween('ended_at', [now()->subMonths(config('ebay.settings.usedMonths')), now()])
             ;
     }
 }

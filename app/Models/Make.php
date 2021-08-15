@@ -35,7 +35,7 @@ class Make extends Model
 
     public function ebayItems()
     {
-        return $this->hasMany(EbayItem::class)->where('ended_at', '>', now()->subMonths(6))->orderBy('ended_at', 'DESC');
+        return $this->hasMany(EbayItem::class)->where('ended_at', '>', now()->subMonths(config('ebay.settings.usedMonths')))->orderBy('ended_at', 'DESC');
     }
 
     public function alternatives()

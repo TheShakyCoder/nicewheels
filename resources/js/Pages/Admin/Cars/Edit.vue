@@ -20,7 +20,7 @@
                                     <select v-model="form.make_id" id="make_id" name="make_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-lg border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                         <option value="">- no make -</option>
                                         <!--                                <option value="-1">- new make -</option>-->
-                                        <option :value="make.id" v-for="make in makes" :selected="parseInt(make.id) === parseInt(form.make_id)">{{ '>'.repeat(make.depth) + ' ' }}{{ make.name }}</option>
+                                        <option :value="make.id" v-for="make in makes" :selected="parseInt(make.id) === parseInt(form.make_id)">{{ '-'.repeat(make.depth) }}{{ make.name }}</option>
                                     </select>
                                 </div>
 

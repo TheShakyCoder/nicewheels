@@ -327,7 +327,7 @@ class EbayItemService
             })
             ->where('used_price', 1)
             ->whereNotNull('processed_at')
-            ->whereBetween('ended_at', [now()->subMonths(6), now()])
+            ->whereBetween('ended_at', [now()->subMonths(config('ebay.settings.usedMonths')), now()])
             ->when($search, function($q) use($search) {
                 $q->where('title', 'LIKE', '%'.$search.'%')->orWhere('subtitle', 'LIKE', '%'.$search.'%');
             })
