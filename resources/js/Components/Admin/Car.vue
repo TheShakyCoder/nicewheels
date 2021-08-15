@@ -7,10 +7,8 @@
             <hr>
             <div>{{ car.full_make }}</div>
             <div class="flex justify-start items-end flex-1 mt-2">
-                <inertia-link :href="route('admin.cars.edit', [car.id])" class="w-12 h-12 mr-2 rounded-full bg-red-600 text-white flex items-center justify-center pl-1"></inertia-link>
-<!--                <inertia-link as="button" method="patch" preserve-state preserve-scroll :href="route('admin.cars.update', [car.id])" class="w-12 h-12 mr-2 rounded-full text-white flex items-center justify-center pl-1 bg-red-600" :class="{ 'bg-green-600': car.used_price }">-->
-<!--                    <i class="fal fa-lg" :class="{ 'fa-check': car.used_price, 'fa-times': !car.used_price }"></i>-->
-<!--                </inertia-link>-->
+                <button type="button" class="w-12 h-12 mr-2 rounded-full bg-red-600 text-white flex items-center justify-center pl-1" @click="delete"></button>
+                <inertia-link :href="route('admin.cars.edit', [car.id])" class="w-12 h-12 mr-2 rounded-full bg-cyan-600 text-white flex items-center justify-center pl-1"></inertia-link>
             </div>
         </div>
         <img class="bg-black rounded-lg sm:w-60 h-80 sm:h-40 object-cover sm:object-cover" :src="image" :alt="car.title" />
@@ -57,7 +55,13 @@ export default {
                 .catch(err => {
                     console.error(err)
                 })
-        }
+        },
+        delete () {
+            this.$inertia.delete('/admin/cars/' + this.car.id, {
+                onBefore: () => confirm('Are you sure you want to delete this car?'),
+                preserveScroll: true
+            })
+        },
     }
 }
 </script>
