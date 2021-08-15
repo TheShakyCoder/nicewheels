@@ -1,12 +1,13 @@
 <template>
-    <img :src="image" alt="">
+    <img :src="image" :alt="title + ' - ' + id">
 </template>
 
 <script>
 export default {
     name: "StaticCarouselImage",
     props: {
-        id: null
+        id: null,
+        title: null
     },
     data () {
         return {

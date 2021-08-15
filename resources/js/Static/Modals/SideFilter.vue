@@ -58,7 +58,7 @@
                                                 :title="make.full_name + ' used prices'"
                                             >{{ "-".repeat(make.depth) }}{{ make.full_name }}</a>
                                         </li>
-                                    </ul>
+                                    q</ul>
 
                                 </div>
                             </div>

@@ -33,4 +33,11 @@ class AspectMakesController extends Controller
 
         return redirect()->back();
     }
+
+    public function destroy(EbayAspectMake $aspectMake)
+    {
+        $aspectMake->delete();
+
+        return redirect()->back();
+    }
 }
