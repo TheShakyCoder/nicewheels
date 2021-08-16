@@ -26,6 +26,18 @@ class AspectMakesController extends Controller
         ]);
     }
 
+    public function store(Request $request)
+    {
+        EbayAspectMake::query()->updateOrCreate([
+            'aspect_make' => $request->get('aspect_make'),
+            'aspect_model' => $request->get('aspect_model'),
+        ], [
+            'make_id' => $request->get('make_id')
+        ]);
+
+        return redirect()->back();
+    }
+
     public function update(EbayAspectMake $aspectMake, Request $request)
     {
         $aspectMake->fill($request->only(['make_id']));

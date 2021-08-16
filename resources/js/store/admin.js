@@ -3,6 +3,7 @@ const adminStore = {
     state: {
         modals: {
             carEdit: false,
+            addAspectMake: false,
             aspectMake: false,
             makeAdd: false,
         },
