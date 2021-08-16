@@ -45,6 +45,8 @@ class StaticFilter extends Command
         $makes = Make::select('id')->defaultOrder()->withDepth()->where('live', true)->get();
         foreach($makes as $make) {
             $folder = $make->full_folder;
+            echo $folder.PHP_EOL;
+            
             $makeAndDescendants = Make::descendantsAndSelf($make->id)->pluck('id');
 
             $cars = $ebayItemService->getPublicEbayItems(0, config('common.static.page'), null, $makeAndDescendants, $make);
@@ -66,7 +68,6 @@ class StaticFilter extends Command
             }
             file_put_contents(public_path('used-prices/'.$folder.'/index.html'), $html);
 
-            echo $folder.PHP_EOL;
         }
 
         //  used price index
