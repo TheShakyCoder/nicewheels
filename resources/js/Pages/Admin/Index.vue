@@ -4,7 +4,9 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Admin</h2>
             <admin-nav></admin-nav>
         </template>
-        <div>INDEX</div>
+        <div>
+            NOT ASPECTED: {{ notAspectedCount }}
+        </div>
     </app-layout>
 </template>
 
@@ -18,6 +20,12 @@ export default {
         AppLayout,
         AdminNav
     },
+    props: {
+        notAspectedCount: {
+            type: Number,
+            default: null
+        },
+    }
 }
 </script>
 

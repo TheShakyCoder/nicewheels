@@ -25,7 +25,7 @@
                         <label for="location" class="block text-sm font-medium text-gray-700">Belongs To</label>
                         <select v-model="form.parent_id" id="parent-id" name="parent_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                             <option value="">-- none --</option>
-                            <option v-for="m in makes" :value="m.id">{{ "-".repeat(m.depth) }} {{ m.name }}</option>
+                            <option v-for="m in makes" :key="'make-' + m.id" :value="m.id">{{ "-".repeat(m.depth) }} {{ m.name }}</option>
                         </select>
                     </div>
 
@@ -46,7 +46,7 @@
                 <div class="p-2 m-2 bg-white rounded-xl border border-gray-300 shadow">
                     <h3 class="text-xl font-bold">Cars</h3>
                     <ul>
-                        <li v-for="car in cars" class="space-y-1 p-1 my-1" :class="{ 'bg-red-600 text-white': !car.used_price }">
+                        <li v-for="car in cars" :key="'car-' + car.id" class="space-y-1 p-1 my-1" :class="{ 'bg-red-600 text-white': !car.used_price }">
                             <div class="flex justify-between items-center">
                                 <div class="flex-grow">
                                     <div>{{ car.title }}</div>
@@ -67,7 +67,7 @@
                 <div class="p-2 m-2 bg-white rounded-xl border border-gray-300 shadow">
                     <h3 class="text-xl font-bold">Ancestors</h3>
                     <ul>
-                        <li v-for="m in ancestors">
+                        <li v-for="m in ancestors" :key="'ancestor-' + m.id">
                             <inertia-link :title="m.id" :href="route('admin.makes.show', m.id)">{{ m.name }}</inertia-link>
                         </li>
                     </ul>
@@ -78,7 +78,7 @@
                         <button @click="addMake">Add</button>
                     </div>
                     <ul>
-                        <li v-for="child in children" class="flex justify-between">
+                        <li v-for="child in children" :key="'child-' + child.id" class="flex justify-between">
                             <div class="mr-1 font-bold w-8">{{ child.id }}</div>
                             <inertia-link :title="child.id" class="flex-grow" :href="route('admin.makes.show', child.id)">{{ child.name }} [{{ child.ebay_items_count }}]</inertia-link>
                             <inertia-link :preserve-scroll="true" :preserve-state="true" method="post" as="button" :href="route('admin.makes.up', child.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">&#x2191;</inertia-link>

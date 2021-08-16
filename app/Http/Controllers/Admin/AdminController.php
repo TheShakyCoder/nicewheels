@@ -5,11 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\EbayItem;
 
 class AdminController extends Controller
 {
     public function __invoke()
     {
-        return Inertia::render('Admin/Index');
+        $notAspectedCount = EbayItem::query()
+            ->whereNull('aspected_at')
+            ->count();
+
+        return Inertia::render('Admin/Index', [
+            'notAspectedCount' => $notAspectedCount
+        ]);
     }
 }
