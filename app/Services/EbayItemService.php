@@ -193,7 +193,7 @@ class EbayItemService
         if($make !== null && $model !== null) {
 
             //  store for future use
-            $ebayAspectMake = EbayAspectMake::query()->updateOrCreate([
+            $ebayAspectMake = EbayAspectMake::query()->withTrashed()->updateOrCreate([
                 'aspect_make' => $make,
                 'aspect_model' => $model
             ]);

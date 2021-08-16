@@ -19,6 +19,8 @@ class CreateEbayAspectMakesTable extends Migration
             $table->string('aspect_make');
             $table->string('aspect_model');
             $table->timestamps();
+            $table->softDeletes();
+            $table->unique(['aspect_make', 'aspect_model']);
         });
     }
 
