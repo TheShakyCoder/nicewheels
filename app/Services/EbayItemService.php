@@ -207,9 +207,6 @@ class EbayItemService
         $ebayItem->mileage = $mileage;
         $ebayItem->year = $year;
         $ebayItem->processed_at = now();
-//        if($mileage == null || $year == null || $year < config('ebay.earliest_year')) {
-//            $ebayItem->used_price = 0;
-//        }
         $ebayItem->save();
     }
 

@@ -565,6 +565,18 @@ return [
                 'make' => 'bentley',
                 'poll' => 1
             ],
+            [
+                'id' => 128630,
+                'name' => 'Dacia',
+                'make' => 'dacia',
+                'poll' => 1
+            ],
+            [
+                'id' => 180041,
+                'name' => 'Tesla',
+                'make' => 'tesla',
+                'poll' => 1
+            ],
         ],
         'categories' => [
             [

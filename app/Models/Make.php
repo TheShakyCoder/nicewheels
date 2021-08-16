@@ -28,7 +28,8 @@ class Make extends Model
 
     public function getFullFolderAttribute()
     {
-        $fullMake = self::ancestorsAndSelf($this->id);
+        $fullMake = self::ancestorsAndSelf($this->id)->sortBy('_lft');
+        
         return $fullMake->reduce(function ($carry, $item) {
             return $carry .'/'. $item->slug;
         });
