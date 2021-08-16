@@ -68,7 +68,7 @@
                     <h3 class="text-xl font-bold">Ancestors</h3>
                     <ul>
                         <li v-for="m in ancestors">
-                            <inertia-link :href="route('admin.makes.show', m.id)">{{ m.name }}</inertia-link>
+                            <inertia-link :title="m.id" :href="route('admin.makes.show', m.id)">{{ m.name }}</inertia-link>
                         </li>
                     </ul>
                 </div>
@@ -79,7 +79,7 @@
                     </div>
                     <ul>
                         <li v-for="child in children" class="flex justify-between">
-                            <inertia-link class="flex-grow" :href="route('admin.makes.show', child.id)">{{ child.name }} [{{ child.ebay_items_count }}]</inertia-link>
+                            <inertia-link :title="child.id" class="flex-grow" :href="route('admin.makes.show', child.id)">{{ child.name }} [{{ child.ebay_items_count }}]</inertia-link>
                             <inertia-link :preserve-scroll="true" :preserve-state="true" method="post" as="button" :href="route('admin.makes.up', child.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">Up</inertia-link>
                             <inertia-link :preserve-scroll="true" :preserve-state="true" method="post" as="button" :href="route('admin.makes.down', child.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">Down</inertia-link>
                         </li>
