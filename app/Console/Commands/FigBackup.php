@@ -49,7 +49,7 @@ class FigBackup extends Command
         $file = $database.'-'.date('Ymd_Hi', $ts) . '.sql.cpt.bz2';
 
         $command = sprintf(
-            'mysqldump --defaults-extra-file=~/.ssh/.%s.my.cnf -h %s %s | ccrypt -k ~/.ssh/.dbbackup.key | bzip2 -c > %s',
+            'mysqldump --no-tablespaces --defaults-extra-file=~/.ssh/.%s.my.cnf -h %s %s | ccrypt -k ~/.ssh/.dbbackup.key | bzip2 -c > %s',
             $database,
             $host,
             $database,
