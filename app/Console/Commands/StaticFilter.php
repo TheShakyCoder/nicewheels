@@ -53,6 +53,7 @@ class StaticFilter extends Command
                 continue;
             }
 
+            echo $make.PHP_EOL;
             $folder = $make->full_folder;
             echo $folder.PHP_EOL;
             

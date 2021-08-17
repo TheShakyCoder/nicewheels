@@ -17,6 +17,8 @@ class CreateMakesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->integer('cars_count')->nullable();
+            $table->text('cars_csv')->nullable();
             $table->boolean('live')->default(true);
             $table->nestedSet();
             $table->timestamps();
