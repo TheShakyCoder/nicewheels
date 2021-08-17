@@ -156,7 +156,8 @@ export default {
         },
         save () {
             this.$inertia.patch('/admin/cars/' + this.car.id, this.form, {
-                preserveScroll: true
+                preserveScroll: true,
+                PermissionState: true
             })
             this.image = null
             this.$store.commit('admin/toggleModal', { modal: 'carEdit', state: false })

@@ -25,10 +25,11 @@ class CarsController extends Controller
             ->where('ended_at', '>', now()->subMonths(config('ebay.settings.usedMonths')))
             ->orderBy(\DB::raw('make_id IS NULL'), 'DESC')
             ->orderBy(\DB::raw('checked_at IS NULL'), 'ASC')
-            ->paginate(12);
+            ->paginate(3);
 
         return Inertia::render('Admin/Cars/Index', [
-            'cars' => $cars
+            'cars' => $cars,
+            'makes' => Make::query()->defaultOrder()->withDepth()->get(),
         ]);
     }
 

@@ -15,7 +15,6 @@
 <script>
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/solid'
 import AppLayout from '@/Layouts/AppLayout'
-import AdminCar from '../../../Components/Admin/Car'
 import AdminCars from '../../../Components/Admin/Cars'
 import Pagination from "../../../Components/Pagination"
 import AdminNav from '@/Components/Admin/AdminNav'
@@ -27,7 +26,6 @@ export default {
         ChevronRightIcon,
 
         AppLayout,
-        AdminCar,
         AdminCars,
         AdminNav,
         Pagination
@@ -36,7 +34,14 @@ export default {
         cars: {
             type: Object,
             default: null
+        },
+        makes: {
+            type: Object,
+            default: null
         }
+    },
+    mounted () {
+        this.$store.commit('admin/setSingleProperty', { key: 'makes', value: this.makes })
     }
 }
 </script>
