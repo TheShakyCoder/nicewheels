@@ -44,17 +44,18 @@ class StaticFilter extends Command
     {
         $makes = Make::select('id', 'parent_id')->defaultOrder()->withDepth()->where('live', true)->get();
         foreach($makes as $make) {
-            if($make->parent_id != null && count($make->ebayItems) == 0) {
-                continue;
-            }
-            $folder = $make->full_folder;
-            echo $folder.PHP_EOL;
             
             $makeAndDescendants = Make::descendantsAndSelf($make->id)->pluck('id');
-
             $cars = $ebayItemService->getPublicEbayItems(0, config('common.static.page'), null, $makeAndDescendants, $make);
             $lastPage = json_decode($cars->toJson())->last_page;
 
+            if($make->parent_id != null && count($cars) == 0) {
+                continue;
+            }
+
+            $folder = $make->full_folder;
+            echo $folder.PHP_EOL;
+            
             $news = $newsService->feed(8);
 
             //  GET THE COMPILED HTML
