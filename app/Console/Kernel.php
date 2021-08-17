@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('ebay:poll')->hourly();
+        $schedule->command('ebay:poll')->everyThirtyMinutes();
         $schedule->command('ebay:get')->everyThirtyMinutes();
         $schedule->command('ebay:finish')->everyFifteenMinutes();
         $schedule->command('static:filter')->daily();
