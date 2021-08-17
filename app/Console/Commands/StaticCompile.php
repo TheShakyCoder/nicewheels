@@ -43,7 +43,6 @@ class StaticCompile extends Command
         foreach($makes as $make) {
             $descendants = Make::descendantsAndSelf($make->id)->pluck('id');
             $cars = EbayItem::whereIn('make_id', $descendants)->pluck('id');
-            dump($cars);
             $make->cars_count = count($cars);
             $make->cars_csv = count($cars) ? implode(',', $cars->toArray()) : null;
             $make->save();

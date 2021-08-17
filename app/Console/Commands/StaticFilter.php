@@ -42,7 +42,7 @@ class StaticFilter extends Command
      */
     public function handle(StaticService $staticService, EbayItemService $ebayItemService, NewsService $newsService)
     {
-        $makes = Make::select('id', 'parent_id')->defaultOrder()->withDepth()->where('live', true)->get();
+        $makes = Make::select('id', 'parent_id')->defaultOrder()->withDepth()->where('live', true)->where('cars_count', '>', 0)->get();
         foreach($makes as $make) {
             
             $makeAndDescendants = Make::descendantsAndSelf($make->id)->pluck('id');
@@ -53,7 +53,6 @@ class StaticFilter extends Command
                 continue;
             }
 
-            echo $make.PHP_EOL;
             $folder = $make->full_folder;
             echo $folder.PHP_EOL;
             
@@ -65,7 +64,7 @@ class StaticFilter extends Command
             try {
                 mkdir(public_path('used-prices/'.$folder), 0775, true);
             } catch(\Exception $e) {
-                //
+                \Log::error("mkdir error: ".$e->getMessage());
             }
 
             if(file_exists(public_path('used-prices/'.$folder.'/index.html'))) {
