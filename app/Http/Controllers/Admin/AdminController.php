@@ -15,8 +15,13 @@ class AdminController extends Controller
             ->whereNull('aspected_at')
             ->count();
 
+        $notProcessedCount = EbayItem::query()
+            ->whereNull('processed_at')
+            ->count();
+
         return Inertia::render('Admin/Index', [
-            'notAspectedCount' => $notAspectedCount
+            'notAspectedCount' => $notAspectedCount,
+            'notProcessedCount' => $notProcessedCount
         ]);
     }
 }

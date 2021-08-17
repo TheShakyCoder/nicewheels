@@ -5,7 +5,11 @@
             <admin-nav></admin-nav>
         </template>
         <div>
-            NOT ASPECTED: {{ notAspectedCount }}
+            <ul>
+                <li>NOT ASPECTED: {{ notAspectedCount }}</li>
+                <li>NOT PROCESSED: {{ notProcessedCount }}</li>
+            </ul>
+        
         </div>
     </app-layout>
 </template>
@@ -22,6 +26,10 @@ export default {
     },
     props: {
         notAspectedCount: {
+            type: Number,
+            default: null
+        },
+        notProcessedCount: {
             type: Number,
             default: null
         },
