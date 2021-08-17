@@ -50,7 +50,7 @@
                                 <div class="pb-16 space-y-6">
 
                                     <ul class="text-gray-500">
-                                        <li v-for="make in makes" class="flex" :class="'mt-'+(2-(make.depth * 2))">
+                                        <li v-for="make in makes" :key="'make-' + make.id" class="flex" :class="'mt-'+(2-(make.depth * 2))">
                                             <a
                                                 class="w-full hover:bg-gray-100 px-1"
                                                 :class="{ 'text-sm': make.depth > 0, 'bg-cyan-600 text-white': make.full_folder === folder }"
