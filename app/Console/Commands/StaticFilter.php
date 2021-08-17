@@ -42,10 +42,11 @@ class StaticFilter extends Command
      */
     public function handle(StaticService $staticService, EbayItemService $ebayItemService, NewsService $newsService)
     {
-        $makes = Make::select('id')->defaultOrder()->withDepth()->where(function($q) {
-            $q->whereNotNull('parent_id')->orHas('ebayItems');
-        })->where('live', true)->get();
+        $makes = Make::select('id', 'parent_id')->defaultOrder()->withDepth()->where('live', true)->get();
         foreach($makes as $make) {
+            if($make->parent_id != null && count($make->ebayItems) == 0) {
+                continue;
+            }
             $folder = $make->full_folder;
             echo $folder.PHP_EOL;
             
