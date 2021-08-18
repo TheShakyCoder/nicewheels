@@ -42,7 +42,11 @@ class StaticCompile extends Command
         $makes = Make::select('id')->where('live', true)->get();
         foreach($makes as $make) {
             $descendants = Make::descendantsAndSelf($make->id)->pluck('id');
-            $cars = EbayItem::whereIn('make_id', $descendants)->pluck('id');
+            $cars = EbayItem::query()
+                ->whereIn('make_id', $descendants)
+                ->where('used_price', 1)
+                ->whereBetween('ended_at', [now()->subMonths(config('ebay.settings.usedMonths')), now()])
+                ->pluck('id');
             $make->cars_count = count($cars);
             $make->cars_csv = count($cars) ? implode(',', $cars->toArray()) : null;
             $make->save();

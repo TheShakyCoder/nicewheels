@@ -9,15 +9,13 @@
                 <li>NOT ASPECTED: {{ notAspectedCount }}</li>
                 <li>NOT PROCESSED: {{ notProcessedCount }}</li>
             </ul>
-
+            <inertia-link method="post" as="button" :href="route('admin.sql')">Run SQL</inertia-link>
             <ul class="max-w-lg">
                 <li v-for="(make, index) in carsNotAssignedToModels" :key="'make-' + index" class="flex justify-between space-y-2">
                     <inertia-link :href="route('admin.makes.show', make.id)">{{ make.name }}</inertia-link>
                     <div>{{ make.quantity }}</div>
                 </li>
             </ul>
-        
-            {{  carsNotAssignedToModels }}
         </div>
     </app-layout>
 </template>
@@ -42,7 +40,7 @@ export default {
             default: null
         },
         carsNotAssignedToModels: {
-            type: Number,
+            type: Object,
             default: null
         }
     }
