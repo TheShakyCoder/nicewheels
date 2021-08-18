@@ -12,7 +12,7 @@
 
             <ul class="max-w-lg">
                 <li v-for="(make, index) in carsNotAssignedToModels" :key="'make-' + index" class="flex justify-between space-y-2">
-                    <div>{{ make.name }}</div>
+                    <inertia-link :href="route('admin.makes.show', make.id)">{{ make.name }}</inertia-link>
                     <div>{{ make.quantity }}</div>
                 </li>
             </ul>
