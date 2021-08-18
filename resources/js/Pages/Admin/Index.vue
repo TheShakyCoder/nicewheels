@@ -4,12 +4,20 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Admin</h2>
             <admin-nav></admin-nav>
         </template>
-        <div>
+        <div class="text-lg">
             <ul>
                 <li>NOT ASPECTED: {{ notAspectedCount }}</li>
                 <li>NOT PROCESSED: {{ notProcessedCount }}</li>
             </ul>
+
+            <ul class="max-w-lg">
+                <li v-for="(make, index) in carsNotAssignedToModels" :key="'make-' + index" class="flex justify-between space-y-2">
+                    <div>{{ make.name }}</div>
+                    <div>{{ make.quantity }}</div>
+                </li>
+            </ul>
         
+            {{  carsNotAssignedToModels }}
         </div>
     </app-layout>
 </template>
@@ -33,6 +41,10 @@ export default {
             type: Number,
             default: null
         },
+        carsNotAssignedToModels: {
+            type: Number,
+            default: null
+        }
     }
 }
 </script>

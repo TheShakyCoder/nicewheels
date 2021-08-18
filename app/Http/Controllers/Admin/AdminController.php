@@ -19,9 +19,15 @@ class AdminController extends Controller
             ->whereNull('processed_at')
             ->count();
 
+            
+
+        $carsNotAssignedToModels = \DB::select('select m.name, count(ei.id) AS quantity from ebay_items ei join makes m on m.id = ei.make_id where m.parent_id is null and ei.deleted_at is null group by ei.make_id order by count(ei.id) DESC');
+
+
         return Inertia::render('Admin/Index', [
             'notAspectedCount' => $notAspectedCount,
-            'notProcessedCount' => $notProcessedCount
+            'notProcessedCount' => $notProcessedCount,
+            'carsNotAssignedToModels' => $carsNotAssignedToModels
         ]);
     }
 }
