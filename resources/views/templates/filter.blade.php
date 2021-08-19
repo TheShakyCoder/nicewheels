@@ -84,7 +84,7 @@
 
                             <!-- Right column -->
                             <div class="grid grid-cols-1 gap-4">
-                                @include('templates.partials.news')
+                                
                             </div>
                         </div>
                     </div>
