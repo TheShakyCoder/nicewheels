@@ -36,6 +36,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/public.js') }}" defer></script>
         <script src="https://js.stripe.com/v3/"></script>
+        <script data-ad-client="ca-pub-3326354836489064" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
     <body>
         <div id="public">
