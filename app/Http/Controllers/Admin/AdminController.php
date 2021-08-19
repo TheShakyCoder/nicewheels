@@ -43,31 +43,6 @@ class AdminController extends Controller
 
 
         \DB::raw("
-        # ALFA ROMEO
-update ebay_items set make_id = 11 where make_id = 1 and title like '%mito%';
-update ebay_items set make_id = 12 where make_id = 1 and title like '%brera%';
-update ebay_items set make_id = 6 where make_id = 1 and title like '%155%';
-update ebay_items set make_id = 13 where make_id = 1 and (title like '%GT %' or title like '%GT');
-update ebay_items set make_id = 411 where make_id = 1 and (title like '%GTV %' or title like '%GTV');
-update ebay_items set make_id = 437 where make_id = 1 and (title like '%spider%');
-
-# AUDI
-update ebay_items set make_id = 365 where make_id = 15 and title like '% 80 %';
-update ebay_items set make_id = 59 where make_id = 15 and title like '% a1%';
-update ebay_items set make_id = 226 where make_id = 15 and title like '% a2%';
-update ebay_items set make_id = 114 where make_id = 15 and title like '% a3%';
-update ebay_items set make_id = 85 where make_id = 15 and title like '% a4%';
-update ebay_items set make_id = 75 where make_id = 15 and title like '% a5%';
-update ebay_items set make_id = 138 where make_id = 15 and title like '% a6%';
-update ebay_items set make_id = 76 where make_id = 15 and title like '% q5%';
-update ebay_items set make_id = 208 where make_id = 15 and title like '% q7%';
-update ebay_items set make_id = 408 where make_id = 15 and title like '% rs6%';
-update ebay_items set make_id = 385 where make_id = 15 and title like '% s3%';
-update ebay_items set make_id = 406 where make_id = 15 and title like '% s4%';
-update ebay_items set make_id = 249 where make_id = 15 and (title like '% tt %' or title like '% tt');
-
-# BENTLEY
-update ebay_items set make_id = 482 where make_id = 16 and (title like '%Continental GT%' or title like '%gtc%');
 
 # BMW
 update ebay_items set make_id = 116 where make_id = 17 and (title like '%1 series%' or title like '%1-series%' or title like '% 116%' or title like '% 118%' or title like '% 120%');
