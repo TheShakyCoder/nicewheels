@@ -219,6 +219,63 @@ return [
             'from' => [43],
             'to' => 89,
             'titles' => ['%207%']
+        ],
+        
+        // TOYOTA
+        [
+            'from' => [54],
+            'to' => 136,
+            'titles' => ['%auris%']
+        ],
+        [
+            'from' => [54],
+            'to' => 105,
+            'titles' => ['%avensis%']
+        ],
+        [
+            'from' => [54],
+            'to' => 83,
+            'titles' => ['%aygo%']
+        ],
+        [
+            'from' => [54],
+            'to' => 363,
+            'titles' => ['%carina%']
+        ],
+        [
+            'from' => [54],
+            'to' => 191,
+            'titles' => ['%celica%']
+        ],
+        [
+            'from' => [54],
+            'to' => 103,
+            'titles' => ['%corolla%']
+        ],
+        [
+            'from' => [54],
+            'to' => 156,
+            'titles' => ['%land cruiser%', '%landcruiser%']
+        ],
+        [
+            'from' => [54],
+            'to' => 200,
+            'titles' => ['%prius%']
+        ],
+        [
+            'from' => [54],
+            'to' => 66,
+            'titles' => ['%rav4%', '%rav 4%']
+        ],
+        [
+            'from' => [54],
+            'to' => 360,
+            'titles' => ['%verso%']
+        ],
+        [
+            'from' => [54],
+            'to' => 121,
+            'titles' => ['%yaris%']
         ]
     ]
 ];
