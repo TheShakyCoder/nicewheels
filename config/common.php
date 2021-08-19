@@ -207,6 +207,38 @@ return [
             'titles' => ['%z4%']
         ],
         
+        //  LAND ROVER
+        [
+            'from' => [32],
+            'to' => 82,
+            'titles' => ['%defender%']
+        ],
+        [
+            'from' => [32, 154],
+            'to' => 316,
+            'titles' => ['%discovery sport%']
+        ],
+        [
+            'from' => [32],
+            'to' => 154,
+            'titles' => ['%discovery%']
+        ],
+        [
+            'from' => [32],
+            'to' => 60,
+            'titles' => ['%freelander%']
+        ],
+        [
+            'from' => [32],
+            'to' => 158,
+            'titles' => ['%range rover sport%']
+        ],
+        [
+            'from' => [32],
+            'to' => 155,
+            'titles' => ['%vogue%']
+        ],
+        
         // MERCEDES
         [
             'from' => [36],
@@ -394,42 +426,42 @@ return [
         
         //  VAUXHALL
         [
-            'from' => [54],
+            'from' => [55],
             'to' => 399,
             'titles' => ['%adam%']
         ],
         [
-            'from' => [54],
+            'from' => [55],
             'to' => 140,
             'titles' => ['%astra%']
         ],
         [
-            'from' => [54],
+            'from' => [55],
             'to' => 137,
             'titles' => ['%corsa%']
         ],
         [
-            'from' => [54],
+            'from' => [55],
             'to' => 177,
             'titles' => ['%frontera%']
         ],
         [
-            'from' => [54],
+            'from' => [55],
             'to' => 179,
             'titles' => ['%insignia%']
         ],
         [
-            'from' => [54],
+            'from' => [55],
             'to' => 269,
             'titles' => ['%meriva%']
         ],
         [
-            'from' => [54],
+            'from' => [55],
             'to' => 306,
             'titles' => ['%tigra%']
         ],
         [
-            'from' => [54],
+            'from' => [55],
             'to' => 145,
             'titles' => ['%zafira%']
         ],
