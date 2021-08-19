@@ -258,7 +258,58 @@ return [
             'to' => 244,
             'titles' => ['%saxo%']
         ],
-
+        
+        //  HONDA
+        [
+            'from' => [26],
+            'to' => 167,
+            'titles' => ['%accord%']
+        ],
+        [
+            'from' => [26, 72],
+            'to' => 476,
+            'titles' => ['%civic type r%']
+        ],
+        [
+            'from' => [26, 72],
+            'to' => 477,
+            'titles' => ['%civic type s%']
+        ],
+        [
+            'from' => [26],
+            'to' => 72,
+            'titles' => ['%civic%']
+        ],
+        [
+            'from' => [26],
+            'to' => 106,
+            'titles' => ['%cr-v%', '%crv%']
+        ],
+        [
+            'from' => [26],
+            'to' => 450,
+            'titles' => ['%cr-z%', '%crz%']
+        ],
+        [
+            'from' => [26],
+            'to' => 454,
+            'titles' => ['%fr-v%', '%frv%']
+        ],
+        [
+            'from' => [26],
+            'to' => 93,
+            'titles' => ['%jazz%']
+        ],
+        [
+            'from' => [26],
+            'to' => 172,
+            'titles' => ['%legend%']
+        ],
+        [
+            'from' => [26],
+            'to' => 559,
+            'titles' => ['%stream%']
+        ],
         
         //  LAND ROVER
         [
