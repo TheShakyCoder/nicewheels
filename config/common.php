@@ -207,6 +207,59 @@ return [
             'titles' => ['%z4%']
         ],
         
+        //  CITROEN
+        [
+            'from' => [21, 368],
+            'to' => 554,
+            'titles' => ['%berlingo multispace%', '%berlingo multi space%']
+        ],
+        [
+            'from' => [21],
+            'to' => 368,
+            'titles' => ['%berlingo%']
+        ],
+        [
+            'from' => [21],
+            'to' => 135,
+            'titles' => ['%c1 %', '%c1']
+        ],
+        [
+            'from' => [21],
+            'to' => 181,
+            'titles' => ['%c2 %', '%c2']
+        ],
+        [
+            'from' => [21],
+            'to' => 301,
+            'titles' => ['%c3 %', '%c3']
+        ],
+        [
+            'from' => [21, 301],
+            'to' => 539,
+            'titles' => ['%c3 picasso%']
+        ],
+        [
+            'from' => [21],
+            'to' => 161,
+            'titles' => ['%c4 %', '%c4']
+        ],
+        [
+            'from' => [21],
+            'to' => 265,
+            'titles' => ['%c5 %', '%c5']
+        ],
+        [
+            'from' => [21],
+            'to' => 194,
+            'titles' => ['%ds3%']
+        ],
+        [
+            'from' => [21],
+            'to' => 244,
+            'titles' => ['%saxo%']
+        ],
+
+        
         //  LAND ROVER
         [
             'from' => [32],
