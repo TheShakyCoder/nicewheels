@@ -1,7 +1,7 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
     <TransitionRoot as="template" :show="open">
-        <Dialog as="div" auto-reopen="true" class="fixed z-10 inset-0 overflow-y-auto" @close="close">
+        <Dialog as="div" auto-reopen="true" class="fixed z-20 inset-0 overflow-y-auto" @close="close">
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                 <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
                     <DialogOverlay class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
@@ -39,7 +39,7 @@
                                 <label for="parent_id" class="block text-sm font-medium text-gray-700">Parent</label>
                                 <select v-model="make.parent_id" id="parent_id" name="parent_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                     <option value="">--  none selected --</option>
-                                    <option v-for="m in makes" :value="m.id">{{ "-".repeat(m.depth) }}{{ m.name }}</option>
+                                    <option v-for="m in makes" :key="'make-' + m.id" :value="m.id">{{ "-".repeat(m.depth) }}{{ m.name }}</option>
                                 </select>
                             </div>
                         </div>

@@ -259,6 +259,43 @@ return [
             'titles' => ['%saxo%']
         ],
         
+        //  FORD
+        [
+            'from' => [25],
+            'to' => 397,
+            'titles' => ['%c-max%', 'c max', 'cmax']
+        ],
+        [
+            'from' => [25],
+            'to' => 131,
+            'titles' => ['%fiesta%']
+        ],
+        [
+            'from' => [25],
+            'to' => 110,
+            'titles' => ['%focus%']
+        ],
+        [
+            'from' => [25],
+            'to' => 175,
+            'titles' => ['%galaxy%']
+        ],
+        [
+            'from' => [25],
+            'to' => 132,
+            'titles' => ['% ka%']
+        ],
+        [
+            'from' => [25],
+            'to' => 400,
+            'titles' => ['%kuga%', '%kugga%']
+        ],
+        [
+            'from' => [25],
+            'to' => 142,
+            'titles' => ['%mondeo%']
+        ],
+
         //  HONDA
         [
             'from' => [26],

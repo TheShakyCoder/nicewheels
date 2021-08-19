@@ -26,7 +26,10 @@
                                     <div>
                                         <div>{{ aspectMake.aspect_make }} {{ aspectMake.aspect_model }}</div>
                                         <div>
-                                            <label for="make_id" class="block text-sm font-medium text-gray-700">Make</label>
+                                            <div class="flex justify-between">
+                                                <label for="make_id" class="block text-sm font-medium text-gray-700">Make</label>
+                                                <!-- <button @click="addMake">add</button> -->
+                                            </div>
                                             <select v-model="aspectMake.make_id" id="make_id" name="make_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                                 <option value="">--  none selected --</option>
                                                 <option v-for="make in makes" :value="make.id">{{ "-".repeat(make.depth) }}{{ make.name }}</option>
@@ -112,6 +115,11 @@ export default {
             this.image = null
             this.$store.commit('admin/toggleModal', { modal: 'aspectMake', state: false })
         },
+        addMake () {
+            this.$store.commit('admin/setSingleProperty', { key: 'make', value: { name: null, slug: null, parent_id: null } })
+            this.$store.commit('admin/setSingleProperty', { key: 'makes', value: this.makes })
+            this.$store.commit('admin/toggleModal', { modal: 'makeAdd', state: true })
+        }
     }
 }
 </script>

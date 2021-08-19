@@ -60,12 +60,7 @@ update ebay_items set make_id = 288 where make_id IN(24, 126) and (title like '%
 update ebay_items set make_id = 126 where make_id IN(24) and (title like '%punto%');
 update ebay_items set make_id = 272 where make_id IN(24) and (title like '%stilo%');
 
-# FORD
-update ebay_items set make_id = 131 where make_id = 25 and (title like '%fiesta%');
-update ebay_items set make_id = 110 where make_id = 25 and (title like '%focus%');
-update ebay_items set make_id = 132 where make_id = 25 and (title like '% ka%');
-update ebay_items set make_id = 400 where make_id = 25 and (title like '%kuga%' or title like '%kugga%');
-update ebay_items set make_id = 142 where make_id = 25 and (title like '%mondeo%');
+
 
 
 
