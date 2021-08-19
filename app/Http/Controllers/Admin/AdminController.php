@@ -127,19 +127,7 @@ update ebay_items set make_id = 230 where make_id = 35 and (title like '%mazda 6
 update ebay_items set make_id = 92 where make_id = 35 and (title like '%rx7%' or title like '%rx-7');
 update ebay_items set make_id = 258 where make_id = 35 and (title like '%rx8%' or title like '%rx-8');
 
-# MERCEDES
-update ebay_items set make_id = 231 where make_id = 36 and (title like '% a class%' or title like '% a 180%' or title like '% a180%' or title like '% a200%' or title like '% a 200%');
-update ebay_items set make_id = 159 where make_id = 36 and (title like '% c class%' or title like '% c180%' or title like '% c200%' or title like '% c250%' or title like '% c270%' or title like '% c63%');
-update ebay_items set make_id = 338 where make_id = 36 and (title like '% cla %');
-update ebay_items set make_id = 330 where make_id = 36 and (title like '% clc%');
-update ebay_items set make_id = 220 where make_id = 36 and (title like '% clk%' or title like 'clk %');
-update ebay_items set make_id = 280 where make_id = 36 and (title like '% cls%');
-update ebay_items set make_id = 196 where make_id = 36 and (title like '% e220%' or title like '% e240%' or title like '% e320%' or title like '% e350%' or title like '% e class%');
-update ebay_items set make_id = 490 where make_id = 36 and (title like '% gl320%');
-update ebay_items set make_id = 160 where make_id = 36 and (title like '% ml250%' or title like '%ml270%' or title like '%ml320%' or title like '%ml350%');
-update ebay_items set make_id = 198 where make_id = 36 and (title like '% s class%' or title like '% s320%' or title like '% s500%' or title like '% s 500%');
-update ebay_items set make_id = 133 where make_id = 36 and (title like '% sl350%');
-update ebay_items set make_id = 178 where make_id = 36 and (title like '% slk%');
+
 
 # MINI
 update ebay_items set make_id = 218 where make_id = 38 and (title like '%clubman%');
