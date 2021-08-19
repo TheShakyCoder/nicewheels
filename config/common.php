@@ -22,6 +22,11 @@ return [
         ],
         [
             'from' => [1],
+            'to' => 6,
+            'titles' => ['%155%']
+        ],
+        [
+            'from' => [1],
             'to' => 8,
             'titles' => ['%159%']
         ],
@@ -35,7 +40,31 @@ return [
             'to' => 419,
             'titles' => ['%giulietta%']
         ],
-
+        [
+            'from' => [1],
+            'to' => 11,
+            'titles' => ['%mito%']
+        ],
+        [
+            'from' => [1],
+            'to' => 12,
+            'titles' => ['%brera%']
+        ],
+        [
+            'from' => [1],
+            'to' => 13,
+            'titles' => ['%gt %', '%gt']
+        ],
+        [
+            'from' => [1],
+            'to' => 411,
+            'titles' => ['%gtv %', '%gtv']
+        ],
+        [
+            'from' => [1],
+            'to' => 437,
+            'titles' => ['%spider%']
+        ],
 
         //  PEUGEOT
         [
