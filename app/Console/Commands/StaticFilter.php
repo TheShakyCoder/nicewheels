@@ -59,10 +59,8 @@ class StaticFilter extends Command
             $folder = $make->full_folder;
             echo $folder.PHP_EOL;
             
-            $news = $newsService->feed(8);
-
             //  GET THE COMPILED HTML
-            $html = $staticService->getFilterCompiledHtml('templates.filter', $make->full_name, $cars, $lastPage, $makeAndDescendants, $makes, $folder, $news);
+            $html = $staticService->getFilterCompiledHtml('templates.filter', $make->full_name, $cars, $lastPage, $makeAndDescendants, $makes, $folder);
 
             try {
                 mkdir(public_path('used-prices/'.$folder), 0775, true);
@@ -81,7 +79,7 @@ class StaticFilter extends Command
         $cars = $ebayItemService->getPublicEbayItems(0, 12, null);
         $lastPage = json_decode($cars->toJson())->last_page;
         $folder = '';
-        $html = $staticService->getFilterCompiledHtml('templates.filter', 'All Makes', $cars, $lastPage, [], $makes, $folder, $news);
+        $html = $staticService->getFilterCompiledHtml('templates.filter', 'All Makes', $cars, $lastPage, [], $makes, $folder);
         file_put_contents(public_path('used-prices/index.html'), $html);
         echo 'used-prices/index.html'.PHP_EOL;
 
