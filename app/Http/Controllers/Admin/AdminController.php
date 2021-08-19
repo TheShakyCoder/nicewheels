@@ -129,16 +129,7 @@ update ebay_items set make_id = 258 where make_id = 35 and (title like '%rx8%' o
 
 
 
-# MINI
-update ebay_items set make_id = 218 where make_id = 38 and (title like '%clubman%');
-update ebay_items set make_id = 340 where make_id = 38 and (title like '%countryman%');
-update ebay_items set make_id = 373 where make_id = 38 and (title like '%john cooper works%' or title like '%jcw%');
-update ebay_items set make_id = 144 where make_id = 38 and (title like '%paceman%');
-update ebay_items set make_id = 460 where make_id = 38 and (title like '%roadster%');
-update ebay_items set make_id = 141 where make_id = 38 and (title like '%cooper d%');
-update ebay_items set make_id = 211 where make_id = 38 and (title like '%cooper s%');
-update ebay_items set make_id = 185 where make_id = 38 and (title like '%cooper%');
-update ebay_items set make_id = 68 where make_id = 38 and (title like '% one %');
+
 
 # MITSUBISHI
 update ebay_items set make_id = 124 where make_id = 39 and (title like '%colt%');

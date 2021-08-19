@@ -269,6 +269,58 @@ return [
             'titles' => ['%slk%']
         ],
         
+        // MINI
+        [
+            'from' => [38],
+            'to' => 218,
+            'titles' => ['%clubman%']
+        ],
+        [
+            'from' => [38],
+            'to' => 340,
+            'titles' => ['%countryman%']
+        ],
+        [
+            'from' => [38],
+            'to' => 373,
+            'titles' => ['%john cooper works%', '%jcw%']
+        ],
+        [
+            'from' => [38],
+            'to' => 144,
+            'titles' => ['%paceman%']
+        ],
+        [
+            'from' => [38],
+            'to' => 460,
+            'titles' => ['%roadster%']
+        ],
+        [
+            'from' => [38],
+            'to' => 68,
+            'titles' => ['% one%']
+        ],
+        [
+            'from' => [38],
+            'to' => 68,
+            'titles' => ['% one%']
+        ],
+        [
+            'from' => [38],
+            'to' => 141,
+            'titles' => ['%cooper d%']
+        ],
+        [
+            'from' => [38],
+            'to' => 211,
+            'titles' => ['%cooper s%']
+        ],
+        [
+            'from' => [38],
+            'to' => 185,
+            'titles' => ['%cooper%']
+        ],
+
         //  NISSAN
         [
             'from' => [41],
