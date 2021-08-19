@@ -21,7 +21,7 @@ export default {
     methods: {
         show () {
             this.$store.commit('static/toggleModal', { modal: 'information', state: true })
-            axios.get('/api/cars/' + this.id + '/information', { api_token: this.user.api_token })
+            axios.get('/api/cars/' + this.id + '/information')
                 .then(resp => {
                     this.$store.commit('static/setStaticProperty', { key: 'car', value: resp.data.car })
                 })
