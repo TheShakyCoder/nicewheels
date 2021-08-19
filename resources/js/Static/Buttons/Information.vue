@@ -13,10 +13,15 @@ export default {
     props: {
         id: null
     },
+    computed: {
+        user () {
+            return this.$store.state.static.user
+        }
+    },
     methods: {
         show () {
             this.$store.commit('static/toggleModal', { modal: 'information', state: true })
-            axios.get('/api/cars/' + this.id + '/information')
+            axios.get('/api/cars/' + this.id + '/information', { api_token: this.user.api_token })
                 .then(resp => {
                     this.$store.commit('static/setStaticProperty', { key: 'car', value: resp.data.car })
                 })
