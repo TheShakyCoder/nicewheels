@@ -44,17 +44,6 @@ class AdminController extends Controller
 
         \DB::raw("
 
-# BMW
-update ebay_items set make_id = 116 where make_id = 17 and (title like '%1 series%' or title like '%1-series%' or title like '% 116%' or title like '% 118%' or title like '% 120%');
-update ebay_items set make_id = 99 where make_id = 17 and (title like '% 3 series%' or title like '% e30%' or title like '%e36%' or title like '% e46%' or title like '% 318%' or title like '% 320%' or title like '% 325%' or title like '% 328%' or title like '% 330%' or title like '% 335%') or (subtitle like '%3 series%');
-update ebay_items set make_id = 102 where make_id = 17 and (title like '%e39%' or title like '% 520%' or title like '% 525%' or title like '% 530%' or title like '% 545%');
-update ebay_items set make_id = 350 where make_id = 17 and (title like '% 6 series%' or title like '% 640%');
-update ebay_items set make_id = 434 where make_id = 17 and (title like '% 730%' or title like '% 735%');
-update ebay_items set make_id = 237 where make_id = 17 and (title like '% x3%');
-update ebay_items set make_id = 435 where make_id = 17 and (title like '% x5%');
-update ebay_items set make_id = 347 where make_id = 17 and (title like '% z3%');
-update ebay_items set make_id = 293 where make_id = 17 and (title like '% z4%');
-
 update ebay_items set make_id = 312 where make_id = 19 and (title like '%aveo%');
 update ebay_items set make_id = 337 where make_id = 19 and (title like '%captiva%');
 update ebay_items set make_id = 516 where make_id = 19 and (title like '%cruze%');
