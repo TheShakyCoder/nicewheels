@@ -497,8 +497,73 @@ return [
         //  NISSAN
         [
             'from' => [41],
+            'to' => 439,
+            'titles' => ['%350z%']
+        ],
+        [
+            'from' => [41],
+            'to' => 356,
+            'titles' => ['%almera%']
+        ],
+        [
+            'from' => [41],
+            'to' => 405,
+            'titles' => ['%cube%']
+        ],
+        [
+            'from' => [41],
+            'to' => 331,
+            'titles' => ['%elgrand%']
+        ],
+        [
+            'from' => [41],
+            'to' => 127,
+            'titles' => ['%juke%']
+        ],
+        [
+            'from' => [41],
+            'to' => 65,
+            'titles' => ['%leaf%']
+        ],
+        [
+            'from' => [41],
+            'to' => 203,
+            'titles' => ['%micra%']
+        ],
+        [
+            'from' => [41],
+            'to' => 311,
+            'titles' => ['%note%']
+        ],
+        [
+            'from' => [41],
+            'to' => 412,
+            'titles' => ['%pathfinder%']
+        ],
+        [
+            'from' => [41],
+            'to' => 452,
+            'titles' => ['%patrol%']
+        ],
+        [
+            'from' => [41],
+            'to' => 294,
+            'titles' => ['%primera%']
+        ],
+        [
+            'from' => [41],
             'to' => 129,
             'titles' => ['%qashqai%']
+        ],
+        [
+            'from' => [41],
+            'to' => 425,
+            'titles' => ['%serena%']
+        ],
+        [
+            'from' => [41],
+            'to' => 232,
+            'titles' => ['%%x trail%', '%xtrail%%']
         ],
 
         //  PEUGEOT
