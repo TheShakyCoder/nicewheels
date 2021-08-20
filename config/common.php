@@ -694,6 +694,38 @@ return [
             'titles' => ['%yeti%']
         ],
         
+        //  SUZUKI
+        [
+            'from' => [52],
+            'to' => 98,
+            'titles' => ['%alto%']
+        ],
+        [
+            'from' => [52],
+            'to' => 310,
+            'titles' => ['%ignis%']
+        ],
+        [
+            'from' => [52],
+            'to' => 119,
+            'titles' => ['%jimny%', '%sj 410%', '%sj410%']
+        ],
+        [
+            'from' => [52],
+            'to' => 171,
+            'titles' => ['%swift%']
+        ],
+        [
+            'from' => [52],
+            'to' => 222,
+            'titles' => ['%grand vitara%']
+        ],
+        [
+            'from' => [52],
+            'to' => 317,
+            'titles' => ['%vitara%']
+        ],
+
         // TOYOTA
         [
             'from' => [54],
