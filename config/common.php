@@ -348,6 +348,48 @@ return [
             'titles' => ['%stream%']
         ],
         
+        //  JAGUAR
+        [
+            'from' => [28],
+            'to' => 111,
+            'titles' => ['%f type%', '%f-type%', '%ftype%']
+        ],
+        [
+            'from' => [28],
+            'to' => 117,
+            'titles' => ['%s type%', '%s-type%', '%stype%']
+        ],
+        [
+            'from' => [28],
+            'to' => 128,
+            'titles' => ['%x type%', '%x-type%', '%xtype%']
+        ],
+        [
+            'from' => [28],
+            'to' => 329,
+            'titles' => ['% xe %']
+        ],
+        [
+            'from' => [28],
+            'to' => 80,
+            'titles' => ['% xf %']
+        ],
+        [
+            'from' => [28],
+            'to' => 259,
+            'titles' => ['%xj6%']
+        ],
+        [
+            'from' => [28],
+            'to' => 326,
+            'titles' => ['%xj8%']
+        ],
+        [
+            'from' => [28],
+            'to' => 210,
+            'titles' => ['%xk8%']
+        ],
+
         //  LAND ROVER
         [
             'from' => [32],
