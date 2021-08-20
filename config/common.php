@@ -912,6 +912,28 @@ return [
             'titles' => ['%yeti%']
         ],
         
+        //  SUBARU
+        [
+            'from' => [51, 73],
+            'to' => 446,
+            'titles' => ['%wrx%']
+        ],
+        [
+            'from' => [51],
+            'to' => 73,
+            'titles' => ['%impreza%']
+        ],
+        [
+            'from' => [51],
+            'to' => 391,
+            'titles' => ['%legacy%']
+        ],
+        [
+            'from' => [51],
+            'to' => 501,
+            'titles' => ['%tribeca%']
+        ],
+
         //  SUZUKI
         [
             'from' => [52],
