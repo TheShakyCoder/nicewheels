@@ -689,6 +689,33 @@ return [
             'titles' => ['%207%']
         ],
         
+        //  PORSCHE
+        [
+            'from' => [44],
+            'to' => 566,
+            'titles' => ['%968%']
+        ],
+        [
+            'from' => [44],
+            'to' => 84,
+            'titles' => ['%boxster%', '%boxter%']
+        ],
+        [
+            'from' => [44],
+            'to' => 164,
+            'titles' => ['%cayenne%']
+        ],
+        [
+            'from' => [44],
+            'to' => 499,
+            'titles' => ['%cayman%']
+        ],
+        [
+            'from' => [44],
+            'to' => 388,
+            'titles' => ['%panamera%']
+        ],
+        
         //  SAAB
         [
             'from' => [47],
