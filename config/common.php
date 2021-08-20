@@ -713,5 +713,38 @@ return [
             'to' => 145,
             'titles' => ['%zafira%']
         ],
+        
+        //  VOLKSWAGEN
+        [
+            'from' => [56],
+            'to' => 104,
+            'titles' => ['%beetle%']
+        ],
+        [
+            'from' => [56],
+            'to' => 81,
+            'titles' => ['%golf%']
+        ],
+        [
+            'from' => [56],
+            'to' => 163,
+            'titles' => ['%passat%']
+        ],
+        [
+            'from' => [56],
+            'to' => 262,
+            'titles' => ['%polo%']
+        ],
+        [
+            'from' => [56],
+            'to' => 300,
+            'titles' => ['%sharan%']
+        ],
+        [
+            'from' => [56],
+            'to' => 369,
+            'titles' => ['%touareg%']
+        ],
+        
     ]
 ];
