@@ -657,6 +657,53 @@ return [
             'titles' => ['%207%']
         ],
         
+        //  SEAT
+        [
+            'from' => [48],
+            'to' => 96,
+            'titles' => ['%altea%']
+        ],
+        [
+            'from' => [48],
+            'to' => 182,
+            'titles' => ['%arona%']
+        ],
+        [
+            'from' => [48],
+            'to' => 296,
+            'titles' => ['%arosa%']
+        ],
+        [
+            'from' => [48],
+            'to' => 355,
+            'titles' => ['%ateca%']
+        ],
+        [
+            'from' => [48],
+            'to' => 551,
+            'titles' => ['%exeo%']
+        ],
+        [
+            'from' => [48],
+            'to' => 61,
+            'titles' => ['%ibiza%']
+        ],
+        [
+            'from' => [48],
+            'to' => 152,
+            'titles' => ['%leon%']
+        ],
+        [
+            'from' => [48],
+            'to' => 359,
+            'titles' => ['%mii%']
+        ],
+        [
+            'from' => [48],
+            'to' => 469,
+            'titles' => ['%toledo%']
+        ],
+        
         //  SKODA
         [
             'from' => [49],
