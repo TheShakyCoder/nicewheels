@@ -624,6 +624,48 @@ return [
             'to' => 185,
             'titles' => ['%cooper%']
         ],
+        
+        //  MITSUBISHI
+        [
+            'from' => [39],
+            'to' => 124,
+            'titles' => ['%colt%']
+        ],
+        [
+            'from' => [39, 239],
+            'to' => 271,
+            'titles' => ['%evo%', '%evolution%']
+        ],
+        [
+            'from' => [39],
+            'to' => 488,
+            'titles' => ['%galant%']
+        ],
+        [
+            'from' => [39],
+            'to' => 531,
+            'titles' => ['%fto%']
+        ],
+        [
+            'from' => [39],
+            'to' => 239,
+            'titles' => ['%lancer%']
+        ],
+        [
+            'from' => [39],
+            'to' => 307,
+            'titles' => ['%outlander%']
+        ],
+        [
+            'from' => [39, 245],
+            'to' => 298,
+            'titles' => ['%shogun sport%']
+        ],
+        [
+            'from' => [39],
+            'to' => 245,
+            'titles' => ['%shogun%']
+        ],
 
         //  NISSAN
         [
