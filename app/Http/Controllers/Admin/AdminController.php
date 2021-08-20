@@ -62,8 +62,6 @@ update ebay_items set make_id = 272 where make_id IN(24) and (title like '%stilo
 update ebay_items set make_id = 123 where make_id = 27 and (title like '%i10%');
 update ebay_items set make_id = 227 where make_id = 27 and (title like '%i30%');
 
-
-
 # KIA
 update ebay_items set make_id = 125 where make_id = 30 and (title like '%picanto%');
 update ebay_items set make_id = 153 where make_id = 30 and (title like '%rio%');
@@ -110,9 +108,7 @@ update ebay_items set make_id = 96 where make_id = 48 and (title like '%altea%')
 update ebay_items set make_id = 61 where make_id = 48 and (title like '%ibiza%');
 update ebay_items set make_id = 152 where make_id = 48 and (title like '%leon%');
 
-# SKODA
-update ebay_items set make_id = 243 where make_id = 49 and (title like '%fabia%');
-update ebay_items set make_id = 139 where make_id = 49 and (title like '%octavia%');
+
 
 # SUBARU
 update ebay_items set make_id = 73 where make_id = 51 and (title like '%impreza%');

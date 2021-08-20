@@ -657,6 +657,43 @@ return [
             'titles' => ['%207%']
         ],
         
+        //  SKODA
+        [
+            'from' => [49],
+            'to' => 364,
+            'titles' => ['%citigo%']
+        ],
+        [
+            'from' => [49],
+            'to' => 243,
+            'titles' => ['%fabia%']
+        ],
+        [
+            'from' => [49],
+            'to' => 410,
+            'titles' => ['%felicia%']
+        ],
+        [
+            'from' => [49],
+            'to' => 139,
+            'titles' => ['%octavia%']
+        ],
+        [
+            'from' => [49],
+            'to' => 346,
+            'titles' => ['%roomster%']
+        ],
+        [
+            'from' => [49],
+            'to' => 101,
+            'titles' => ['%superb%']
+        ],
+        [
+            'from' => [49],
+            'to' => 207,
+            'titles' => ['%yeti%']
+        ],
+        
         // TOYOTA
         [
             'from' => [54],
