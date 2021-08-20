@@ -13,10 +13,14 @@ class AdminController extends Controller
     {
         $notAspectedCount = EbayItem::query()
             ->whereNull('aspected_at')
+            ->where('used_price', 1)
+            ->whereNull('deleted_at')
             ->count();
 
         $notProcessedCount = EbayItem::query()
             ->whereNull('processed_at')
+            ->where('used_price', 1)
+            ->whereNull('deleted_at')
             ->count();
 
             
@@ -62,9 +66,6 @@ update ebay_items set make_id = 272 where make_id IN(24) and (title like '%stilo
 update ebay_items set make_id = 123 where make_id = 27 and (title like '%i10%');
 update ebay_items set make_id = 227 where make_id = 27 and (title like '%i30%');
 
-# KIA
-update ebay_items set make_id = 125 where make_id = 30 and (title like '%picanto%');
-update ebay_items set make_id = 153 where make_id = 30 and (title like '%rio%');
 
 # MASERATI
 update ebay_items set make_id = 532 where make_id = 34 and (title like '%4200%');

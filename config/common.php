@@ -389,6 +389,38 @@ return [
             'to' => 210,
             'titles' => ['%xk8%']
         ],
+        
+        //  KIA
+        [
+            'from' => [30],
+            'to' => 334,
+            'titles' => ['%carens%']
+        ],
+        [
+            'from' => [30],
+            'to' => 487,
+            'titles' => ['%optima%']
+        ],
+        [
+            'from' => [30],
+            'to' => 125,
+            'titles' => ['%picanto%']
+        ],
+        [
+            'from' => [30],
+            'to' => 153,
+            'titles' => ['%rio%']
+        ],
+        [
+            'from' => [30],
+            'to' => 286,
+            'titles' => ['%sedona%']
+        ],
+        [
+            'from' => [30],
+            'to' => 376,
+            'titles' => ['%venga%']
+        ],
 
         //  LAND ROVER
         [
