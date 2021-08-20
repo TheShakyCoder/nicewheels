@@ -264,6 +264,43 @@ return [
             'titles' => ['%saxo%']
         ],
         
+        //  FIAT
+        [
+            'from' => [24, 94],
+            'to' => 367,
+            'titles' => ['%500c %']
+        ],
+        [
+            'from' => [24, 94],
+            'to' => 290,
+            'titles' => ['%500l %']
+        ],
+        [
+            'from' => [24, 94],
+            'to' => 545,
+            'titles' => ['%500x %']
+        ],
+        [
+            'from' => [24],
+            'to' => 94,
+            'titles' => ['%500 %']
+        ],
+        [
+            'from' => [24],
+            'to' => 288,
+            'titles' => ['%grande punto%', '%grand punto%']
+        ],
+        [
+            'from' => [24],
+            'to' => 126,
+            'titles' => ['%punto%']
+        ],
+        [
+            'from' => [24],
+            'to' => 272,
+            'titles' => ['%stilo%']
+        ],
+
         //  FORD
         [
             'from' => [25],
