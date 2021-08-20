@@ -348,6 +348,44 @@ return [
             'titles' => ['%stream%']
         ],
         
+        //  HYUNDAI
+        [
+            'from' => [27],
+            'to' => 522,
+            'titles' => ['%amica%']
+        ],
+        [
+            'from' => [27],
+            'to' => 123,
+            'titles' => ['%i10%']
+        ],
+        [
+            'from' => [27],
+            'to' => 275,
+            'titles' => ['%i20%']
+        ],
+        [
+            'from' => [27],
+            'to' => 227,
+            'titles' => ['%i30%']
+        ],
+        [
+            'from' => [27],
+            'to' => 151,
+            'titles' => ['%i40%']
+        ],
+        [
+            'from' => [27],
+            'to' => 277,
+            'titles' => ['%i800%']
+        ],
+        [
+            'from' => [27],
+            'to' => 91,
+            'titles' => ['%ix35%']
+        ],
+
+
         //  JAGUAR
         [
             'from' => [28],
