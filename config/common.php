@@ -380,6 +380,48 @@ return [
             'titles' => ['%vogue%']
         ],
         
+        //  MAZDA
+        [
+            'from' => [35],
+            'to' => 285,
+            'titles' => ['%mazda 2 %', '%mazda2 %']
+        ],
+        [
+            'from' => [35],
+            'to' => 555,
+            'titles' => ['%bongo%']
+        ],
+        [
+            'from' => [35],
+            'to' => 377,
+            'titles' => ['%cx-7%', '%cx7%']
+        ],
+        [
+            'from' => [35],
+            'to' => 87,
+            'titles' => ['%mx-5%', '%mx5%']
+        ],
+        [
+            'from' => [35],
+            'to' => 157,
+            'titles' => ['%mazda 3 %', '%mazda 3']
+        ],
+        [
+            'from' => [35],
+            'to' => 230,
+            'titles' => ['%mazda 6 %', '%mazda 6']
+        ],
+        [
+            'from' => [35],
+            'to' => 92,
+            'titles' => ['%rx7%', '%rx-7']
+        ],
+        [
+            'from' => [35],
+            'to' => 258,
+            'titles' => ['%rx8%', '%rx-8']
+        ],
+
         // MERCEDES
         [
             'from' => [36],
