@@ -535,6 +535,28 @@ return [
             'titles' => ['%xk %']
         ],
         
+        //  JEEP
+        [
+            'from' => [29, 493],
+            'to' => 494,
+            'titles' => ['%grand cherokee%']
+        ],
+        [
+            'from' => [29],
+            'to' => 493,
+            'titles' => ['%cherokee%']
+        ],
+        [
+            'from' => [29],
+            'to' => 495,
+            'titles' => ['%patriot%']
+        ],
+        [
+            'from' => [29],
+            'to' => 492,
+            'titles' => ['%wrangler%']
+        ],
+
         //  KIA
         [
             'from' => [30],
