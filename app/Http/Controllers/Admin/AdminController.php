@@ -60,15 +60,7 @@ update ebay_items set make_id = 361 where make_id = 34 and (title like '%Quattro
 
 
 
-# VOLVO
-update ebay_items set make_id = 433 where make_id = 57 and (title like '%850%');
-update ebay_items set make_id = 213 where make_id = 57 and (title like '%s40%');
-update ebay_items set make_id = 192 where make_id = 57 and (title like '%s60%');
-update ebay_items set make_id = 143 where make_id = 57 and (title like '%v50%');
-update ebay_items set make_id = 134 where make_id = 57 and (title like '%v70%');
-update ebay_items set make_id = 214 where make_id = 57 and (title like '%xc60%');
-update ebay_items set make_id = 323 where make_id = 57 and (title like '%xc70%');
-update ebay_items set make_id = 95 where make_id = 57 and (title like '%xc90%');
+
         ");
 
         return redirect()->back();
