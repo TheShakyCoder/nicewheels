@@ -945,7 +945,7 @@ return [
         [
             'from' => [41],
             'to' => 129,
-            'titles' => ['%qashqai%']
+            'titles' => ['%qashqai%', 'qashqui%']
         ],
         [
             'from' => [41],
@@ -954,8 +954,13 @@ return [
         ],
         [
             'from' => [41],
+            'to' => 267,
+            'titles' => ['%skyline%']
+        ],
+        [
+            'from' => [41],
             'to' => 232,
-            'titles' => ['%%x trail%', '%xtrail%%']
+            'titles' => ['%%x trail%', '%xtrail%%', '%x-trail%']
         ],
 
         //  PEUGEOT
@@ -1463,6 +1468,16 @@ return [
         ],
         [
             'from' => [57],
+            'to' => 255,
+            'titles' => ['% c30%']
+        ],
+        [
+            'from' => [57],
+            'to' => 449,
+            'titles' => ['% c70%']
+        ],
+        [
+            'from' => [57],
             'to' => 192,
             'titles' => ['%s60%']
         ],
@@ -1480,6 +1495,11 @@ return [
             'from' => [57],
             'to' => 143,
             'titles' => ['%v50%']
+        ],
+        [
+            'from' => [57],
+            'to' => 122,
+            'titles' => ['%v40%']
         ],
         [
             'from' => [57],
