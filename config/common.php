@@ -472,7 +472,7 @@ return [
         [
             'from' => [28],
             'to' => 80,
-            'titles' => ['% xf %']
+            'titles' => ['% xf %', '% xf']
         ],
         [
             'from' => [28],
@@ -486,8 +486,23 @@ return [
         ],
         [
             'from' => [28],
+            'to' => 326,
+            'titles' => ['%xj %', '%xj']
+        ],
+        [
+            'from' => [28],
             'to' => 210,
-            'titles' => ['%xk8%']
+            'titles' => ['%xk8%', '%xk 8%']
+        ],
+        [
+            'from' => [28],
+            'to' => 530,
+            'titles' => ['%xkr%']
+        ],
+        [
+            'from' => [28],
+            'to' => 422,
+            'titles' => ['%xk %']
         ],
         
         //  KIA
