@@ -589,22 +589,22 @@ return [
             'titles' => ['%freelander%']
         ],
         [
-            'from' => [32],
+            'from' => [32, 205],
             'to' => 212,
             'titles' => ['%evoque%']
         ],
         [
-            'from' => [32],
+            'from' => [32, 205],
             'to' => 158,
             'titles' => ['%range rover sport%']
         ],
         [
-            'from' => [32],
+            'from' => [32, 205],
             'to' => 351,
             'titles' => ['%velar%']
         ],
         [
-            'from' => [32],
+            'from' => [32, 205],
             'to' => 155,
             'titles' => ['%vogue%']
         ],
