@@ -344,13 +344,28 @@ return [
         ],
         [
             'from' => [25],
+            'to' => 569,
+            'titles' => ['%ecosport%', '%eco-sport%', '%eco sport%']
+        ],
+        [
+            'from' => [25],
             'to' => 110,
             'titles' => ['%focus%']
         ],
         [
             'from' => [25],
+            'to' => 470,
+            'titles' => ['%fusion%']
+        ],
+        [
+            'from' => [25],
             'to' => 175,
             'titles' => ['%galaxy%']
+        ],
+        [
+            'from' => [25],
+            'to' => 485,
+            'titles' => ['%granada%']
         ],
         [
             'from' => [25],
@@ -366,6 +381,11 @@ return [
             'from' => [25],
             'to' => 142,
             'titles' => ['%mondeo%']
+        ],
+        [
+            'from' => [25],
+            'to' => 309,
+            'titles' => ['%s max%', '%s-max%']
         ],
 
         //  HONDA
@@ -1220,6 +1240,11 @@ return [
             'from' => [54],
             'to' => 103,
             'titles' => ['%corolla%']
+        ],
+        [
+            'from' => [54],
+            'to' => 344,
+            'titles' => ['%iq%']
         ],
         [
             'from' => [54],
