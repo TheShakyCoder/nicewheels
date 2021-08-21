@@ -590,13 +590,28 @@ return [
         ],
         [
             'from' => [32],
+            'to' => 212,
+            'titles' => ['%evoque%']
+        ],
+        [
+            'from' => [32],
             'to' => 158,
             'titles' => ['%range rover sport%']
         ],
         [
             'from' => [32],
+            'to' => 351,
+            'titles' => ['%velar%']
+        ],
+        [
+            'from' => [32],
             'to' => 155,
             'titles' => ['%vogue%']
+        ],
+        [
+            'from' => [32],
+            'to' => 205,
+            'titles' => ['%range rover%']
         ],
         
         //  MAZDA
