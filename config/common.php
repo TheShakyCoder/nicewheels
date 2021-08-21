@@ -1232,8 +1232,23 @@ return [
         ],
         [
             'from' => [56],
+            'to' => 372,
+            'titles' => ['%caddy%']
+        ],
+        [
+            'from' => [56],
             'to' => 81,
             'titles' => ['%golf%']
+        ],
+        [
+            'from' => [56],
+            'to' => 299,
+            'titles' => ['%jetta%']
+        ],
+        [
+            'from' => [56],
+            'to' => 342,
+            'titles' => ['%lupo%']
         ],
         [
             'from' => [56],
@@ -1247,13 +1262,28 @@ return [
         ],
         [
             'from' => [56],
+            'to' => 252,
+            'titles' => ['%scirocco%']
+        ],
+        [
+            'from' => [56],
             'to' => 300,
             'titles' => ['%sharan%']
         ],
         [
             'from' => [56],
+            'to' => 315,
+            'titles' => ['%tiguan%']
+        ],
+        [
+            'from' => [56],
             'to' => 369,
             'titles' => ['%touareg%']
+        ],
+        [
+            'from' => [56],
+            'to' => 148,
+            'titles' => ['%touran%']
         ],
         
         //  VOLVO
