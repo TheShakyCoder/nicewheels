@@ -668,6 +668,29 @@ return [
             'titles' => ['%range rover%']
         ],
         
+        //  LEXUS
+        [
+            'from' => [33],
+            'to' => 261,
+            'titles' => ['% GS%']
+        ],
+        [
+            'from' => [33],
+            'to' => 62,
+            'titles' => ['% IS%']
+        ],
+        [
+            'from' => [33],
+            'to' => 420,
+            'titles' => ['% LS%']
+        ],
+        [
+            'from' => [33],
+            'to' => 112,
+            'titles' => ['% RX%']
+        ],
+
+        
         //  MASERATI
         [
             'from' => [34],
