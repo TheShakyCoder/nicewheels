@@ -614,6 +614,23 @@ return [
             'titles' => ['%range rover%']
         ],
         
+        //  MASERATI
+        [
+            'from' => [34],
+            'to' => 532,
+            'titles' => ['%4200%']
+        ],
+        [
+            'from' => [34],
+            'to' => 572,
+            'titles' => ['%ghibli%']
+        ],
+        [
+            'from' => [34],
+            'to' => 361,
+            'titles' => ['%quattroporte%']
+        ],
+
         //  MAZDA
         [
             'from' => [35],
