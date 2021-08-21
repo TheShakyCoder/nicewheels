@@ -222,6 +222,28 @@ return [
             'titles' => ['%z4%']
         ],
         
+        //  CHEVROLET
+        [
+            'from' => [19],
+            'to' => 312,
+            'titles' => ['%aveo%']
+        ],
+        [
+            'from' => [19],
+            'to' => 337,
+            'titles' => ['%captiva%']
+        ],
+        [
+            'from' => [19],
+            'to' => 516,
+            'titles' => ['%cruze%']
+        ],
+        [
+            'from' => [19],
+            'to' => 375,
+            'titles' => ['%matiz%']
+        ],
+
         //  CITROEN
         [
             'from' => [21, 368],
@@ -565,6 +587,11 @@ return [
         ],
         [
             'from' => [30],
+            'to' => 395,
+            'titles' => ['%ceed%']
+        ],
+        [
+            'from' => [30],
             'to' => 487,
             'titles' => ['%optima%']
         ],
@@ -582,6 +609,11 @@ return [
             'from' => [30],
             'to' => 286,
             'titles' => ['%sedona%']
+        ],
+        [
+            'from' => [30],
+            'to' => 246,
+            'titles' => ['%sportage%']
         ],
         [
             'from' => [30],

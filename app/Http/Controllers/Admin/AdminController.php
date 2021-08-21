@@ -45,22 +45,6 @@ class AdminController extends Controller
             }
         }
 
-
-        \DB::raw("
-
-update ebay_items set make_id = 312 where make_id = 19 and (title like '%aveo%');
-update ebay_items set make_id = 337 where make_id = 19 and (title like '%captiva%');
-update ebay_items set make_id = 516 where make_id = 19 and (title like '%cruze%');
-update ebay_items set make_id = 375 where make_id = 19 and (title like '%matiz%');
-
-
-
-
-
-
-
-        ");
-
         return redirect()->back();
     }
 }
