@@ -1268,6 +1268,16 @@ return [
         ],
         [
             'from' => [54],
+            'to' => 113,
+            'titles' => ['%mr2%', '%mr-2%']
+        ],
+        [
+            'from' => [54],
+            'to' => 358,
+            'titles' => ['%previa%', '%estima%']
+        ],
+        [
+            'from' => [54],
             'to' => 200,
             'titles' => ['%prius%']
         ],
@@ -1280,6 +1290,11 @@ return [
             'from' => [54],
             'to' => 360,
             'titles' => ['%verso%']
+        ],
+        [
+            'from' => [54],
+            'to' => 353,
+            'titles' => ['%starlet%']
         ],
         [
             'from' => [54],
