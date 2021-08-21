@@ -873,6 +873,43 @@ return [
             'titles' => ['%panamera%']
         ],
         
+        //  RENAULT
+        [
+            'from' => [45],
+            'to' => 78,
+            'titles' => ['%clio%']
+        ],
+        [
+            'from' => [45],
+            'to' => 349,
+            'titles' => ['%kangoo%']
+        ],
+        [
+            'from' => [45],
+            'to' => 319,
+            'titles' => ['%laguna%']
+        ],
+        [
+            'from' => [45],
+            'to' => 109,
+            'titles' => ['%megane%']
+        ],
+        [
+            'from' => [45],
+            'to' => 107,
+            'titles' => ['%grand scenic%']
+        ],
+        [
+            'from' => [45],
+            'to' => 281,
+            'titles' => ['%scenic%']
+        ],
+        [
+            'from' => [45],
+            'to' => 219,
+            'titles' => ['%twingo%']
+        ],
+
         //  SAAB
         [
             'from' => [47],
