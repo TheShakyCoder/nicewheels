@@ -119,7 +119,7 @@ export default {
                 if(this.searching) {
                     clearTimeout(this.timeout)
                 }
-                if(val.search === '') {
+                if(val.search === '' || this.substitution.make_id === undefined) {
                     clearTimeout(this.timeout)
                     return
                 }
@@ -146,7 +146,7 @@ export default {
             this.$store.commit('admin/toggleModal', { modal: 'addSubstitution', state: false })
         },
         searchSubstitution (search) {
-            axios.get('/api/substitutions/count/' + encodeURI(search))
+            axios.get('/api/substitutions/count/' + this.substitution.make_id + '/' + encodeURI(search))
                 .then(resp => {
                     this.result = resp.data.count
                 })
