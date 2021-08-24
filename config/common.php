@@ -1150,6 +1150,11 @@ return [
         ],
         [
             'from' => [45],
+            'to' => 573,
+            'titles' => ['%koleos%']
+        ],
+        [
+            'from' => [45],
             'to' => 319,
             'titles' => ['%laguna%']
         ],
