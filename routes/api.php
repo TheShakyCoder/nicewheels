@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CarImagesController;
 use App\Http\Controllers\Api\EbayItemsController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\StripeController;
+use App\Http\Controllers\Api\SubstitutionsController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,7 @@ Route::middleware('api_token')->post('/my-cars', [EbayItemsController::class, 'm
 Route::middleware('api_token')->post('/cars/{ebay_item}/bookmark', [EbayItemsController::class, 'bookmark'])->name('bookmark');
 Route::middleware('api_token')->post('/cars/{ebay_item}/redeem', [EbayItemsController::class, 'redeem'])->name('redeem');
 Route::get('/cars/{ebay_item}/information', [EbayItemsController::class, 'information'])->name('information');
+Route::get('/substitutions/count/{search}', [SubstitutionsController::class, 'searchCount']);
 Route::get('car-images/{ebayItemImage}', [CarImagesController::class, 'show']);
 Route::middleware('api_token')->post('cars', [EbayItemsController::class, 'loadMore']);
 

@@ -28,6 +28,7 @@
                                             <label for="search" class="block text-sm font-medium text-gray-700">Search</label>
                                             <div class="mt-1">
                                                 <input v-model="substitution.search" type="text" name="search" id="search" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="eg. Alfa Romeo">
+                                                {{ result }} results
                                             </div>
                                         </div>
 
@@ -86,6 +87,15 @@ export default {
         XIcon,
     },
 
+    data () {
+        return {
+            result: 0,
+            searching: false,
+            delay: 500,
+            timeout: null
+        }
+    },
+
     computed: {
         open () {
             return this.$store.state.admin.modals.addSubstitution
@@ -103,6 +113,25 @@ export default {
         }
     },
 
+    watch: {
+        substitution: {
+            handler(val, oldVal) {
+                if(this.searching) {
+                    clearTimeout(this.timeout)
+                }
+                if(val.search === '') {
+                    clearTimeout(this.timeout)
+                    return
+                }
+                this.timeout = setTimeout(() => {
+                    this.searching = true
+                    this.searchSubstitution(val.search)
+                }, this.delay)
+            },
+            deep: true
+        }
+    },
+
     methods: {
         save () {
             this.$inertia.post('/admin/substitutions/', this.substitution, {
@@ -116,6 +145,15 @@ export default {
             this.$store.commit('admin/setSingleProperty', { key: 'makes', value: [] })
             this.$store.commit('admin/toggleModal', { modal: 'addSubstitution', state: false })
         },
+        searchSubstitution (search) {
+            axios.get('/api/substitutions/count/' + encodeURI(search))
+                .then(resp => {
+                    this.result = resp.data.count
+                })
+                .catch(error => {
+                    console.error('searchSubstitution', error)
+                })
+        }
     }
 }
 </script>
