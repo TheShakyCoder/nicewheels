@@ -20,13 +20,11 @@ return [
     ],
     'keywords' => [
         'item_to_delete' => [
-            'damaged', 'spares', 'repair', 'lhd', 'project', 'non runner', 'mot failure', 'fault', 'breaking', 'limousine', 'hearse', 'replica', 'hotrod', 'caravan'
+            'damaged', 'spares', 'repair', 'salvage', 'import', 'lhd', 'project', 'non runner', 'refrigerated', 'mot failure', 'fault', 'breaking', 'limousine', 'hearse', 'replica', 'hotrod', 'caravan', 'cat d'
         ],
-        'item_not_used' => [
-            'import'
-        ],
+        'item_not_used' => [],
         'to_remove' => [
-            'no reserve', 'part exchange', 'no mot', 'low miles'
+            'no reserve', 'part exchange', 'low miles', 'hpi clear'
         ]
     ],
     'earliest_year' => env('EBAY_EARLIEST_YEAR', 2000)
