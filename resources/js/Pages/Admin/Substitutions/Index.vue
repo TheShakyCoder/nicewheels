@@ -13,15 +13,22 @@
                 <li
                     v-for="(substitution, index) in substitutions.data"
                     :key="'substitution-' + substitution.id"
-                    class="space-y-1 py-0 pl-6"
+                    class="space-y-1"
                      :class="{'bg-gray-200': index % 2}"
                 >
                     <div class="w-full flex justify-between items-center">
-                        <div>
+                        <div class="w-8 p-2">{{ substitution.sort }}</div>
+                        <div class="w-40">
                             <div>{{ substitution.search }}</div>
                             <div>{{ substitution.make.name }}</div>
                         </div>
-                        <div>{{ substitution.new_make.full_name }}</div>
+                        <div class="flex-grow">{{ substitution.new_make.full_name }}</div>
+
+                        <div>
+                            <inertia-link :preserve-scroll="true" :preserve-state="true" method="post" as="button" :href="route('admin.substitutions.up', substitution.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">&#x2191;</inertia-link>
+                            <inertia-link :preserve-scroll="true" :preserve-state="true" method="post" as="button" :href="route('admin.substitutions.down', substitution.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">&#x2193;</inertia-link>
+                        </div>
+
                     </div>
                 </li>
             </ul>

@@ -17,7 +17,7 @@ class SubstitutionsController extends Controller
      */
     public function index()
     {
-        $substitutions = Substitution::query()->with(['make', 'newMake'])->orderBy('make_id', 'ASC')->orderBy('search', 'ASC')->paginate(12);
+        $substitutions = Substitution::query()->with(['make', 'newMake'])->orderBy('make_id', 'ASC')->orderBy('sort', 'ASC')->paginate(12);
         $makes = Make::query()->withDepth()->defaultOrder()->get();
 
         return Inertia::render('Admin/Substitutions/Index', [
@@ -97,5 +97,19 @@ class SubstitutionsController extends Controller
     public function destroy(Substitution $substitution)
     {
         //
+    }
+
+    public function up(Substitution $substitution)
+    {
+        $substitution->sort = max($substitution->sort - 1, 0);
+        $substitution->save();
+        return redirect()->back();
+    }
+
+    public function down(Substitution $substitution)
+    {
+        $substitution->sort = $substitution->sort + 1;
+        $substitution->save();
+        return redirect()->back();
     }
 }

@@ -15,5 +15,7 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function() {
     Route::post('/makes/{make}/down', [MakesController::class, 'down'])->name('makes.down');
     Route::resource('makes', MakesController::class);
     Route::resource('aspect-makes', AspectMakesController::class);
+    Route::post('/substitutions/{substitution}/up', [SubstitutionsController::class, 'up'])->name('substitutions.up');
+    Route::post('/substitutions/{substitution}/down', [SubstitutionsController::class, 'down'])->name('substitutions.down');
     Route::resource('substitutions', SubstitutionsController::class);
 });

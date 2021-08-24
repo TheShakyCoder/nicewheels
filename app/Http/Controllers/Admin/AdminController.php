@@ -35,7 +35,7 @@ class AdminController extends Controller
 
     public function sql()
     {
-        $substitutions = Substitution::query()->get();
+        $substitutions = Substitution::query()->orderBy('make_id', 'ASC')->orderBy('sort', 'ASC')->get();
 
         foreach($substitutions as $substitution) {
             EbayItem::query()->where('make_id', $substitution->make_id)->where('title', 'LIKE', $substitution->search)->update(['make_id' => $substitution->to_make_id]);

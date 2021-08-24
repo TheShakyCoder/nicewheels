@@ -8,6 +8,7 @@
             <ul>
                 <li
                     v-for="(make, index) in makes"
+                    :key="'make-'+index"
                     class="space-y-1"
                     :class="{ 'bg-gray-200': index % 2, 'py-0': make.depth > 0, 'py-0 pl-6': make.depth === 1, 'pl-12': make.depth === 2 }"
                 >
