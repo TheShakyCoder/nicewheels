@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Image;
 
 class EbayItemService
 {
@@ -149,9 +150,48 @@ class EbayItemService
             return 0;
         }
 
+
+
+
+        //  IMAGE RESIZE
+        $maxsize = 640;
+        $quality = -1;
+        $mime = getimagesize($image);
+        if(in_array($mime['mime'], ['image/jpeg', 'image/jpg'])) {
+            $imagecreated = imagecreatefromjpeg($image);
+        }
+        if($mime['mime'] == 'image/png') {
+            $imagecreated = imagecreatefrompng($image);
+        }
+        if($mime['mime'] == 'image/gif') {
+            $imagecreated = imagecreatefromgif($image);
+        }
+
+        $imageScaled = imagescale($imagecreated, $maxsize);
+        ob_start ();
+
+        if(in_array($mime['mime'], ['image/jpeg', 'image/jpg'])) {
+            imagejpeg($imageScaled, null, $quality);
+        }
+        if($mime['mime'] == 'image/png') {
+            imagepng($imageScaled, null, "8");
+        }
+        if($mime['mime'] == 'image/gif') {
+            imagegif($imageScaled, null, $quality);
+        }
+        
+        $newContent = ob_get_contents ();
+        ob_end_clean ();
+
+        imagedestroy($imagecreated);
+
+
+
+
+
         $name = (string)\Uuid::generate(4).$extension;
         try {
-            if(Storage::disk('spaces')->put(config('filesystems.disks.spaces.folder').'/ebay-items/'.$ebayItem->id.'/'.$name, $content)) {
+            if(Storage::disk('spaces')->put(config('filesystems.disks.spaces.folder').'/ebay-items/'.$ebayItem->id.'/'.$name, $newContent)) {
                 $ebayItem->images()->create([
                     'original_url' => $image,
                     'file' => $name,
