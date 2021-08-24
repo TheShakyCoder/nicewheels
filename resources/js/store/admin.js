@@ -5,11 +5,13 @@ const adminStore = {
             carEdit: false,
             addAspectMake: false,
             aspectMake: false,
+            addSubstitution: false,
             makeAdd: false,
         },
         carId: null,
         car: null,
         aspectMake: null,
+        substitution: null,
         make: null,
         makes: []
     },

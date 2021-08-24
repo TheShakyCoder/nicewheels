@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AspectMakesController;
 use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\MakesController;
+use App\Http\Controllers\Admin\SubstitutionsController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function() {
@@ -14,4 +15,5 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function() {
     Route::post('/makes/{make}/down', [MakesController::class, 'down'])->name('makes.down');
     Route::resource('makes', MakesController::class);
     Route::resource('aspect-makes', AspectMakesController::class);
+    Route::resource('substitutions', SubstitutionsController::class);
 });

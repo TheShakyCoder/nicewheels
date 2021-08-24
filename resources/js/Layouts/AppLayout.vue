@@ -75,6 +75,7 @@
         <car-edit-modal></car-edit-modal>
         <aspect-make-modal></aspect-make-modal>
         <add-aspect-make-modal></add-aspect-make-modal>
+        <add-substitution-modal></add-substitution-modal>
         <make-add-modal></make-add-modal>
 
     </div>
@@ -91,6 +92,7 @@
     import CarEditModal from "../Modals/CarEdit"
     import AspectMakeModal from "../Modals/AspectMake"
     import AddAspectMakeModal from "../Modals/AspectMake/Add"
+    import AddSubstitutionModal from "../Modals/Substitution/Add"
     import MakeAddModal from "../Modals/Makes/Add"
 
     export default {
@@ -106,6 +108,7 @@
             CarEditModal,
             AspectMakeModal,
             AddAspectMakeModal,
+            AddSubstitutionModal,
             MakeAddModal
         },
 

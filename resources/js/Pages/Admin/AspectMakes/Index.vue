@@ -24,8 +24,6 @@
 <script>
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/solid'
 import AppLayout from '@/Layouts/AppLayout'
-import AdminCar from '../../../Components/Admin/Car'
-import AdminCars from '../../../Components/Admin/Cars'
 import Pagination from "../../../Components/Pagination"
 import AdminNav from '@/Components/Admin/AdminNav'
 
