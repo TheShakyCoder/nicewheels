@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Make;
 use App\Models\EbayItem;
 use App\Services\EbayItemService;
-use App\Services\NewsService;
 use App\Services\StaticService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
@@ -41,18 +40,14 @@ class StaticFilter extends Command
      *
      * @return int
      */
-    public function handle(StaticService $staticService, EbayItemService $ebayItemService, NewsService $newsService)
+    public function handle(StaticService $staticService, EbayItemService $ebayItemService)
     {
         $makes = Make::select('id', 'cars_csv')->defaultOrder()->withDepth()->where('live', true)->where('cars_count', '>', 0)->get();
         foreach($makes as $make) {
             
             $makeAndDescendants = Make::descendantsAndSelf($make->id)->pluck('id');
 
-
             $cars = EbayItem::whereIn('id', explode(',', $make->cars_csv))->paginate(config('common.static.page'));
-            // $cars = $ebayItemService->getPublicEbayItems(0, config('common.static.page'), null, $makeAndDescendants, $make);
-
-
 
             $lastPage = json_decode($cars->toJson())->last_page;
 
