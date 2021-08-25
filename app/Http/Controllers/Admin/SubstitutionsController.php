@@ -20,8 +20,7 @@ class SubstitutionsController extends Controller
     {
         $substitutions = Substitution::query()->with(['make', 'newMake'])->orderBy('make_id', 'ASC')->orderBy('sort', 'ASC')->paginate(12);
 
-        $hours = 24;
-        $makes = Cache::remember('makes-substitutions', 3600 * $hours, function() use($hours) {
+        $makes = Cache::remember('makes-all', 3600 * $hours, function() {
             return Make::query()->withDepth()->defaultOrder()->get();
         });
 

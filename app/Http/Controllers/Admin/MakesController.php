@@ -74,11 +74,15 @@ class MakesController extends Controller
      */
     public function show(Make $make)
     {
+        $makes = Cache::remember('makes-all', 3600 * $hours, function() {
+            return Make::query()->withDepth()->defaultOrder()->get();
+        });
+
         return Inertia::render('Admin/Makes/Show', [
             'make' => $make,
             'children' => Make::query()->where('parent_id', $make->id)->defaultOrder()->withCount('ebayItems')->get(),
             'ancestors' => Make::whereAncestorOf($make)->get(),
-            'makes' => Make::query()->defaultOrder()->withDepth()->get(),
+            'makes' => $makes,
             'cars' => $make->ebayItems()->limit(100)->get()
         ]);
     }
