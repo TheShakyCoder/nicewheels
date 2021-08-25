@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Make;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Cache;
 
 class MakesController extends Controller
 {
@@ -16,13 +17,25 @@ class MakesController extends Controller
      */
     public function index(Make $make = null)
     {
-        $makes = Make::query()
-            ->when($make, function($q) use($make) {
-                $q->where('parent_id', $make->id);
-            }, function($q) {
-                $q->where('parent_id', null);
-            })
-            ->defaultOrder()->get();
+        // $makes = Make::query()
+        //     ->when($make, function($q) use($make) {
+        //         $q->where('parent_id', $make->id);
+        //     }, function($q) {
+        //         $q->where('parent_id', null);
+        //     })
+        //     ->defaultOrder()->get();
+
+        $hours = 24;
+        $makes = Cache::remember('makes-'.($make ? $make->id : 0), 3600 * $hours, function() use($hours, $make) {
+            return Make::query()
+                ->when($make, function($q) use($make) {
+                    $q->where('parent_id', $make->id);
+                }, function($q) {
+                    $q->where('parent_id', null);
+                })
+                ->defaultOrder()
+                ->get();
+        });
 
         return Inertia::render('Admin/Makes/Index', [
             'makes' => $makes,

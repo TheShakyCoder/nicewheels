@@ -7,6 +7,7 @@ use App\Models\Substitution;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Make;
+use Illuminate\Support\Facades\Cache;
 
 class SubstitutionsController extends Controller
 {
@@ -18,7 +19,11 @@ class SubstitutionsController extends Controller
     public function index()
     {
         $substitutions = Substitution::query()->with(['make', 'newMake'])->orderBy('make_id', 'ASC')->orderBy('sort', 'ASC')->paginate(12);
-        $makes = Make::query()->withDepth()->defaultOrder()->get();
+
+        $hours = 24;
+        $makes = Cache::remember('makes-substitutions', 3600 * $hours, function() use($hours) {
+            return Make::query()->withDepth()->defaultOrder()->get();
+        });
 
         return Inertia::render('Admin/Substitutions/Index', [
             'substitutions' => $substitutions,

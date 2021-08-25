@@ -137,7 +137,7 @@ export default {
             this.$inertia.post('/admin/substitutions/', this.substitution, {
                 preserveScroll: true
             })
-            this.$store.commit('admin/setSingleProperty', { key: 'substitution', value: null })
+            setTimeout(() => this.$store.commit('admin/setSingleProperty', { key: 'substitution', value: null }))
             this.$store.commit('admin/toggleModal', { modal: 'addSubstitution', state: false })
         },
         close () {

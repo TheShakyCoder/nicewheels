@@ -20,6 +20,7 @@ class CreateSubstitutionsTable extends Migration
             $table->string('search');
             $table->unsignedInteger('sort')->default(0);
             $table->timestamps();
+            $table->unique(['make_id', 'search']);
         });
     }
 
