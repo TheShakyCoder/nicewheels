@@ -58,6 +58,15 @@ export default {
             default: null
         }
     },
+
+    created () {
+        console.log('created', new Date())
+    },
+
+    mounted () {
+        console.log('mounted', new Date())
+    },
+
     methods: {
         add () {
             this.$store.commit('admin/setSingleProperty', { key: 'substitution', value: {} })
