@@ -25,8 +25,7 @@ class MakesController extends Controller
         //     })
         //     ->defaultOrder()->get();
 
-        $hours = 24;
-        $makes = Cache::remember('makes-'.($make ? $make->id : 0), 3600 * $hours, function() use($hours, $make) {
+        $makes = Cache::remember('makes-'.($make ? $make->id : 0), 3600 * 24, function() use($make) {
             return Make::query()
                 ->when($make, function($q) use($make) {
                     $q->where('parent_id', $make->id);
@@ -74,7 +73,7 @@ class MakesController extends Controller
      */
     public function show(Make $make)
     {
-        $makes = Cache::remember('makes-all', 3600 * $hours, function() {
+        $makes = Cache::remember('makes-all', 3600 * 24, function() {
             return Make::query()->withDepth()->defaultOrder()->get();
         });
 
