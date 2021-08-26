@@ -20,9 +20,7 @@ class SubstitutionsController extends Controller
     {
         $substitutions = Substitution::query()->with(['make', 'newMake'])->orderBy('make_id', 'ASC')->orderBy('sort', 'ASC')->paginate(12);
 
-        $makes = Cache::remember('makes-all', 3600 * 24, function() {
-            return Make::query()->withDepth()->defaultOrder()->get();
-        });
+        $makes = Make::query()->withDepth()->defaultOrder()->get();
 
         return Inertia::render('Admin/Substitutions/Index', [
             'substitutions' => $substitutions,

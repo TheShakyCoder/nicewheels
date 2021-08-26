@@ -73,9 +73,7 @@ class MakesController extends Controller
      */
     public function show(Make $make)
     {
-        $makes = Cache::remember('makes-all', 3600 * 24, function() {
-            return Make::query()->withDepth()->defaultOrder()->get();
-        });
+        $makes = Make::query()->withDepth()->defaultOrder()->get();
 
         return Inertia::render('Admin/Makes/Show', [
             'make' => $make,
