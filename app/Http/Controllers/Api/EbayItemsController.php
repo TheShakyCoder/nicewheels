@@ -65,8 +65,8 @@ class EbayItemsController extends Controller
         return response()->json([
             'cars' => $cars,
             'ids' => $request->get('ids'),
-            'bookmarks' => $staticService->getMyBookmarks($auth, array_map(function($car) { return $car->id; }, $cars->items())),
-            'redemptions' => $staticService->getMyRedemptions($auth, array_map(function($car) { return $car->id; }, $cars->items()))
+            'bookmarks' => \Auth::check() ? $staticService->getMyBookmarks($auth, array_map(function($car) { return $car->id; }, $cars->items())) : collect([]),
+            'redemptions' => \Auth::check() ? $staticService->getMyRedemptions($auth, array_map(function($car) { return $car->id; }, $cars->items())) : collect([])
         ]);
     }
 
