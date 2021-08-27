@@ -39,25 +39,28 @@ class TempS3 extends Command
      */
     public function handle()
     {
-        $ebayItemImages = EbayItemImage::query()
+        EbayItemImage::query()
             ->doesntHave('ebayItem')
             ->limit(10000)
-            ->get();
+            ->chunk(100, function ($ebayItemImages) {
 
-        foreach($ebayItemImages as $ebayItemImage) {
-            //  delete these
-            
-            $file = config('filesystems.disks.spaces.folder').'/ebay-items/' . $ebayItemImage->ebay_item_id . '/' . $ebayItemImage->file;
-            echo $ebayItemImage->id.' - '.$file.PHP_EOL;
-            if(Storage::disk('spaces')->exists($file)) {
-                echo $file.' exists'.PHP_EOL;
-                if(Storage::disk('spaces')->delete($file)) {
-                    echo 'deleted'.PHP_EOL;
-                    $ebayItemImage->delete();
+                foreach($ebayItemImages as $ebayItemImage) {
+                    //  delete these
+                    
+                    $file = config('filesystems.disks.spaces.folder').'/ebay-items/' . $ebayItemImage->ebay_item_id . '/' . $ebayItemImage->file;
+                    echo $ebayItemImage->id.' - '.$file.PHP_EOL;
+                    if(Storage::disk('spaces')->exists($file)) {
+                        echo $file.' exists'.PHP_EOL;
+                        if(Storage::disk('spaces')->delete($file)) {
+                            echo 'deleted'.PHP_EOL;
+                            $ebayItemImage->delete();
+                        }
+                    }
+        
                 }
-            }
+            });
 
-        }
+
 
         $directories = Storage::disk('spaces')->directories(config('filesystems.disks.spaces.folder').'/ebay-items');
 
