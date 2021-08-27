@@ -11,12 +11,11 @@ class CarImagesController extends Controller
 {
     public function show(EbayItemImage $ebayItemImage)
     {
-        $hours = 24;
+        $hours = 168;
 
         $value = Cache::remember('image-'.$ebayItemImage->id, 3600 * $hours, function () use ($hours, $ebayItemImage) {
-            return \Storage::disk('spaces')->temporaryUrl(
-                config('filesystems.disks.spaces.folder').'/ebay-items/'.$ebayItemImage->ebay_item_id.'/'.$ebayItemImage->file,
-                now()->addMinutes(60)
+            return \Storage::disk('spaces')->url(
+                config('filesystems.disks.spaces.folder').'/ebay-items/'.$ebayItemImage->ebay_item_id.'/'.$ebayItemImage->file
             ); 
         });
 

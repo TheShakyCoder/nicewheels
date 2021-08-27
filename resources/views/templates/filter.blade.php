@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ $fullMake }} Used Prices</title>
-        <meta name="description" content="{{ $fullMake }} used car prices based on recently sold cars">
+        <meta name="description" content="{{ $fullMake }} used prices based on recently sold cars">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap">

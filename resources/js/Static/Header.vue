@@ -5,14 +5,14 @@
                 <!-- Logo -->
                 <div class="py-5 flex-shrink-0">
                     <a href="/">
-                        <span class="sr-only">Fig Used Car Prices</span>
+                        <span class="sr-only">Nicewheels Used Prices</span>
                         <div class="bg-cyan-200 p-2 rounded">
-                            <img src="https://fig-de.fra1.digitaloceanspaces.com/fig/images/logo.png" alt="Fig used car prices">
+                            <img src="https://fig-de.fra1.digitaloceanspaces.com/nicewheels/images/logo.png" alt="Nicewheels used car prices">
                         </div>
                     </a>
                 </div>
 
-                <h2 class=" hidden sm:inline text-center text-white text-2xl italic pb-2">Used Car Prices</h2>
+                <h2 class=" hidden sm:inline text-center text-white text-2xl italic pb-2">Used Prices</h2>
 
                 <!-- Right section on desktop -->
                 <div class="ml-4 flex items-center py-5 pr-0.5">
