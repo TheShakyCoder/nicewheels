@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
+use App\Models\EbayItemImage;
 
 class TempS3 extends Command
 {
@@ -38,35 +39,43 @@ class TempS3 extends Command
      */
     public function handle()
     {
-        $exempt = explode(',', config('filesystems.disks.ams3.exempts'));
+        $ebayItemImages = EbayItemImage::query()
+            ->doesntHave('ebayItem')
+            ->get();
 
-        $directories = Storage::disk('ams3')->directories('/fig/ebay-items');
+        foreach($ebayItemImages as $ebayItemImage) {
+            //  delete these
+            
+            $file = config('filesystems.disks.spaces.folder').'/ebay-items/' . $ebayItemImage->ebay_item_id . '/' . $ebayItemImage->file;
+            echo $ebayItemImage->id.' - '.$file.PHP_EOL;
+            if(Storage::disk('spaces')->exists($file)) {
+                echo $file.' exists'.PHP_EOL;
+                if(Storage::disk('spaces')->delete($file)) {
+                    echo 'deleted'.PHP_EOL;
+                    $ebayItemImage->delete();
+                }
+            }
+
+        }
+
+        $directories = Storage::disk('spaces')->directories(config('filesystems.disks.spaces.folder').'/ebay-items');
+
+        echo 'got directories'.PHP_EOL;
+        
+        $count = 0;
         foreach($directories as $directory) {
             $arrayDirectory = explode('/', $directory);
-            if (in_array($arrayDirectory[2], $exempt)) {
-                continue;
-            }
-            $photos = Storage::disk('ams3')->files($directory);
+            $photos = Storage::disk('spaces')->files($directory);
             foreach($photos as $file) {
-                echo now().' - ';
-                if(Storage::disk('spaces')->exists($file)) {
-                    echo $file.' exists'.PHP_EOL;
-                    if(!Storage::disk('ams3')->delete($file)) {
-                        echo 'could not delete '.$file.' on AMS3'.PHP_EOL;
+                $newFile = implode('/', [config('filesystems.disks.nicewheels.folder')] + explode('/', $file));
+                echo now().' CURRENT - '.$file.PHP_EOL;
+                echo now().' NEW - '.$newFile.PHP_EOL;
+
+                if(!Storage::disk('nicewheels')->exists($newFile)) {
+                    if(Storage::disk('spaces')->move($file, $newFile)) {
+                        Storage::disk('spaces')->setVisibility($newFile, 'public');
+                        echo 'moved: ' . $file.' - ';
                     }
-                    continue;
-                }
-                try {
-                    echo $file.PHP_EOL;
-                    $fs = Storage::disk('ams3')->getDriver();
-                    $stream = $fs->readStream($file);
-                    $new_fs = Storage::disk('spaces')->getDriver();
-                    $new_fs->writeStream($file, $stream);
-                    if(!Storage::disk('ams3')->delete($file)) {
-                        echo 'could not delete '.$file.' on AMS3'.PHP_EOL;
-                    }
-                } catch(\Exception $e) {
-                    echo $e->getMessage().PHP_EOL;
                 }
             }
         }
