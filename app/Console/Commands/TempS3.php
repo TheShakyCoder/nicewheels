@@ -52,7 +52,7 @@ class TempS3 extends Command
                     if(Storage::disk('spaces')->exists($file)) {
                         echo '.exists.';
                         if(Storage::disk('spaces')->delete($file)) {
-                            echo '.deleted.'.PHP_EOL;
+                            echo '.deleted.';
                             $ebayItemImage->delete();
                         }
                     }
