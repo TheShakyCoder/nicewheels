@@ -19,7 +19,7 @@ Route::middleware('api_token')->post('/cars/{ebay_item}/redeem', [EbayItemsContr
 Route::get('/cars/{ebay_item}/information', [EbayItemsController::class, 'information'])->name('information');
 Route::get('/substitutions/count/{make}/{search}', [SubstitutionsController::class, 'searchCount']);
 Route::get('car-images/{ebayItemImage}', [CarImagesController::class, 'show']);
-Route::middleware('api_token')->post('cars', [EbayItemsController::class, 'loadMore']);
+Route::post('cars', [EbayItemsController::class, 'loadMore']);
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::middleware('api_token')->post('/logout', [LoginController::class, 'logout']);
