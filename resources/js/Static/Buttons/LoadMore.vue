@@ -36,13 +36,16 @@ export default {
     methods: {
         loadMore () {
             const user = JSON.parse(localStorage.getItem('user', null))
-            axios.post('/api/cars/', { api_token: user.api_token, ids: this.collection, makes: this.makesAndDescendants })
+            axios.post('/api/cars/', { ids: this.collection, makes: this.makesAndDescendants })
                 .then(resp => {
                     this.$store.commit('static/addToCollection', { collection: 'filterMore', item: resp.data.cars.data.map(d => d.id) })
                     this.$store.commit('static/addToCollection', { collection: 'filterCars', item: resp.data.cars.data })
 
-                    this.$store.commit('static/addToCollection', { collection: 'bookmarks', item: resp.data.bookmarks })
-                    this.$store.commit('static/addToCollection', { collection: 'redemptions', item: resp.data.redemptions })
+                    if(user) {
+                        this.$store.commit('static/addToCollection', { collection: 'bookmarks', item: resp.data.bookmarks })
+                        this.$store.commit('static/addToCollection', { collection: 'redemptions', item: resp.data.redemptions })
+                    }
+                    
                     if(resp.data.cars.last_page === 1) {
                         this.show = false
                     }
