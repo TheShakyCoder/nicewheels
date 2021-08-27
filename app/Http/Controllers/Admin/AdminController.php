@@ -40,7 +40,7 @@ class AdminController extends Controller
         foreach($substitutions as $substitution) {
             EbayItem::query()
                 ->where('make_id', $substitution->make_id)
-                ->where(function($q) {
+                ->where(function($q) use($substitution) {
                     $q->where('title', 'LIKE', $substitution->search)->orWhere('subtitle', 'LIKE', $substitution->search);
                 })
                 ->update(['make_id' => $substitution->to_make_id]);
