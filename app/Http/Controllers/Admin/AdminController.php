@@ -38,7 +38,12 @@ class AdminController extends Controller
         $substitutions = Substitution::query()->orderBy('make_id', 'ASC')->orderBy('sort', 'ASC')->get();
 
         foreach($substitutions as $substitution) {
-            EbayItem::query()->where('make_id', $substitution->make_id)->where('title', 'LIKE', $substitution->search)->update(['make_id' => $substitution->to_make_id]);
+            EbayItem::query()
+                ->where('make_id', $substitution->make_id)
+                ->where(function($q) {
+                    $q->where('title', 'LIKE', $substitution->search)->orWhere('subtitle', 'LIKE', $substitution->search);
+                })
+                ->update(['make_id' => $substitution->to_make_id]);
         }
 
         return redirect()->back();
