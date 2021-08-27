@@ -48,9 +48,9 @@ class TempS3 extends Command
                     //  delete these
                     
                     $file = config('filesystems.disks.spaces.folder').'/ebay-items/' . $ebayItemImage->ebay_item_id . '/' . $ebayItemImage->file;
-                    echo $ebayItemImage->id.' - '.$file.PHP_EOL;
+                    echo $ebayItemImage->id.' - '.$file;
                     if(Storage::disk('spaces')->exists($file)) {
-                        echo $file.'.exists.';
+                        echo '.exists.';
                         if(Storage::disk('spaces')->delete($file)) {
                             echo '.deleted.'.PHP_EOL;
                             $ebayItemImage->delete();
