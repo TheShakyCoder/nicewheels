@@ -41,7 +41,7 @@ class TempS3 extends Command
     {
         $ebayItemImages = EbayItemImage::query()
             ->doesntHave('ebayItem')
-            ->limit(100)
+            ->limit(1000)
             ->get();
 
         foreach($ebayItemImages as $ebayItemImage) {
