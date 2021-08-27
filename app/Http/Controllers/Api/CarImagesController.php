@@ -14,7 +14,7 @@ class CarImagesController extends Controller
         $hours = 168;
 
         $value = Cache::remember('image-'.$ebayItemImage->id, 3600 * $hours, function () use ($hours, $ebayItemImage) {
-            return \Storage::disk('spaces')->utemqporaryUrlrl(
+            return \Storage::disk('spaces')->temporaryUrl(
                 config('filesystems.disks.spaces.folder').'/ebay-items/'.$ebayItemImage->ebay_item_id.'/'.$ebayItemImage->file,
                 $hours * 60 * 60
             ); 
