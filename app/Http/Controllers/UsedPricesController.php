@@ -17,7 +17,7 @@ class UsedPricesController extends Controller
 {
     public function __invoke(UserService $userService, EbayItemService $ebayItemService, NewsService $newsService)
     {
-        $imagePath = config('filesystems.disks.spaces.path');
+        $imagePath = config('filesystems.disks.nicewheels.path');
 
         $recentlyBookmarked = collect([]);
         $recentlyRedeemed = collect([]);

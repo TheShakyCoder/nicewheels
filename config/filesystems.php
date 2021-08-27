@@ -65,6 +65,18 @@ return [
             'path' => 'https://' . env('DO_SPACES_BUCKET').'.'.env('DO_SPACES_REGION').'.digitaloceanspaces.com/'.env('DO_SPACES_FOLDER')
         ],
 
+        'nicewheels' => [
+            'driver' => 's3',
+            'key' => env('NW_SPACES_KEY'),
+            'secret' => env('NW_SPACES_SECRET'),
+            'endpoint' => env('NW_SPACES_ENDPOINT'),
+            'region' => env('NW_SPACES_REGION'),
+            'bucket' => env('NW_SPACES_BUCKET'),
+            'folder' => env('NW_SPACES_FOLDER'),
+
+            'path' => 'https://' . env('NW_SPACES_BUCKET').'.'.env('NW_SPACES_REGION').'.digitaloceanspaces.com/'.env('NW_SPACES_FOLDER')
+        ],
+
     ],
 
     /*

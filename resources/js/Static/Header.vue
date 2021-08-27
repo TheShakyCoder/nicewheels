@@ -7,7 +7,7 @@
                     <a href="/">
                         <span class="sr-only">Nicewheels Used Prices</span>
                         <div class="bg-cyan-200 p-2 rounded">
-                            <img src="https://fig-de.fra1.digitaloceanspaces.com/fig/images/logo.png" alt="Nicewheels used car prices">
+                            <img src="https://fig-de.fra1.digitaloceanspaces.com/nicewheels/images/logo.png" alt="Nicewheels used car prices">
                         </div>
                     </a>
                 </div>

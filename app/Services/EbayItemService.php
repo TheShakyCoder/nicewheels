@@ -191,7 +191,7 @@ class EbayItemService
 
         $name = (string)\Uuid::generate(4).$extension;
         try {
-            if(Storage::disk('spaces')->put(config('filesystems.disks.spaces.folder').'/ebay-items/'.$ebayItem->id.'/'.$name, $newContent, 'public')) {
+            if(Storage::disk('nicewheels')->put(config('filesystems.disks.nicewheels.folder').'/ebay-items/'.$ebayItem->id.'/'.$name, $newContent, 'public')) {
                 $ebayItem->images()->create([
                     'original_url' => $image,
                     'file' => $name,

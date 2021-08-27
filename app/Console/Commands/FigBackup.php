@@ -62,7 +62,7 @@ class FigBackup extends Command
 
         exec($command);
 
-        if(Storage::disk('spaces')->putFileAs(config('filesystems.disks.spaces.folder').'/db', $path.$file, $file)) {
+        if(Storage::disk('nicewheels')->putFileAs(config('filesystems.disks.nicewheels.folder').'/db', $path.$file, $file)) {
             Storage::disk('local')->delete('db_backup/'.$file);
         }
     }
