@@ -79,7 +79,7 @@ class TempS3 extends Command
                 if(!Storage::disk('nicewheels')->exists($newFile)) {
                     if(Storage::disk('spaces')->move($file, $newFile)) {
                         Storage::disk('spaces')->setVisibility($newFile, 'public');
-                        echo 'moved: ' . $file.' - ';
+                        echo 'moved: ' . $file.PHP_EOL;
                     }
                 }
             }
