@@ -24,7 +24,7 @@ return [
         ],
         'item_not_used' => [],
         'to_remove' => [
-            'no reserve', 'part exchange', 'low miles', 'hpi clear'
+            'no reserve', 'part exchange', 'low miles', 'hpi clear', 'READ DESCRIPTION'
         ]
     ],
     'earliest_year' => env('EBAY_EARLIEST_YEAR', 2000)

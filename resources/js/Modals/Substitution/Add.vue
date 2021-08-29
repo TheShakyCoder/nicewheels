@@ -116,17 +116,19 @@ export default {
     watch: {
         substitution: {
             handler(val, oldVal) {
-                if(this.searching) {
-                    clearTimeout(this.timeout)
+                if(val) {
+                    if(this.searching) {
+                        clearTimeout(this.timeout)
+                    }
+                    if(val.search === '' || this.substitution.make_id === undefined) {
+                        clearTimeout(this.timeout)
+                        return
+                    }
+                    this.timeout = setTimeout(() => {
+                        this.searching = true
+                        this.searchSubstitution(val.search)
+                    }, this.delay)
                 }
-                if(val.search === '' || this.substitution.make_id === undefined) {
-                    clearTimeout(this.timeout)
-                    return
-                }
-                this.timeout = setTimeout(() => {
-                    this.searching = true
-                    this.searchSubstitution(val.search)
-                }, this.delay)
             },
             deep: true
         }

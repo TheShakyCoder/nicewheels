@@ -63,7 +63,14 @@
                     </ul>
                 </div>
             </div>
+
             <div class="w-80">
+                <div class="p-2 m-2 bg-white rounded-xl border border-gray-300 shadow">
+                    <div class="flex justify-between">
+                        <h3 class="text-xl font-bold">Substitutions</h3>
+                        <button @click="addSubstitution">Add</button>
+                    </div>
+                </div>
                 <div class="p-2 m-2 bg-white rounded-xl border border-gray-300 shadow">
                     <h3 class="text-xl font-bold">Ancestors</h3>
                     <ul>
@@ -135,7 +142,8 @@ export default {
         return {
             form: {
                 name: null,
-                parent_id: null
+                parent_id: null,
+                slug: null,
             }
         }
     },
@@ -159,6 +167,11 @@ export default {
             this.$store.commit('admin/setSingleProperty', { key: 'make', value: { name: null, slug: null, parent_id: this.make.id } })
             this.$store.commit('admin/setSingleProperty', { key: 'makes', value: this.makes })
             this.$store.commit('admin/toggleModal', { modal: 'makeAdd', state: true })
+        },
+        addSubstitution () {
+            this.$store.commit('admin/setSingleProperty', { key: 'substitution', value: {} })
+            this.$store.commit('admin/setSingleProperty', { key: 'makes', value: this.makes })
+            this.$store.commit('admin/toggleModal', { modal: 'addSubstitution', state: true })
         }
     }
 }

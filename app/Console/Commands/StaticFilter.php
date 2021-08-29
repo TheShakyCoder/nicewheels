@@ -45,12 +45,12 @@ class StaticFilter extends Command
         $makes = Make::select('id', 'cars_csv')->defaultOrder()->withDepth()->where('live', true)->where('cars_count', '>', 0)->get();
 
         //  used price index
+        echo '/'.PHP_EOL;
         $cars = $ebayItemService->getPublicEbayItems(0, 12, null);
         $lastPage = json_decode($cars->toJson())->last_page;
         $folder = '';
         $html = $staticService->getFilterCompiledHtml('templates.filter', 'All Makes', $cars, $lastPage, [], $makes, $folder);
         file_put_contents(public_path('used-prices/index.html'), $html);
-        echo 'used-prices'.PHP_EOL;
 
         foreach($makes as $make) {
             
