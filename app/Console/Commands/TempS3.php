@@ -67,25 +67,14 @@ class TempS3 extends Command
         $count = 0;
         foreach($directories as $directory) {
             echo 'got directory'.PHP_EOL;
-            $arrayDirectory = explode('/', $directory);
             $photos = Storage::disk('spaces')->files($directory);
+            echo $directory.PHP_EOL;
             foreach($photos as $file) {
                 echo now().' - '.$file;
                 if(Storage::disk('spaces')->delete($file)) {
                     echo '.deleted.';
                 }
                 echo PHP_EOL;
-                //  COPY FROM fig TO nicewheels
-                // if(!Storage::disk('nicewheels')->exists($newFile)) {
-                //     if(Storage::disk('spaces')->move($file, $newFile)) {
-                //         Storage::disk('spaces')->setVisibility($newFile, 'public');
-                //         echo 'moved: ' . $file.PHP_EOL;
-                //     }
-                // }
-
-
-
-
             }
         }
         echo $count;
