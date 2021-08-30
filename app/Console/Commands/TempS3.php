@@ -69,7 +69,6 @@ class TempS3 extends Command
             echo 'got directory'.PHP_EOL;
             $photos = Storage::disk('spaces')->files($directory);
             echo $directory.PHP_EOL;
-            dump($photos);
             foreach($photos as $file) {
                 echo now().' - '.$file;
                 if(Storage::disk('spaces')->delete($file)) {
