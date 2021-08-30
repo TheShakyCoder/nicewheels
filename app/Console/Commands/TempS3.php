@@ -57,34 +57,41 @@ class TempS3 extends Command
                     }
                     $ebayItemImage->delete();
                     echo PHP_EOL;
-        
+                    
                 }
             });
-
-
-
+            
+            
         $directories = Storage::disk('spaces')->directories(config('filesystems.disks.spaces.folder').'/ebay-items');
-
         echo 'got directories'.PHP_EOL;
-        
         $count = 0;
         foreach($directories as $directory) {
             $arrayDirectory = explode('/', $directory);
             $photos = Storage::disk('spaces')->files($directory);
             foreach($photos as $file) {
-                $newFile = implode('/', [config('filesystems.disks.nicewheels.folder')] + explode('/', $file));
-                echo now().' CURRENT - '.$file.PHP_EOL;
-                echo now().' NEW - '.$newFile.PHP_EOL;
-
-                if(!Storage::disk('nicewheels')->exists($newFile)) {
-                    if(Storage::disk('spaces')->move($file, $newFile)) {
-                        Storage::disk('spaces')->setVisibility($newFile, 'public');
-                        echo 'moved: ' . $file.PHP_EOL;
-                    }
+                echo now().' - '.$file;
+                if(Storage::disk('spaces')->delete($file)) {
+                    echo '.deleted.';
                 }
+                echo PHP_EOL;
+                //  COPY FROM fig TO nicewheels
+                // if(!Storage::disk('nicewheels')->exists($newFile)) {
+                //     if(Storage::disk('spaces')->move($file, $newFile)) {
+                //         Storage::disk('spaces')->setVisibility($newFile, 'public');
+                //         echo 'moved: ' . $file.PHP_EOL;
+                //     }
+                // }
+
+
+
+
             }
         }
         echo $count;
+
+
+
+
         return 0;
     }
 }

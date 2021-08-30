@@ -47,7 +47,14 @@ class EbayGet extends Command
      */
     public function handle()
     {
-        $items = EbayItem::query()->whereNull('aspected_at')->where('used_price', true)->orderBy('ended_at', 'ASC')->limit(config('ebay.settings.itemsPerGet'))->pluck('ebay_item_id')->toArray();
+        $items = EbayItem::query()
+            ->whereNull('aspected_at')
+            ->where('used_price', true)
+            ->orderBy('ended_at', 'ASC')
+            ->limit(config('ebay.settings.itemsPerGet'))
+            ->pluck('ebay_item_id')
+            ->toArray();
+            
         if(count($items) > 0) {
             $json = $this->ebayService->getMultipleItems($items, true);
             $this->ebayItemService->checkForErrors($json);

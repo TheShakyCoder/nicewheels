@@ -54,11 +54,9 @@ class EbayItemService
             $title    = $item->title[0];
             $subtitle = isset($item->subtitle) ? $item->subtitle[0] : null;
             foreach(config('ebay.keywords.to_remove') as $phrase) {
-                $title    = str_ireplace($phrase, '', $title);
-                $subtitle = str_ireplace($phrase, '', $subtitle);
+                $title    = trim(str_ireplace($phrase, '', $title));
+                $subtitle = trim(str_ireplace($phrase, '', $subtitle));
             }
-            $title    = trim($title);
-            $subtitle = trim($subtitle);
 
             $ebayItem = EbayItem::query()->withTrashed()->updateOrCreate([
                 'ebay_item_id' => $item->itemId[0]
@@ -76,11 +74,7 @@ class EbayItemService
                 'ended_at' => (new \DateTime($item->listingInfo[0]->endTime[0]))->format('Y-m-d H:i:s')
             ]);
 
-            if($delete) {
-                $ebayItem->delete();
-            } else {
-                $count++;
-            }
+            $delete ? $ebayItem->delete() : $count++;
 
         }
         return $count;
