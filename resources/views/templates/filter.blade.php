@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ $fullMake }} Used Prices</title>
+        <title>Prices of used {{ $fullMake }}</title>
         <meta name="description" content="{{ $fullMake }} used prices based on recently sold cars">
 
         <!-- Fonts -->

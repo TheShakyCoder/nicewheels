@@ -20,7 +20,7 @@ return [
     ],
     'keywords' => [
         'item_to_delete' => [
-            'damaged', 'spares', 'repair', 'salvage', 'import', 'lhd', 'project', 'non runner', 'refrigerated', 'mot failure', 'fault', 'breaking', 'limousine', 'hearse', 'replica', 'hotrod', 'caravan', 'cat d'
+            'camper', 'drift', 'damaged', 'spares', 'repair', 'salvage', 'import', 'lhd', 'project', 'non runner', 'refrigerated', 'mot failure', 'fault', 'breaking', 'limousine', 'hearse', 'replica', 'hotrod', 'caravan', 'cat d'
         ],
         'item_not_used' => [],
         'to_remove' => [
