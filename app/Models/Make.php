@@ -49,4 +49,14 @@ class Make extends Model
     {
         return $this->hasOne(EbayCategory::class);
     }
+
+    public function substitutions()
+    {
+        return $this->hasMany(Substitution::class);
+    }
+
+    public function substitutionsTo()
+    {
+        return $this->hasMany(Substitution::class, 'to_make_id');
+    }
 }

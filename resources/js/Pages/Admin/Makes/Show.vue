@@ -66,12 +66,6 @@
 
             <div class="w-80">
                 <div class="p-2 m-2 bg-white rounded-xl border border-gray-300 shadow">
-                    <div class="flex justify-between">
-                        <h3 class="text-xl font-bold">Substitutions</h3>
-                        <button @click="addSubstitution">Add</button>
-                    </div>
-                </div>
-                <div class="p-2 m-2 bg-white rounded-xl border border-gray-300 shadow">
                     <h3 class="text-xl font-bold">Ancestors</h3>
                     <ul>
                         <li v-for="m in ancestors" :key="'ancestor-' + m.id">
@@ -90,6 +84,26 @@
                             <inertia-link :title="child.id" class="flex-grow" :href="route('admin.makes.show', child.id)">{{ child.name }} [{{ child.ebay_items_count }}]</inertia-link>
                             <inertia-link :preserve-scroll="true" :preserve-state="true" method="post" as="button" :href="route('admin.makes.up', child.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">&#x2191;</inertia-link>
                             <inertia-link :preserve-scroll="true" :preserve-state="true" method="post" as="button" :href="route('admin.makes.down', child.id)" class="p-1 px-2 rounded border border-gray-200 ml-2">&#x2193;</inertia-link>
+                        </li>
+                    </ul>
+                </div>
+                <div class="p-2 m-2 bg-white rounded-xl border border-gray-300 shadow">
+                    <div class="flex justify-between">
+                        <h3 class="text-xl font-bold">Substitutions</h3>
+                        <button @click="addSubstitution">Add</button>
+                    </div>
+                    <h4 class="font-bold small text-gray-800">OUTBOUND</h4>
+                    <ul>
+                        <li v-for="s in substitutions" :key="'substitution-' + s.id" class="flex justify-between">
+                            <div>{{ s.new_make.full_name }}</div>
+                            <div>{{ s.search }}</div>
+                        </li>
+                    </ul>
+                    <h4 class="font-bold small text-gray-800">INBOUND</h4>
+                    <ul>
+                        <li v-for="s in substitutionsTo" :key="'substitution-to-' + s.id" class="flex justify-between">
+                            <div>{{ s.make.full_name }}</div>
+                            <div>{{ s.search }}</div>
                         </li>
                     </ul>
                 </div>
@@ -130,6 +144,14 @@ export default {
             default: null
         },
         makes: {
+            type: Object,
+            default: null
+        },
+        substitutions: {
+            type: Object,
+            default: null
+        },
+        substitutionsTo: {
             type: Object,
             default: null
         },
