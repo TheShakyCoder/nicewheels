@@ -77,6 +77,7 @@ class TempS3 extends Command
                 }
                 echo PHP_EOL;
             }
+            Storage::disk('spaces')->deleteDirectory($directory);
         }
         echo $count;
 
