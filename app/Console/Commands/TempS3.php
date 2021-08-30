@@ -66,6 +66,7 @@ class TempS3 extends Command
         echo 'got directories'.PHP_EOL;
         $count = 0;
         foreach($directories as $directory) {
+            echo 'got directory'.PHP_EOL;
             $arrayDirectory = explode('/', $directory);
             $photos = Storage::disk('spaces')->files($directory);
             foreach($photos as $file) {
