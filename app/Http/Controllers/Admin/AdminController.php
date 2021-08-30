@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\EbayItem;
+use App\Models\Make;
 use App\Models\Substitution;
 
 class AdminController extends Controller
@@ -39,7 +40,12 @@ class AdminController extends Controller
 
         foreach($substitutions as $substitution) {
             EbayItem::query()
-                ->where('make_id', $substitution->make_id)
+                ->when($substitution->make_id, function($q) use($substitution) {
+                    $q->where('make_id', $substitution->make_id);
+                }, function($q) use($substitution) {
+                    $descendantsAndSelf = Make::descendantsAndSelf($substitution->to_make_id)->pluck('id')->toArray();
+                    $q->whereNotIn('make_id', $descendantsAndSelf);
+                })
                 ->where(function($q) use($substitution) {
                     $q->where('title', 'LIKE', $substitution->search)->orWhere('subtitle', 'LIKE', $substitution->search);
                 })

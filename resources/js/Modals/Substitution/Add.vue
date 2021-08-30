@@ -35,7 +35,7 @@
                                         <div>
                                             <label for="make-id" class="block text-sm font-medium text-gray-700">in Make</label>
                                             <select v-model="substitution.make_id" id="make-id" name="make_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                                                <option value="">--  none selected --</option>
+                                                <option value="0">--  none selected --</option>
                                                 <option v-for="make in makes" :key="'make-' + make.id" :value="make.id">{{ "-".repeat(make.depth) }}{{ make.name }}</option>
                                             </select>
                                         </div>
@@ -43,7 +43,7 @@
                                         <div>
                                             <label for="to-make-id" class="block text-sm font-medium text-gray-700">to Make</label>
                                             <select v-model="substitution.to_make_id" id="to-make-id" name="to_make_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                                                <option value="">--  none selected --</option>
+                                                <option value="0">--  none selected --</option>
                                                 <option v-for="make in makes" :key="'to-make-' + make.id" :value="make.id">{{ "-".repeat(make.depth) }}{{ make.name }}</option>
                                             </select>
                                         </div>
@@ -120,7 +120,7 @@ export default {
                     if(this.searching) {
                         clearTimeout(this.timeout)
                     }
-                    if(val.search === '' || this.substitution.make_id === undefined) {
+                    if(val.search === '') {
                         clearTimeout(this.timeout)
                         return
                     }
@@ -148,7 +148,7 @@ export default {
             this.$store.commit('admin/toggleModal', { modal: 'addSubstitution', state: false })
         },
         searchSubstitution (search) {
-            axios.get('/api/substitutions/count/' + this.substitution.make_id + '/' + encodeURI(search))
+            axios.get('/api/substitutions/count/' + this.substitution.make_id + '/' + this.substitution.to_make_id + '/' + encodeURI(search))
                 .then(resp => {
                     this.result = resp.data.count
                 })

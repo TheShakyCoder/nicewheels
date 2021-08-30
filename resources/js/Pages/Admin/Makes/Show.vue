@@ -102,7 +102,7 @@
                     <h4 class="font-bold small text-gray-800">INBOUND</h4>
                     <ul>
                         <li v-for="s in substitutionsTo" :key="'substitution-to-' + s.id" class="flex justify-between">
-                            <div>{{ s.make.full_name }}</div>
+                            <div>{{ s.make ? s.make.full_name : '%' }}</div>
                             <div>{{ s.search }}</div>
                         </li>
                     </ul>
@@ -191,7 +191,7 @@ export default {
             this.$store.commit('admin/toggleModal', { modal: 'makeAdd', state: true })
         },
         addSubstitution () {
-            this.$store.commit('admin/setSingleProperty', { key: 'substitution', value: {} })
+            this.$store.commit('admin/setSingleProperty', { key: 'substitution', value: { make_id: 0, to_make_id: 0, search: null } })
             this.$store.commit('admin/setSingleProperty', { key: 'makes', value: this.makes })
             this.$store.commit('admin/toggleModal', { modal: 'addSubstitution', state: true })
         }
