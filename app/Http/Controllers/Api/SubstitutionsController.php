@@ -16,7 +16,8 @@ class SubstitutionsController extends Controller
                 $q->where('make_id', $make);
             }, function($q) use($toMake) {
                 $q->when($toMake, function($q2) use($toMake) {
-                    $q2->where('make_id', '<>', $toMake);
+                    $descendantsAndSelf = Make::descendantsAndSelf($toMake)->pluck('id')->toArray();
+                    $q2->whereNotIn('make_id', $descendantsAndSelf);
                 });
             })
             ->where('title', 'LIKE', $search)
