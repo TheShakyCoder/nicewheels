@@ -22,7 +22,9 @@ return [
         'item_to_delete' => [
             'camper', 'drift', 'damaged', 'spares', 'repair', 'salvage', 'import', 'lhd', 'project', 'non runner', 'refrigerated', 'mot failure', 'fault', 'breaking', 'limousine', 'hearse', 'replica', 'hotrod', 'caravan', 'cat d'
         ],
-        'item_not_used' => [],
+        'item_not_used' => [
+            'not ', 'cat s', 'cat d'
+        ],
         'to_remove' => [
             'no reserve', 'part exchange', 'low miles', 'hpi clear', 'READ DESCRIPTION'
         ]
